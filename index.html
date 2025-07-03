@@ -1,116 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FLEXNORA Digital</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FLEXNORA Digital - Innovative digital solutions including web development, mobile apps, graphic design, and video editing services.">
+  <meta name="keywords" content="web development, mobile apps, graphic design, video editing, digital solutions, logo design, MS Office">
+  <meta name="author" content="FLEXNORA Digital">
+  <meta property="og:title" content="FLEXNORA Digital - Innovative Digital Solutions">
+  <meta property="og:description" content="Transforming your ideas into modern digital solutions with expert services.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0f172a">
+  
+  <title>FLEXNORA Digital | Web & Mobile Development | Graphic Design Services</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --dark: #0f172a;
+      --darker: #020617;
+      --light: #f8fafc;
+      --gray: #94a3b8;
+      --dark-gray: #334155;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      margin: 0;
-      padding: 0;
+      background-color: var(--darker);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-
-    header {
-      background-color: #1e90ff;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    main {
-      max-width: 800px;
-      margin: 40px auto;
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 0 20px;
     }
-
-    .intro {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
+    
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+      padding: 80px 0 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-
-    .services {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
     }
-
-    .services h2 {
-      color: #1e90ff;
+    
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    header h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 800;
+      background: linear-gradient(to right, var(--primary), #a5b4fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.2;
       margin-bottom: 15px;
     }
-
-    .services ul {
-      list-style: none;
-      padding: 0;
+    
+    header p {
+      font-size: 1.25rem;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto 30px;
     }
-
-    .services li {
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
+    
+    .cta-button {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid var(--primary);
     }
-
-    .contact {
+    
+    .cta-button:hover {
+      background: transparent;
+      color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+    }
+    
+    /* Main Content */
+    main {
+      padding: 60px 0;
+    }
+    
+    section {
+      margin-bottom: 60px;
+    }
+    
+    .section-title {
       text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    
+    .section-title h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--light);
+      display: inline-block;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+    
+    /* Intro */
+    .intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px;
+    }
+    
+    .intro p {
+      font-size: 1.2rem;
+      color: var(--gray);
+    }
+    
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
       margin-top: 40px;
     }
-
-    .contact p {
-      margin: 8px 0;
+    
+    .service-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--dark-gray);
+      border-radius: 12px;
+      padding: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
-
+    
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-color: var(--primary-dark);
+    }
+    
+    .service-card:hover::before {
+      opacity: 1;
+    }
+    
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    .service-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: var(--light);
+    }
+    
+    .service-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+    
+    /* Contact */
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 25px;
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 8px;
+      border: 1px solid var(--dark-gray);
+      transition: all 0.3s ease;
+    }
+    
+    .contact-method:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .contact-icon {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    
+    .contact-text h3 {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 5px;
+    }
+    
+    .contact-text p, .contact-text a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .contact-text a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    
+    /* Footer */
     footer {
-      margin-top: 60px;
+      background: var(--dark);
+      padding: 30px 0;
       text-align: center;
+      border-top: 1px solid var(--dark-gray);
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .social-link {
+      color: var(--gray);
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-link:hover {
+      color: var(--primary);
+    }
+    
+    .copyright {
+      color: var(--gray);
       font-size: 0.9rem;
-      color: #888;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+    
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 60px 0 40px;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .contact-method {
+        width: 100%;
+        max-width: 350px;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>FLEXNORA Digital</h1>
-    <p>Innovative Solutions for Your Digital Needs</p>
+    <div class="container header-content">
+      <h1 class="fade-in">FLEXNORA Digital</h1>
+      <p class="fade-in delay-1">Innovative Solutions for Your Digital Needs</p>
+      <a href="#contact" class="cta-button fade-in delay-2">Get Started</a>
+    </div>
   </header>
 
-  <main>
-    <div class="intro">
-      <p>We specialize in transforming your ideas into modern digital solutions.</p>
-    </div>
+  <main class="container">
+    <section class="intro fade-in delay-2">
+      <p>We specialize in transforming your ideas into modern, high-performance digital solutions that drive results and elevate your brand.</p>
+    </section>
 
-    <div class="services">
-      <h2>Our Services</h2>
-      <ul>
-        <li>Web Development</li>
-        <li>Mobile App Development</li>
-        <li>MS Office Package Works</li>
-        <li>Graphic Designing</li>
-        <li>Video Editing</li>
-        <li>Assignments & Typing Jobs</li>
-        <li>Logo & Post Design</li>
-      </ul>
-    </div>
+    <section id="services">
+      <div class="section-title">
+        <h2>Our Services</h2>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3>Web Development</h3>
+          <p>Custom websites built with modern technologies for optimal performance and user experience.</p>
+        </div>
+        
+        <div class="service-card fade-in delay-1">
+          <div class="service-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Mobile App Development</h3>
+          <p>Native and cross-platform mobile applications for iOS and Android platforms.</p>
+        </div>
+        
+        <div class="service-card fade-in delay-2">
+          <div class="service-icon">
+            <i class="fas fa-file-excel"></i>
+          </div>
+          <h3>MS Office Solutions</h3>
+          <p>Professional document creation, spreadsheet automation, and presentation design.</p>
+        </div>
+        
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <i class="fas fa-paint-brush"></i>
+          </div>
+          <h3>Graphic Designing</h3>
+          <p>Stunning visual designs for branding, marketing materials, and digital media.</p>
+        </div>
+        
+        <div class="service-card fade-in delay-1">
+          <div class="service-icon">
+            <i class="fas fa-video"></i>
+          </div>
+          <h3>Video Editing</h3>
+          <p>Professional video production and editing services for all your media needs.</p>
+        </div>
+        
+        <div class="service-card fade-in delay-2">
+          <div class="service-icon">
+            <i class="fas fa-keyboard"></i>
+          </div>
+          <h3>Content Services</h3>
+          <p>Assignment writing, typing jobs, and professional content creation.</p>
+        </div>
+      </div>
+    </section>
 
-    <div class="contact">
-      <h2>Contact Us</h2>
-      <p>Email: info@flexnora.com</p>
-      <p>Phone: +94 123 456 789</p>
-    </div>
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+      </div>
+      
+      <div class="contact-info">
+        <div class="contact-method fade-in">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-text">
+            <h3>Email</h3>
+            <a href="mailto:info@flexnora.com">info@flexnora.com</a>
+          </div>
+        </div>
+        
+        <div class="contact-method fade-in delay-1">
+          <div class="contact-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="contact-text">
+            <h3>Phone</h3>
+            <p>+94 123 456 789</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    &copy; 2025 FLEXNORA Digital. All rights reserved.
+    <div class="container footer-content">
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <p class="copyright">&copy; 2025 FLEXNORA Digital. All rights reserved.</p>
+    </div>
   </footer>
 
+  <script>
+    // Simple intersection observer for animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    fadeElements.forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>
