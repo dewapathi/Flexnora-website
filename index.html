@@ -4,27 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta name="description" content="FLEXNORA Digital - Award-winning digital solutions including web development, mobile apps, and design services. Transforming businesses through technology." />
-  <meta name="keywords" content="web development, mobile apps, graphic design, digital agency, Sri Lanka tech" />
+  <meta name="description" content="FLEXNORA Digital - Premium digital solutions for web, mobile, branding, and automation." />
+  <meta name="keywords" content="web development, mobile apps, branding, UI UX, digital agency, Sri Lanka" />
   <meta name="author" content="FLEXNORA Digital" />
 
-  <meta property="og:title" content="FLEXNORA Digital | Award-Winning Digital Agency" />
-  <meta property="og:description" content="Transforming businesses through innovative digital solutions and cutting-edge technology." />
+  <meta property="og:title" content="FLEXNORA Digital | Global Digital Solutions" />
+  <meta property="og:description" content="Transforming businesses through premium digital solutions and technology." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0f172a" />
 
-  <!-- ✅ Use your logo as favicon (replace path if needed) -->
+  <!-- ✅ Favicon -->
   <link rel="icon" type="image/png" href="images/logo1.png" />
   <meta property="og:image" content="images/logo1.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <!-- Fonts + Icons -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" />
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" />
-
-  <title>FLEXNORA Digital | Award-Winning Web & Mobile Development Agency</title>
-
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <title>FLEXNORA Digital | Global Digital Solutions</title>
 
   <style>
     :root{
@@ -38,7 +38,7 @@
       --gray:#94a3b8;
       --dark-gray:#334155;
 
-      --header-height:80px;
+      --header-height:88px; /* ✅ slightly bigger for better logo */
       --section-spacing:100px;
       --container-width:1200px;
 
@@ -135,18 +135,34 @@
       font-weight:900;
       letter-spacing:.4px;
     }
+
+    /* ✅ BEST LOGO HANDLING: badge + crisp logo inside */
+    .logo-badge{
+      width:56px;
+      height:56px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:14px;
+
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+      flex-shrink:0;
+    }
     .logo-img{
       width:44px;
       height:44px;
       object-fit:contain;
-      border-radius:12px;
-      box-shadow:0 10px 25px rgba(59,130,246,.15);
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.08);
-      padding:6px;
+      padding:0;
+      background:transparent;
+      border:none;
+      filter: drop-shadow(0 10px 25px rgba(59,130,246,.35));
     }
+
     .logo-text{
-      font-size:1.2rem;
+      font-size:1.15rem;
       display:flex;
       flex-direction:column;
       line-height:1.1;
@@ -157,6 +173,7 @@
       letter-spacing:1px;
       color:rgba(148,163,184,.95);
       margin-top:3px;
+      text-transform:uppercase;
     }
 
     .nav-links{
@@ -397,7 +414,7 @@
     }
     .contact-text a:hover{color:var(--primary-light);text-decoration:underline;}
 
-    /* ✅ CTA Card instead of form */
+    /* CTA box */
     .contact-cta{
       background:rgba(2,6,23,.55);
       border:1px solid rgba(51,65,85,.85);
@@ -420,10 +437,7 @@
       gap:12px;
       flex-wrap:wrap;
     }
-    .btn-cta{
-      flex:1;
-      min-width:180px;
-    }
+    .btn-cta{flex:1;min-width:180px;}
 
     /* Footer */
     footer{
@@ -490,7 +504,7 @@
       :root{--section-spacing:80px;}
     }
     @media (max-width: 768px){
-      :root{--section-spacing:60px;--header-height:72px;}
+      :root{--section-spacing:60px;--header-height:76px;}
       header.hero{padding:105px 0 75px;margin-top:var(--header-height);}
       .cta-buttons{flex-direction:column;align-items:center;}
 
@@ -514,18 +528,21 @@
     @media (max-width: 576px){
       :root{--section-spacing:52px;}
       .service-card{padding:28px 20px;}
-      .logo-img{width:40px;height:40px;}
       .btn-cta{min-width:100%;}
+      .logo-text small{display:none;} /* ✅ cleaner on small screens */
+      .logo-badge{width:52px;height:52px;border-radius:14px;}
+      .logo-img{width:40px;height:40px;}
     }
   </style>
 </head>
 
 <body>
-  <!-- Navigation -->
   <nav class="navbar" id="top">
     <div class="container nav-container">
       <a href="#top" class="logo" aria-label="FLEXNORA Home">
-        <img src="images/logo1.png" alt="FLEXNORA Logo" class="logo-img" />
+        <span class="logo-badge">
+          <img src="images/logo1.png" alt="FLEXNORA Logo" class="logo-img" />
+        </span>
         <span class="logo-text">
           FLEXNORA
           <small>GLOBAL DIGITAL SOLUTIONS</small>
@@ -548,7 +565,6 @@
     </div>
   </nav>
 
-  <!-- Hero -->
   <header class="hero">
     <div class="header-bg"></div>
     <div class="container header-content">
@@ -577,7 +593,6 @@
   </header>
 
   <main>
-    <!-- About -->
     <section id="about" class="container">
       <div class="section-title">
         <h2>Why Choose FLEXNORA?</h2>
@@ -605,7 +620,6 @@
       </div>
     </section>
 
-    <!-- Services -->
     <section id="services">
       <div class="container">
         <div class="section-title">
@@ -653,7 +667,6 @@
       </div>
     </section>
 
-    <!-- Stats -->
     <section class="stats" id="stats">
       <div class="container stats-container fade-in" id="statsContainer">
         <div class="stat-item">
@@ -675,7 +688,6 @@
       </div>
     </section>
 
-    <!-- Work (simple placeholder) -->
     <section id="work" class="container">
       <div class="section-title">
         <h2>Selected Work</h2>
@@ -701,7 +713,6 @@
       </div>
     </section>
 
-    <!-- Testimonials -->
     <section id="testimonials" class="testimonials">
       <div class="container">
         <div class="section-title">
@@ -752,7 +763,6 @@
       </div>
     </section>
 
-    <!-- Contact (NO FORM) -->
     <section id="contact">
       <div class="container">
         <div class="section-title">
@@ -795,7 +805,6 @@
             </div>
           </div>
 
-          <!-- ✅ Premium CTA box (instead of form) -->
           <div class="contact-cta fade-in">
             <h3>Start a Project Today</h3>
             <p>Send a quick message and we’ll reply with a plan, timeline, and cost estimate.</p>
@@ -820,51 +829,6 @@
 
   <footer>
     <div class="container">
-      <div class="footer-container">
-        <div class="footer-about">
-          <a href="#top" class="footer-logo">FLEXNORA</a>
-          <p>Transforming businesses through innovative digital solutions and cutting-edge technology.</p>
-          <div class="social-links">
-            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-        </div>
-
-        <div class="footer-links">
-          <h3>Services</h3>
-          <ul>
-            <li><a href="#services">Web Development</a></li>
-            <li><a href="#services">Mobile Apps</a></li>
-            <li><a href="#services">Branding & Design</a></li>
-            <li><a href="#services">Video Production</a></li>
-            <li><a href="#services">Business Automation</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links">
-          <h3>Company</h3>
-          <ul>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#work">Our Work</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Case Studies</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-          </ul>
-        </div>
-      </div>
-
       <div class="footer-bottom">
         <p class="copyright">&copy; 2025 FLEXNORA Digital. All rights reserved.</p>
       </div>
@@ -958,7 +922,7 @@
         if (!targetElement) return;
 
         e.preventDefault();
-        const offset = 80;
+        const offset = 92;
         const top = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top, behavior: 'smooth' });
       });
