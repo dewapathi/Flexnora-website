@@ -1,932 +1,926 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="FLEXNORA Digital — We build world-class web apps, mobile experiences, and brand systems for founders who refuse to settle for ordinary." />
+<meta name="keywords" content="web development, mobile apps, branding, UI UX, digital agency, Sri Lanka, React, Flutter, Next.js" />
+<meta name="author" content="FLEXNORA Digital" />
+<meta property="og:title" content="FLEXNORA Digital | World-Class Digital Solutions" />
+<meta property="og:description" content="We build products that make people stop and say — these people build world-class software." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#050816" />
+<link rel="icon" type="image/png" href="images/logo1.png" />
+<meta property="og:image" content="images/logo1.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<title>FLEXNORA Digital | World-Class Digital Solutions</title>
+<style>
+:root{
+  --bg:#050816;--bg1:#080d1f;--bg2:#0c1228;
+  --surface:rgba(255,255,255,0.03);--surface1:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.08);--border1:rgba(255,255,255,0.14);
+  --indigo:#6366f1;--violet:#8b5cf6;--cyan:#06b6d4;--green:#10b981;
+  --grad:linear-gradient(135deg,#6366f1,#8b5cf6);
+  --text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;
+  --r:16px;--r-sm:10px;--r-lg:24px;
+  --shadow-card:0 20px 60px rgba(0,0,0,0.4);
+  --nav-h:80px;
+  --t:all 0.35s cubic-bezier(0.4,0,0.2,1);
+  --tf:all 0.18s cubic-bezier(0.4,0,0.2,1);
+  --cw:1200px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{border:0;background:none;cursor:pointer;font-family:inherit;}
+ul{list-style:none;}
 
-  <meta name="description" content="FLEXNORA Digital - Premium digital solutions for web, mobile, branding, and automation." />
-  <meta name="keywords" content="web development, mobile apps, branding, UI UX, digital agency, Sri Lanka" />
-  <meta name="author" content="FLEXNORA Digital" />
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4{font-family:'Syne',sans-serif;font-weight:700;line-height:1.1;}
+h1{font-size:clamp(3rem,6vw,5.5rem);}
+h2{font-size:clamp(2.2rem,4vw,3.5rem);}
+h3{font-size:clamp(1.2rem,2vw,1.5rem);}
+p{font-size:clamp(0.95rem,1.2vw,1.05rem);color:var(--text2);line-height:1.75;}
 
-  <meta property="og:title" content="FLEXNORA Digital | Global Digital Solutions" />
-  <meta property="og:description" content="Transforming businesses through premium digital solutions and technology." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0f172a" />
+/* ── LAYOUT ── */
+.container{width:100%;max-width:var(--cw);margin:0 auto;padding:0 24px;}
+section{position:relative;padding:120px 0;}
+.zi{position:relative;z-index:2;}
 
-  <!-- ✅ Favicon -->
-  <link rel="icon" type="image/png" href="images/logo1.png" />
-  <meta property="og:image" content="images/logo1.png" />
-  <meta name="twitter:card" content="summary_large_image" />
+/* ── GRAD TEXT ── */
+.g{background:linear-gradient(135deg,#a5b4fc 0%,#6366f1 30%,#8b5cf6 60%,#06b6d4 100%);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200%;animation:shimmer 6s linear infinite;}
+@keyframes shimmer{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 
-  <!-- Fonts + Icons -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" />
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+/* ── ORB ── */
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
 
-  <title>FLEXNORA Digital | Global Digital Solutions</title>
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 30px;border-radius:999px;font-family:'Inter',sans-serif;font-weight:600;font-size:0.95rem;transition:var(--t);border:1px solid transparent;cursor:pointer;white-space:nowrap;position:relative;overflow:hidden;user-select:none;}
+.btn:active{transform:scale(0.97);}
+.btn-p{background:var(--grad);color:#fff;box-shadow:0 0 30px rgba(99,102,241,0.3);}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(99,102,241,0.5);}
+.btn-g{background:var(--surface1);color:var(--text);border-color:var(--border1);backdrop-filter:blur(12px);}
+.btn-g:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.25);transform:translateY(-2px);}
+.btn-lg{padding:18px 42px;font-size:1.05rem;}
+.btn-sm{padding:10px 22px;font-size:0.875rem;}
 
-  <style>
-    :root{
-      --primary:#3b82f6;
-      --primary-dark:#2563eb;
-      --primary-light:#93c5fd;
+/* ── BADGE ── */
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.25);color:#a5b4fc;font-size:0.8rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.4;}}
 
-      --dark:#0f172a;
-      --darker:#020617;
-      --light:#f8fafc;
-      --gray:#94a3b8;
-      --dark-gray:#334155;
+/* ── SECTION LABEL / HEADER ── */
+.lbl{font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--indigo);margin-bottom:14px;}
+.sec-hd{text-align:center;margin-bottom:70px;}
+.sec-hd h2{margin-bottom:16px;}
+.sec-hd p{max-width:580px;margin:0 auto;}
 
-      --header-height:88px; /* ✅ slightly bigger for better logo */
-      --section-spacing:100px;
-      --container-width:1200px;
+/* ── GLASS ── */
+.glass{background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
 
-      --border-radius:14px;
-      --box-shadow:0 10px 15px -3px rgba(0,0,0,0.2), 0 4px 6px -2px rgba(0,0,0,0.12);
-      --transition:all .3s cubic-bezier(.4,0,.2,1);
-    }
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(40px);transition:opacity 0.7s cubic-bezier(0.4,0,0.2,1),transform 0.7s cubic-bezier(0.4,0,0.2,1);}
+.rv.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}.d4{transition-delay:0.4s;}.d5{transition-delay:0.5s;}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none;}}
 
-    *{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{
-      font-family:'Inter',sans-serif;
-      background:var(--darker);
-      color:var(--light);
-      line-height:1.6;
-      overflow-x:hidden;
-      -webkit-font-smoothing:antialiased;
-    }
-    .container{
-      width:100%;
-      max-width:var(--container-width);
-      margin:0 auto;
-      padding:0 20px;
-    }
-    section{padding:var(--section-spacing) 0; position:relative;}
-    h1,h2,h3,h4{font-weight:800;line-height:1.15;}
-    h1{font-size:clamp(2.4rem, 5vw, 4rem);}
-    h2{font-size:clamp(1.8rem, 3vw, 2.6rem);}
-    h3{font-size:clamp(1.2rem, 2vw, 1.5rem);}
-    p{font-size:clamp(1rem, 1.2vw, 1.1rem); color:var(--gray);}
+/* ══════════ NAVBAR ══════════ */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;transition:var(--t);}
+.nav.sc{background:rgba(5,8,22,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);box-shadow:0 4px 40px rgba(0,0,0,0.4);}
+.ni{display:flex;align-items:center;justify-content:space-between;height:100%;}
+.nl{display:flex;align-items:center;gap:12px;}
+.nl-icon{width:44px;height:44px;border-radius:12px;background:var(--surface1);border:1px solid var(--border1);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
+.nl-icon img{width:34px;height:34px;object-fit:contain;}
+.nl-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-0.3px;}
+.nl-name span{display:block;font-size:0.65rem;font-weight:600;letter-spacing:2px;color:var(--text2);text-transform:uppercase;margin-top:1px;}
+.nlinks{display:flex;align-items:center;gap:36px;}
+.nlink{font-size:0.9rem;font-weight:500;color:var(--text2);transition:var(--tf);position:relative;}
+.nlink::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--indigo);transition:width 0.3s;}
+.nlink:hover{color:var(--text);}.nlink:hover::after{width:100%;}
+.nact{display:flex;align-items:center;gap:12px;}
+.ham{display:none;flex-direction:column;gap:5px;padding:8px;border-radius:8px;transition:var(--tf);}
+.ham:hover{background:var(--surface1);}
+.ham span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:var(--t);}
+.ham.op span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.ham.op span:nth-child(2){opacity:0;transform:scaleX(0);}
+.ham.op span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nmob{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(5,8,22,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:24px;flex-direction:column;gap:4px;z-index:999;}
+.nmob.op{display:flex;}
+.nmob .nlink{padding:12px 16px;border-radius:10px;font-size:1rem;}
+.nmob .nlink:hover{background:var(--surface1);}
+.nmob .nlink::after{display:none;}
+.nmob .btn{margin-top:8px;justify-content:center;}
 
-    /* Buttons */
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 28px;
-      border-radius:999px;
-      font-weight:700;
-      text-decoration:none;
-      transition:var(--transition);
-      border:2px solid transparent;
-      cursor:pointer;
-      gap:10px;
-      user-select:none;
-      white-space:nowrap;
-    }
-    .btn-primary{
-      background:var(--primary);
-      color:white;
-      border-color:var(--primary);
-    }
-    .btn-primary:hover{
-      background:var(--primary-dark);
-      transform:translateY(-2px);
-      box-shadow:0 18px 35px rgba(59,130,246,.25);
-    }
-    .btn-outline{
-      background:transparent;
-      color:var(--primary-light);
-      border-color:rgba(147,197,253,.7);
-    }
-    .btn-outline:hover{
-      background:rgba(59,130,246,.12);
-      transform:translateY(-2px);
-    }
+/* ══════════ HERO ══════════ */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:var(--nav-h);position:relative;overflow:hidden;}
+#hc{position:absolute;inset:0;z-index:0;pointer-events:none;}
+.hg{position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:900px;height:600px;background:radial-gradient(ellipse,rgba(99,102,241,0.15) 0%,rgba(139,92,246,0.08) 40%,transparent 70%);pointer-events:none;z-index:0;}
+.hi{position:relative;z-index:2;text-align:center;max-width:960px;margin:0 auto;padding:80px 0;}
+.ht{margin-bottom:28px;font-size:clamp(3.5rem,7vw,6.5rem);font-weight:800;line-height:1.0;letter-spacing:-2px;}
+.hs{max-width:620px;margin:0 auto 44px;font-size:clamp(1.05rem,1.5vw,1.2rem);color:var(--text2);}
+.ha{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:70px;}
+.hpr{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;color:var(--text3);font-size:0.85rem;font-weight:500;}
+.hav{display:flex;align-items:center;}
+.hav img{width:34px;height:34px;border-radius:50%;border:2px solid var(--bg);margin-left:-10px;object-fit:cover;background:var(--bg2);}
+.hav img:first-child{margin-left:0;}
+.hpr-t{color:var(--text2);}.hpr-t strong{color:var(--text);}
+.hpr-s{width:4px;height:4px;border-radius:50%;background:var(--border1);}
+.hscroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text3);font-size:0.75rem;font-weight:500;letter-spacing:1px;animation:bob 2.5s ease-in-out infinite;}
+.hscroll span{display:block;width:1px;height:40px;background:linear-gradient(to bottom,var(--indigo),transparent);}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
 
-    /* Navbar */
-    .navbar{
-      position:fixed;
-      top:0;left:0;
-      width:100%;
-      height:var(--header-height);
-      background:rgba(2,6,23,.78);
-      backdrop-filter:blur(12px);
-      z-index:1000;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      transition:var(--transition);
-    }
-    .nav-container{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      height:100%;
-      position:relative;
-    }
+/* ══════════ TICKER ══════════ */
+.ticker{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(255,255,255,0.015);overflow:hidden;padding:18px 0;}
+.tt{display:flex;gap:60px;width:max-content;animation:tick 30s linear infinite;}
+.ticker:hover .tt{animation-play-state:paused;}
+@keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.ti{display:flex;align-items:center;gap:10px;white-space:nowrap;color:var(--text3);font-size:0.85rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;}
+.ti i{color:var(--indigo);font-size:0.9rem;}
 
-    .logo{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      text-decoration:none;
-      color:white;
-      font-weight:900;
-      letter-spacing:.4px;
-    }
+/* ══════════ WHY ══════════ */
+.why{background:var(--bg1);}
+.wb{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:60px 0;border-bottom:1px solid var(--border);}
+.wb:last-child{border-bottom:0;padding-bottom:0;}
+.wb:first-child{padding-top:0;}
+.wb.rev{direction:rtl;}
+.wb.rev>*{direction:ltr;}
+.wv{border-radius:var(--r-lg);overflow:hidden;position:relative;aspect-ratio:4/3;background:var(--bg2);border:1px solid var(--border);}
+.wvi{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;}
+.wib{width:80px;height:80px;border-radius:20px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;box-shadow:0 20px 60px rgba(99,102,241,0.4);animation:fl 4s ease-in-out infinite;}
+@keyframes fl{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.wm{display:flex;align-items:center;gap:12px;padding:14px 20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px;backdrop-filter:blur(12px);position:absolute;}
+.wm-n{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--text);}
+.wm-l{font-size:0.75rem;color:var(--text3);}
+.wm.tl{top:24px;left:24px;}.wm.br{bottom:24px;right:24px;}
+.wc .badge{margin-bottom:20px;}
+.wc h3{font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:16px;}
+.wc p{margin-bottom:28px;}
+.wl{display:flex;flex-direction:column;gap:12px;}
+.wli{display:flex;align-items:flex-start;gap:12px;font-size:0.95rem;color:var(--text2);}
+.wli i{color:var(--green);margin-top:3px;flex-shrink:0;}
 
-    /* ✅ BEST LOGO HANDLING: badge + crisp logo inside */
-    .logo-badge{
-      width:56px;
-      height:56px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:14px;
+/* ══════════ SERVICES ══════════ */
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.sc{border-radius:var(--r-lg);padding:36px 32px;background:var(--surface);border:1px solid var(--border);position:relative;overflow:hidden;transition:var(--t);cursor:default;}
+.sc::before{content:'';position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(135deg,transparent,rgba(99,102,241,0.6),transparent);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity 0.4s;}
+.sc:hover{border-color:rgba(99,102,241,0.5);transform:translateY(-8px);box-shadow:var(--shadow-card),0 0 60px rgba(99,102,241,0.15);}
+.sc:hover::before{opacity:1;}
+.si{width:56px;height:56px;border-radius:14px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--indigo);margin-bottom:24px;transition:var(--t);}
+.sc:hover .si{background:var(--grad);border-color:transparent;color:#fff;transform:scale(1.1);box-shadow:0 12px 30px rgba(99,102,241,0.4);}
+.sc h3{margin-bottom:12px;font-size:1.2rem;}
+.sc p{font-size:0.9rem;margin-bottom:24px;}
+.sl{display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--indigo);transition:var(--tf);}
+.sl i{transition:transform 0.2s;}.sl:hover i{transform:translateX(4px);}
 
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.10);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
-      flex-shrink:0;
-    }
-    .logo-img{
-      width:44px;
-      height:44px;
-      object-fit:contain;
-      padding:0;
-      background:transparent;
-      border:none;
-      filter: drop-shadow(0 10px 25px rgba(59,130,246,.35));
-    }
+/* ══════════ STATS ══════════ */
+.st-s{padding:80px 0;}
+.stg{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border-radius:var(--r-lg);overflow:hidden;}
+.stc{background:var(--bg1);padding:50px 40px;text-align:center;transition:var(--t);}
+.stc:hover{background:var(--bg2);}
+.stn{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,4vw,4rem);font-weight:800;background:linear-gradient(135deg,var(--text),#a5b4fc);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-2px;line-height:1;margin-bottom:10px;display:block;}
+.stl{font-size:0.9rem;color:var(--text3);font-weight:500;}
 
-    .logo-text{
-      font-size:1.15rem;
-      display:flex;
-      flex-direction:column;
-      line-height:1.1;
-    }
-    .logo-text small{
-      font-size:.78rem;
-      font-weight:700;
-      letter-spacing:1px;
-      color:rgba(148,163,184,.95);
-      margin-top:3px;
-      text-transform:uppercase;
-    }
+/* ══════════ WORK ══════════ */
+.wk{background:var(--bg1);}
+.wkg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.wkc{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);transition:var(--t);background:var(--bg2);}
+.wkc:hover{border-color:rgba(99,102,241,0.4);transform:translateY(-6px);box-shadow:var(--shadow-card);}
+.wkt{aspect-ratio:16/10;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.wktb{position:absolute;inset:0;opacity:0.6;transition:transform 0.5s;}
+.wkc:hover .wktb{transform:scale(1.05);}
+.wkti{position:relative;z-index:1;width:64px;height:64px;border-radius:16px;background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#fff;}
+.wktt{position:absolute;top:16px;left:16px;padding:5px 12px;border-radius:999px;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1);font-size:0.72rem;font-weight:600;color:#fff;letter-spacing:0.5px;text-transform:uppercase;z-index:2;}
+.wkb{padding:24px;}
+.wkb h3{font-size:1.05rem;margin-bottom:8px;}
+.wkb p{font-size:0.875rem;}
+.wktags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
+.wtag{padding:4px 10px;border-radius:999px;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);font-size:0.72rem;font-weight:600;color:#a5b4fc;}
 
-    .nav-links{
-      display:flex;
-      gap:30px;
-      align-items:center;
-    }
-    .nav-link{
-      color:var(--gray);
-      text-decoration:none;
-      font-weight:700;
-      transition:var(--transition);
-      position:relative;
-    }
-    .nav-link:hover{color:var(--primary-light);}
-    .nav-link::after{
-      content:'';
-      position:absolute;
-      bottom:-7px;left:0;
-      width:0;height:2px;
-      background:var(--primary);
-      transition:var(--transition);
-    }
-    .nav-link:hover::after{width:100%;}
+/* ══════════ PROCESS ══════════ */
+.ps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:60px;}
+.ps::before{content:'';position:absolute;top:36px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--indigo),var(--violet),var(--cyan));z-index:0;}
+.pstep{text-align:center;padding:0 20px;position:relative;z-index:1;}
+.pn{width:72px;height:72px;border-radius:50%;background:var(--bg);border:2px solid var(--border1);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:var(--text2);transition:var(--t);}
+.pstep:hover .pn{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 0 40px rgba(99,102,241,0.4);transform:scale(1.1);}
+.pstep h3{font-size:1rem;margin-bottom:10px;}
+.pstep p{font-size:0.85rem;}
+.pic{margin-bottom:8px;color:var(--indigo);font-size:1.1rem;}
 
-    .mobile-menu-btn{
-      display:none;
-      font-size:1.5rem;
-      color:white;
-      cursor:pointer;
-      background:transparent;
-      border:0;
-      padding:10px;
-      border-radius:12px;
-    }
-    .mobile-menu-btn:hover{background:rgba(255,255,255,.06);}
+/* ══════════ TESTIMONIALS ══════════ */
+.tsg{background:var(--bg1);}
+.tcg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.tc{border-radius:var(--r-lg);padding:36px;background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(20px);transition:var(--t);position:relative;overflow:hidden;}
+.tc::before{content:'"';position:absolute;top:-10px;right:24px;font-size:8rem;font-family:'Syne',sans-serif;font-weight:800;color:rgba(99,102,241,0.08);line-height:1;pointer-events:none;}
+.tc:hover{border-color:rgba(99,102,241,0.3);transform:translateY(-6px);box-shadow:var(--shadow-card);}
+.ts{display:flex;gap:4px;margin-bottom:20px;color:#fbbf24;font-size:0.9rem;}
+.tq{font-size:1rem;line-height:1.7;color:rgba(241,245,249,0.85);margin-bottom:28px;font-style:italic;}
+.tau{display:flex;align-items:center;gap:14px;}
+.tav{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border1);background:var(--bg2);}
+.tn{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;}
+.tr{font-size:0.8rem;color:var(--text3);margin-top:2px;}
 
-    /* Hero */
-    header.hero{
-      background:linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
-      padding:120px 0 90px;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-      margin-top:var(--header-height);
-    }
-    .header-content{position:relative;z-index:2;max-width:920px;margin:0 auto;}
-    .header-bg{
-      position:absolute;inset:0;
-      background:
-        radial-gradient(circle at 20% 30%, rgba(59,130,246,.18) 0%, transparent 35%),
-        radial-gradient(circle at 80% 70%, rgba(165,180,252,.12) 0%, transparent 35%),
-        radial-gradient(circle at 50% 50%, rgba(59,130,246,.06) 0%, transparent 55%);
-      z-index:1;
-    }
+/* ══════════ TECH ══════════ */
+.tpg{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:20px;}
+.tp{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:var(--surface1);border:1px solid var(--border);font-size:0.875rem;font-weight:600;color:var(--text2);transition:var(--t);cursor:default;}
+.tp:hover{background:rgba(99,102,241,0.12);border-color:rgba(99,102,241,0.3);color:var(--text);transform:translateY(-2px);}
+.tp i{font-size:1rem;}
 
-    .header-badge{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:10px 16px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(15,23,42,.35);
-      color:rgba(226,232,240,.9);
-      font-weight:700;
-      margin-bottom:18px;
-      box-shadow:0 18px 40px rgba(0,0,0,.25);
-    }
-    .header-badge i{color:var(--primary-light);}
+/* ══════════ FAQ ══════════ */
+.fq{background:var(--bg1);}
+.fql{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+.fqi{border-radius:var(--r);background:var(--surface);border:1px solid var(--border);overflow:hidden;transition:var(--t);}
+.fqi:hover{border-color:var(--border1);}
+.fqi.op{border-color:rgba(99,102,241,0.35);}
+.fqb{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;font-family:'Syne',sans-serif;font-weight:600;font-size:1rem;color:var(--text);text-align:left;cursor:pointer;transition:var(--tf);}
+.fqb:hover{color:#a5b4fc;}
+.fqic{width:28px;height:28px;border-radius:50%;background:var(--surface1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--indigo);font-size:0.75rem;flex-shrink:0;transition:transform 0.3s;}
+.fqi.op .fqic{transform:rotate(45deg);background:rgba(99,102,241,0.15);}
+.fqa{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.4,0,0.2,1);}
+.fqai{padding:0 24px 22px;color:var(--text2);font-size:0.95rem;line-height:1.75;}
 
-    .header-title{
-      background:linear-gradient(to right, var(--primary), #a5b4fc);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-      margin-bottom:20px;
-      position:relative;
-      display:inline-block;
-    }
-    .header-title::after{
-      content:'';
-      position:absolute;
-      bottom:-12px;
-      left:50%;
-      transform:translateX(-50%);
-      width:110px;
-      height:4px;
-      background:var(--primary);
-      border-radius:2px;
-      opacity:.9;
-    }
-    .header-subtitle{
-      font-size:clamp(1.05rem, 2vw, 1.25rem);
-      max-width:720px;
-      margin:0 auto 34px;
-    }
-    .cta-buttons{
-      display:flex;
-      gap:14px;
-      justify-content:center;
-      margin-top:28px;
-      flex-wrap:wrap;
-    }
+/* ══════════ CONTACT ══════════ */
+.ctsec{background:var(--bg);position:relative;overflow:hidden;}
+.ctg{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start;}
+.ctl h2{margin-bottom:16px;}
+.ctl p{margin-bottom:40px;}
+.cms{display:flex;flex-direction:column;gap:14px;}
+.cm{display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:var(--r);background:var(--surface);border:1px solid var(--border);transition:var(--t);}
+.cm:hover{border-color:rgba(99,102,241,0.4);transform:translateX(6px);background:rgba(99,102,241,0.05);}
+.cmi{width:44px;height:44px;border-radius:12px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--indigo);flex-shrink:0;transition:var(--t);}
+.cm:hover .cmi{background:var(--grad);border-color:transparent;color:#fff;}
+.cml{font-size:0.75rem;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+.cmv{font-size:0.95rem;font-weight:600;color:var(--text);}
+.ctb{border-radius:var(--r-lg);padding:48px;background:var(--surface);border:1px solid var(--border);position:relative;overflow:hidden;}
+.ctb::before{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(99,102,241,0.15),transparent 70%);pointer-events:none;}
+.ctb>*{position:relative;z-index:1;}
+.ctb h3{font-size:1.8rem;margin-bottom:12px;}
+.ctb p{margin-bottom:32px;}
+.ctbs{display:flex;flex-direction:column;gap:12px;}
+.ctbtn{display:flex;align-items:center;gap:14px;padding:18px 24px;border-radius:var(--r);font-weight:600;font-size:0.95rem;transition:var(--t);border:1px solid transparent;}
+.ctbtn:hover{transform:translateY(-2px);}
+.ctbtn.wa{background:#25d366;color:#fff;box-shadow:0 12px 30px rgba(37,211,102,0.25);}
+.ctbtn.wa:hover{background:#1fb855;box-shadow:0 16px 40px rgba(37,211,102,0.4);}
+.ctbtn.ph{background:var(--surface1);color:var(--text);border-color:var(--border1);}
+.ctbtn.ph:hover{background:rgba(255,255,255,0.08);}
+.ctbtn.em{background:rgba(99,102,241,0.12);color:#a5b4fc;border-color:rgba(99,102,241,0.25);}
+.ctbtn.em:hover{background:rgba(99,102,241,0.2);}
+.ctbtn i{font-size:1.2rem;}
+.ctbt small{display:block;font-size:0.75rem;opacity:0.7;font-weight:400;}
 
-    /* Titles */
-    .section-title{text-align:center;margin-bottom:60px;}
-    .section-title h2{position:relative;display:inline-block;}
-    .section-title h2::after{
-      content:'';display:block;width:70px;height:4px;background:var(--primary);
-      margin:16px auto 0;border-radius:2px;
-    }
-    .section-subtitle{max-width:760px;margin:16px auto 0;text-align:center;}
+/* ══════════ FOOTER ══════════ */
+footer{background:var(--bg1);border-top:1px solid var(--border);padding:80px 0 36px;}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;margin-bottom:60px;}
+.fb p{margin-top:16px;font-size:0.9rem;max-width:280px;}
+.fso{display:flex;gap:10px;margin-top:24px;}
+.fsl{width:38px;height:38px;border-radius:10px;background:var(--surface1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:0.9rem;transition:var(--tf);}
+.fsl:hover{background:rgba(99,102,241,0.15);border-color:rgba(99,102,241,0.3);color:var(--indigo);transform:translateY(-2px);}
+.fc h4{font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:20px;}
+.fc ul{display:flex;flex-direction:column;gap:10px;}
+.fc a{font-size:0.9rem;color:var(--text2);transition:var(--tf);}
+.fc a:hover{color:var(--text);padding-left:4px;}
+.fbot{padding-top:28px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.fcp{font-size:0.85rem;color:var(--text3);}
+.flg{display:flex;gap:20px;}
+.flg a{font-size:0.85rem;color:var(--text3);transition:var(--tf);}
+.flg a:hover{color:var(--text2);}
 
-    /* Cards / grid */
-    .services-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
-      gap:24px;
-      margin-top:50px;
-    }
-    .service-card{
-      background:rgba(15,23,42,.55);
-      border:1px solid rgba(51,65,85,.8);
-      border-radius:var(--border-radius);
-      padding:36px 28px;
-      transition:var(--transition);
-      position:relative;
-      overflow:hidden;
-      z-index:1;
-    }
-    .service-card::before{
-      content:'';
-      position:absolute;inset:0;
-      background:linear-gradient(135deg, rgba(59,130,246,.12) 0%, transparent 60%);
-      z-index:-1;opacity:0;transition:var(--transition);
-    }
-    .service-card:hover{
-      transform:translateY(-10px);
-      box-shadow:var(--box-shadow);
-      border-color:rgba(59,130,246,.6);
-    }
-    .service-card:hover::before{opacity:1;}
-    .service-icon{font-size:2.4rem;color:var(--primary-light);margin-bottom:18px;}
-    .service-card h3{margin-bottom:10px;}
-    .service-card p{color:rgba(148,163,184,.95);}
-
-    /* Stats */
-    .stats{
-      background:linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
-      border-top:1px solid rgba(255,255,255,.06);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    .stats-container{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
-      gap:20px;
-      text-align:center;
-    }
-    .stat-item{padding:26px;}
-    .stat-number{
-      font-size:3rem;
-      font-weight:900;
-      color:var(--primary-light);
-      margin-bottom:8px;
-      letter-spacing:-1px;
-    }
-    .stat-label{font-size:1rem;color:rgba(148,163,184,.95);}
-
-    /* Testimonials */
-    .testimonials{
-      background:rgba(15,23,42,.45);
-      border-top:1px solid rgba(255,255,255,.06);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    .testimonial-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
-      gap:24px;
-    }
-    .testimonial-card{
-      background:rgba(2,6,23,.55);
-      border:1px solid rgba(51,65,85,.85);
-      border-radius:var(--border-radius);
-      padding:28px;
-      box-shadow:0 20px 50px rgba(0,0,0,.25);
-    }
-    .testimonial-content p{color:rgba(226,232,240,.85);font-style:italic;}
-    .testimonial-author{display:flex;align-items:center;gap:14px;margin-top:18px;}
-    .author-avatar{
-      width:52px;height:52px;border-radius:50%;
-      object-fit:cover;border:1px solid rgba(255,255,255,.08);
-    }
-    .author-info h4{margin-bottom:2px;}
-    .author-info p{font-size:.92rem;}
-
-    /* Contact */
-    .contact-container{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
-      gap:26px;
-      align-items:start;
-    }
-    .contact-info{
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-    }
-    .contact-method{
-      display:flex;align-items:center;gap:14px;
-      padding:18px 18px;
-      background:rgba(15,23,42,.55);
-      border-radius:var(--border-radius);
-      border:1px solid rgba(51,65,85,.85);
-      transition:var(--transition);
-    }
-    .contact-method:hover{
-      border-color:rgba(59,130,246,.6);
-      transform:translateY(-5px);
-      box-shadow:0 18px 40px rgba(0,0,0,.22);
-    }
-    .contact-icon{
-      font-size:1.4rem;color:var(--primary-light);
-      width:40px;height:40px;
-      display:flex;align-items:center;justify-content:center;
-      border-radius:12px;
-      background:rgba(59,130,246,.12);
-      border:1px solid rgba(59,130,246,.18);
-      flex-shrink:0;
-    }
-    .contact-text h3{
-      font-size:.95rem;
-      color:rgba(148,163,184,.95);
-      margin-bottom:2px;
-      font-weight:800;
-    }
-    .contact-text p, .contact-text a{
-      color:rgba(226,232,240,.92);
-      text-decoration:none;
-      font-weight:700;
-    }
-    .contact-text a:hover{color:var(--primary-light);text-decoration:underline;}
-
-    /* CTA box */
-    .contact-cta{
-      background:rgba(2,6,23,.55);
-      border:1px solid rgba(51,65,85,.85);
-      border-radius:var(--border-radius);
-      padding:30px;
-      box-shadow:0 22px 60px rgba(0,0,0,.25);
-      position:relative;
-      overflow:hidden;
-    }
-    .contact-cta::before{
-      content:'';
-      position:absolute;inset:-80px;
-      background:radial-gradient(circle at 30% 30%, rgba(59,130,246,.16), transparent 60%);
-      pointer-events:none;
-    }
-    .contact-cta h3{margin-bottom:10px;}
-    .contact-cta p{margin-bottom:18px;}
-    .contact-cta-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .btn-cta{flex:1;min-width:180px;}
-
-    /* Footer */
-    footer{
-      background:rgba(2,6,23,.9);
-      padding:60px 0 30px;
-      border-top:1px solid rgba(255,255,255,.06);
-    }
-    .footer-container{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-      gap:34px;
-      margin-bottom:44px;
-    }
-    .footer-logo{
-      font-size:1.5rem;
-      font-weight:900;
-      color:white;
-      text-decoration:none;
-      display:inline-block;
-      margin-bottom:14px;
-    }
-    .footer-links h3{
-      color:rgba(226,232,240,.95);
-      margin-bottom:16px;
-      font-size:1.1rem;
-    }
-    .footer-links ul{list-style:none;}
-    .footer-links li{margin-bottom:10px;}
-    .footer-links a{
-      color:rgba(148,163,184,.95);
-      text-decoration:none;
-      transition:var(--transition);
-    }
-    .footer-links a:hover{color:var(--primary-light);padding-left:5px;}
-    .social-links{display:flex;gap:12px;margin-top:14px;}
-    .social-link{
-      display:flex;align-items:center;justify-content:center;
-      width:40px;height:40px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:50%;
-      color:rgba(148,163,184,.95);
-      transition:var(--transition);
-    }
-    .social-link:hover{
-      background:rgba(59,130,246,.18);
-      border-color:rgba(59,130,246,.35);
-      color:white;
-      transform:translateY(-3px);
-    }
-    .footer-bottom{
-      text-align:center;
-      padding-top:26px;
-      border-top:1px solid rgba(255,255,255,.06);
-    }
-    .copyright{color:rgba(148,163,184,.95);font-size:.92rem;}
-
-    /* Fade-in */
-    .fade-in{opacity:0;}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-
-    /* Responsive */
-    @media (max-width: 992px){
-      :root{--section-spacing:80px;}
-    }
-    @media (max-width: 768px){
-      :root{--section-spacing:60px;--header-height:76px;}
-      header.hero{padding:105px 0 75px;margin-top:var(--header-height);}
-      .cta-buttons{flex-direction:column;align-items:center;}
-
-      .mobile-menu-btn{display:block;}
-
-      .nav-links{
-        display:none;
-        position:absolute;
-        top:var(--header-height);
-        left:0;
-        width:100%;
-        background:rgba(2,6,23,.98);
-        border-bottom:1px solid rgba(255,255,255,.08);
-        padding:14px 20px;
-        flex-direction:column;
-        gap:14px;
-      }
-      .nav-links.open{display:flex;}
-      .navbar .btn-outline{display:none;}
-    }
-    @media (max-width: 576px){
-      :root{--section-spacing:52px;}
-      .service-card{padding:28px 20px;}
-      .btn-cta{min-width:100%;}
-      .logo-text small{display:none;} /* ✅ cleaner on small screens */
-      .logo-badge{width:52px;height:52px;border-radius:14px;}
-      .logo-img{width:40px;height:40px;}
-    }
-  </style>
+/* ══════════ RESPONSIVE ══════════ */
+@media(max-width:1024px){
+  .sg{grid-template-columns:repeat(2,1fr);}
+  .wkg{grid-template-columns:repeat(2,1fr);}
+  .stg{grid-template-columns:repeat(2,1fr);}
+  .wb{grid-template-columns:1fr;gap:40px;}
+  .wb.rev{direction:ltr;}
+  .fg{grid-template-columns:1fr 1fr;gap:36px;}
+  .ps{grid-template-columns:repeat(2,1fr);}
+  .ps::before{display:none;}
+  .ctg{grid-template-columns:1fr;}
+  .tcg{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:768px){
+  section{padding:80px 0;}
+  .nlinks,.nact{display:none;}
+  .ham{display:flex;}
+  .sg{grid-template-columns:1fr;}
+  .wkg{grid-template-columns:1fr;}
+  .tcg{grid-template-columns:1fr;}
+  .stg{grid-template-columns:repeat(2,1fr);}
+  .ht{letter-spacing:-1px;}
+  .fg{grid-template-columns:1fr;}
+  .fbot{flex-direction:column;text-align:center;}
+}
+@media(max-width:480px){
+  .stg{grid-template-columns:1fr 1fr;}
+  .ctb{padding:28px 24px;}
+  .hpr{flex-direction:column;gap:12px;}
+  .ps{grid-template-columns:1fr 1fr;}
+}
+</style>
 </head>
-
 <body>
-  <nav class="navbar" id="top">
-    <div class="container nav-container">
-      <a href="#top" class="logo" aria-label="FLEXNORA Home">
-        <span class="logo-badge">
-          <img src="images/logo1.png" alt="FLEXNORA Logo" class="logo-img" />
-        </span>
-        <span class="logo-text">
-          FLEXNORA
-          <small>GLOBAL DIGITAL SOLUTIONS</small>
-        </span>
-      </a>
 
-      <div class="nav-links" id="navLinks">
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#work" class="nav-link">Work</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#testimonials" class="nav-link">Testimonials</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </div>
-
-      <a href="#contact" class="btn btn-outline">Get a Quote</a>
-
-      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
-        <i class="fas fa-bars"></i>
-      </button>
+<!-- NAV -->
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+  <div class="container ni">
+    <a href="#top" class="nl" aria-label="FLEXNORA Home">
+      <div class="nl-icon"><img src="images/logo1.png" alt="FLEXNORA" /></div>
+      <div class="nl-name">FLEXNORA<span>Digital</span></div>
+    </a>
+    <ul class="nlinks" role="list">
+      <li><a href="#why" class="nlink">Why Us</a></li>
+      <li><a href="#services" class="nlink">Services</a></li>
+      <li><a href="#work" class="nlink">Work</a></li>
+      <li><a href="#process" class="nlink">Process</a></li>
+      <li><a href="#contact" class="nlink">Contact</a></li>
+    </ul>
+    <div class="nact">
+      <a href="#contact" class="btn btn-p btn-sm">Start a Project</a>
     </div>
-  </nav>
+    <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nmob" id="nmob">
+  <a href="#why" class="nlink">Why Us</a>
+  <a href="#services" class="nlink">Services</a>
+  <a href="#work" class="nlink">Work</a>
+  <a href="#process" class="nlink">Process</a>
+  <a href="#contact" class="nlink">Contact</a>
+  <a href="#contact" class="btn btn-p">Start a Project</a>
+</div>
 
-  <header class="hero">
-    <div class="header-bg"></div>
-    <div class="container header-content">
-      <div class="header-badge fade-in">
-        <i class="fa-solid fa-sparkles"></i>
-        <span>Premium Web • Mobile • Branding • Automation</span>
+<!-- HERO -->
+<section class="hero" id="top" aria-label="Hero">
+  <canvas id="hc" aria-hidden="true"></canvas>
+  <div class="hg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hi">
+      <div class="rv" style="margin-bottom:28px;">
+        <div class="badge"><span class="dot"></span>Available for New Projects · Colombo, Sri Lanka</div>
       </div>
-
-      <h1 class="header-title fade-in" style="animation: fadeIn .9s ease forwards; animation-delay: .08s;">
-        Digital Solutions That Drive Growth
+      <h1 class="ht rv d1">
+        We Build Digital<br /><span class="g">Products That Win.</span>
       </h1>
-
-      <p class="header-subtitle fade-in" style="animation: fadeIn .9s ease forwards; animation-delay: .18s;">
-        We build high-performance digital experiences that elevate brands, increase conversions, and delight users.
+      <p class="hs rv d2">
+        FLEXNORA crafts world-class web apps, mobile experiences, and brand systems for founders and businesses who refuse to settle for ordinary.
       </p>
-
-      <div class="cta-buttons">
-        <a href="#services" class="btn btn-primary fade-in" style="animation: fadeIn .9s ease forwards; animation-delay: .28s;">
-          <i class="fa-solid fa-bolt"></i> Our Services
-        </a>
-        <a href="#contact" class="btn btn-outline fade-in" style="animation: fadeIn .9s ease forwards; animation-delay: .28s;">
-          <i class="fa-solid fa-paper-plane"></i> Get Started
-        </a>
+      <div class="ha rv d3">
+        <a href="#contact" class="btn btn-p btn-lg"><i class="fa-brands fa-whatsapp"></i> Start Your Project</a>
+        <a href="#work" class="btn btn-g btn-lg">See Our Work <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="hpr rv d4">
+        <div class="hav">
+          <img src="images/ranuli.png" alt="Client" loading="lazy" />
+          <img src="images/aloka.png" alt="Client" loading="lazy" />
+          <img src="images/theekshani.png" alt="Client" loading="lazy" />
+        </div>
+        <p class="hpr-t"><strong>50+ projects</strong> delivered</p>
+        <div class="hpr-s"></div>
+        <p class="hpr-t"><strong>98%</strong> satisfaction</p>
+        <div class="hpr-s"></div>
+        <p class="hpr-t"><i class="fa-solid fa-star" style="color:#fbbf24"></i> <strong>5.0</strong> rated</p>
       </div>
     </div>
-  </header>
+  </div>
+  <div class="hscroll" aria-hidden="true">SCROLL<span></span></div>
+</section>
 
-  <main>
-    <section id="about" class="container">
-      <div class="section-title">
-        <h2>Why Choose FLEXNORA?</h2>
-        <p class="section-subtitle">We combine engineering excellence with premium design to deliver measurable results.</p>
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true"><div class="tt" id="tt"></div></div>
+
+<!-- WHY -->
+<section class="why" id="why" aria-labelledby="why-h">
+  <div class="container zi">
+    <div class="sec-hd">
+      <p class="lbl">Why choose us</p>
+      <h2 id="why-h" class="rv">Built Different.<br /><span class="g">Delivered Better.</span></h2>
+      <p class="rv d1">We don't just write code. We think like a product team — obsessing over every pixel, every interaction, and every business outcome.</p>
+    </div>
+
+    <div class="wb rv">
+      <div class="wv">
+        <div class="wvi"><div class="wib"><i class="fa-solid fa-medal"></i></div></div>
+        <div class="wm tl"><div><div class="wm-n">5★</div><div class="wm-l">Avg Rating</div></div></div>
+        <div class="wm br"><div><div class="wm-n">98%</div><div class="wm-l">Satisfaction</div></div></div>
       </div>
-
-      <div class="services-grid">
-        <div class="service-card fade-in">
-          <div class="service-icon"><i class="fas fa-medal"></i></div>
-          <h3>Premium Quality</h3>
-          <p>Pixel-perfect design, clean architecture, and performance-first builds that feel premium on every device.</p>
-        </div>
-
-        <div class="service-card fade-in">
-          <div class="service-icon"><i class="fas fa-clock"></i></div>
-          <h3>Fast & Reliable Delivery</h3>
-          <p>Clear roadmap, weekly updates, and on-time delivery — without compromising quality.</p>
-        </div>
-
-        <div class="service-card fade-in">
-          <div class="service-icon"><i class="fas fa-user-tie"></i></div>
-          <h3>Client-Focused</h3>
-          <p>We work like your product team: strategy, design, build, launch, and iterate with real support.</p>
-        </div>
+      <div class="wc">
+        <div class="badge" style="margin-bottom:20px;">Premium Quality</div>
+        <h3>Pixel-perfect.<br />Performance-first.</h3>
+        <p style="margin-bottom:28px;">We hold ourselves to the same standards as the world's best product studios. Every line of code is clean, every interface is considered, every interaction is deliberate — not because we have to, because we can't help it.</p>
+        <ul class="wl">
+          <li class="wli"><i class="fa-solid fa-check"></i> Lighthouse scores above 95 on every project</li>
+          <li class="wli"><i class="fa-solid fa-check"></i> Responsive and tested across all devices</li>
+          <li class="wli"><i class="fa-solid fa-check"></i> Accessibility-first development (WCAG 2.1)</li>
+          <li class="wli"><i class="fa-solid fa-check"></i> Clean, documented, maintainable code</li>
+        </ul>
       </div>
-    </section>
+    </div>
 
-    <section id="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>Our Services</h2>
-          <p class="section-subtitle">Comprehensive digital solutions tailored to your business goals.</p>
-        </div>
-
-        <div class="services-grid">
-          <div class="service-card fade-in">
-            <div class="service-icon"><i class="fas fa-code"></i></div>
-            <h3>Web Development</h3>
-            <p>Modern websites & web apps with React/Next.js, performance optimization, and SEO-ready builds.</p>
-          </div>
-
-          <div class="service-card fade-in">
-            <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-            <h3>Mobile App Development</h3>
-            <p>iOS/Android apps using Flutter or React Native — fast, smooth, and production-grade.</p>
-          </div>
-
-          <div class="service-card fade-in">
-            <div class="service-icon"><i class="fas fa-file-excel"></i></div>
-            <h3>Business Automation</h3>
-            <p>Excel macros, workflow automation, dashboards, and digital tools to streamline operations.</p>
-          </div>
-
-          <div class="service-card fade-in">
-            <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
-            <h3>Branding & Design</h3>
-            <p>Visual identity, logos, pitch decks, brand systems, and marketing assets that stand out.</p>
-          </div>
-
-          <div class="service-card fade-in">
-            <div class="service-icon"><i class="fas fa-video"></i></div>
-            <h3>Video Production</h3>
-            <p>Video editing, motion graphics, and commercial production for modern brand storytelling.</p>
-          </div>
-
-          <div class="service-card fade-in">
-            <div class="service-icon"><i class="fas fa-keyboard"></i></div>
-            <h3>Content Services</h3>
-            <p>Website copy, marketing content, documentation, and business writing that converts.</p>
-          </div>
-        </div>
+    <div class="wb rev rv">
+      <div class="wv">
+        <div class="wvi"><div class="wib" style="animation-delay:0.5s"><i class="fa-solid fa-clock"></i></div></div>
+        <div class="wm tl"><div><div class="wm-n">On Time</div><div class="wm-l">Every Sprint</div></div></div>
+        <div class="wm br"><div><div class="wm-n">24h</div><div class="wm-l">Response</div></div></div>
       </div>
-    </section>
-
-    <section class="stats" id="stats">
-      <div class="container stats-container fade-in" id="statsContainer">
-        <div class="stat-item">
-          <div class="stat-number" data-count="50">0</div>
-          <div class="stat-label">Projects Completed</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-count="98">0</div>
-          <div class="stat-label">Client Satisfaction %</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-count="15">0</div>
-          <div class="stat-label">Industry Awards</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-count="5">0</div>
-          <div class="stat-label">Years Experience</div>
-        </div>
+      <div class="wc">
+        <div class="badge" style="margin-bottom:20px;">Reliable Delivery</div>
+        <h3>Clear roadmap.<br />No surprises.</h3>
+        <p style="margin-bottom:28px;">We run in sprints, communicate proactively, and ship on time. You always know where your project stands — no chasing, no guessing, no 3am panic about your launch date.</p>
+        <ul class="wl">
+          <li class="wli"><i class="fa-solid fa-check"></i> Weekly progress reports and live demos</li>
+          <li class="wli"><i class="fa-solid fa-check"></i> Milestone-based delivery with clear ownership</li>
+          <li class="wli"><i class="fa-solid fa-check"></i> Dedicated Slack / WhatsApp channel</li>
+          <li class="wli"><i class="fa-solid fa-check"></i> Post-launch support included on all projects</li>
+        </ul>
       </div>
-    </section>
+    </div>
 
-    <section id="work" class="container">
-      <div class="section-title">
-        <h2>Selected Work</h2>
-        <p class="section-subtitle">A quick preview of what we build — we can add full case studies next.</p>
+    <div class="wb rv">
+      <div class="wv">
+        <div class="wvi"><div class="wib" style="animation-delay:1s"><i class="fa-solid fa-user-tie"></i></div></div>
+        <div class="wm tl"><div><div class="wm-n">50+</div><div class="wm-l">Projects</div></div></div>
+        <div class="wm br"><div><div class="wm-n">5yr</div><div class="wm-l">Experience</div></div></div>
       </div>
+      <div class="wc">
+        <div class="badge" style="margin-bottom:20px;">Strategic Partnership</div>
+        <h3>Your product team,<br />not a vendor.</h3>
+        <p style="margin-bottom:28px;">We embed ourselves in your business. We ask the uncomfortable questions. We push back when something won't serve your users — because your success is our reputation.</p>
+        <ul class="wl">
+          <li class="wli"><i class="fa-solid fa-check"></i> Strategy and discovery before any code</li>
+          <li class="wli"><i class="fa-solid fa-check"></i> Growth-focused UX recommendations</li>
+          <li class="wli"><i class="fa-solid fa-check"></i> Honest, direct communication always</li>
+          <li class="wli"><i class="fa-solid fa-check"></i> Long-term relationship, not one-and-done</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="services-grid">
-        <div class="service-card fade-in">
-          <div class="service-icon"><i class="fa-solid fa-globe"></i></div>
+<!-- SERVICES -->
+<section id="services" aria-labelledby="svc-h">
+  <div class="orb" style="width:600px;height:600px;background:rgba(99,102,241,0.1);top:-200px;left:-200px;" aria-hidden="true"></div>
+  <div class="orb" style="width:500px;height:500px;background:rgba(139,92,246,0.08);bottom:-150px;right:-150px;" aria-hidden="true"></div>
+  <div class="container zi">
+    <div class="sec-hd">
+      <p class="lbl">What we do</p>
+      <h2 id="svc-h" class="rv">Services that scale<br /><span class="g">your ambition.</span></h2>
+      <p class="rv d1">From a single landing page to a full SaaS platform — we cover the entire stack, end to end.</p>
+    </div>
+    <div class="sg">
+      <div class="sc rv">
+        <div class="si"><i class="fa-solid fa-code"></i></div>
+        <h3>Web Development</h3>
+        <p>Modern, fast, and scalable web apps built with React, Next.js, and cutting-edge architecture — optimized for SEO and conversions from day one.</p>
+        <a href="#contact" class="sl">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="sc rv d1">
+        <div class="si"><i class="fa-solid fa-mobile-screen"></i></div>
+        <h3>Mobile Apps</h3>
+        <p>Beautiful iOS and Android apps with Flutter or React Native. Ship once, run everywhere — without sacrificing native performance or user experience.</p>
+        <a href="#contact" class="sl">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="sc rv d2">
+        <div class="si"><i class="fa-solid fa-bolt"></i></div>
+        <h3>Business Automation</h3>
+        <p>Custom dashboards, workflow automation, and smart tools that eliminate repetitive work and give your team their most valuable resource back — time.</p>
+        <a href="#contact" class="sl">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="sc rv d1">
+        <div class="si"><i class="fa-solid fa-palette"></i></div>
+        <h3>Brand &amp; Design</h3>
+        <p>Visual identities that make people stop scrolling. Logos, design systems, pitch decks, and marketing assets built to impress and convert.</p>
+        <a href="#contact" class="sl">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="sc rv d2">
+        <div class="si"><i class="fa-solid fa-film"></i></div>
+        <h3>Video &amp; Motion</h3>
+        <p>Cinematic video editing, motion graphics, and commercial production that tells your brand story in a way that stays with people long after watching.</p>
+        <a href="#contact" class="sl">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="sc rv d3">
+        <div class="si"><i class="fa-solid fa-pen-nib"></i></div>
+        <h3>Content Strategy</h3>
+        <p>Copy, documentation, and content strategy that converts. We write for humans and optimize for search — never the other way around.</p>
+        <a href="#contact" class="sl">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="st-s" id="stats" aria-label="Statistics">
+  <div class="container">
+    <div class="stg rv" id="stg">
+      <div class="stc"><span class="stn" data-count="50" data-sfx="+">0</span><div class="stl">Projects Delivered</div></div>
+      <div class="stc"><span class="stn" data-count="98" data-sfx="%">0</span><div class="stl">Client Satisfaction</div></div>
+      <div class="stc"><span class="stn" data-count="15" data-sfx="+">0</span><div class="stl">Industry Awards</div></div>
+      <div class="stc"><span class="stn" data-count="5" data-sfx="yr">0</span><div class="stl">Years of Excellence</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="wk" id="work" aria-labelledby="wk-h">
+  <div class="container zi">
+    <div class="sec-hd">
+      <p class="lbl">Our work</p>
+      <h2 id="wk-h" class="rv">Selected <span class="g">Projects.</span></h2>
+      <p class="rv d1">A curated look at what we build. Every project starts with a real problem — we make it beautiful and make it work.</p>
+    </div>
+    <div class="wkg">
+      <div class="wkc rv">
+        <div class="wkt" style="background:linear-gradient(135deg,#1e1b4b,#312e81);">
+          <div class="wktb" style="background:linear-gradient(135deg,rgba(99,102,241,0.4),rgba(139,92,246,0.2));"></div>
+          <div class="wktt">Web App</div>
+          <div class="wkti"><i class="fa-solid fa-globe"></i></div>
+        </div>
+        <div class="wkb">
           <h3>High-Converting Websites</h3>
-          <p>Fast landing pages, portfolios, and business sites optimized for SEO and conversions.</p>
-        </div>
-        <div class="service-card fade-in">
-          <div class="service-icon"><i class="fa-solid fa-layer-group"></i></div>
-          <h3>Web Applications</h3>
-          <p>Dashboards, admin panels, and custom platforms built with scalable architecture.</p>
-        </div>
-        <div class="service-card fade-in">
-          <div class="service-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-          <h3>Mobile Products</h3>
-          <p>Mobile apps with smooth UX, clean UI, and production-ready performance.</p>
+          <p>Fast, SEO-optimized landing pages that turn visitors into customers — built for speed and results.</p>
+          <div class="wktags"><span class="wtag">Next.js</span><span class="wtag">Tailwind</span><span class="wtag">SEO</span></div>
         </div>
       </div>
-    </section>
-
-    <section id="testimonials" class="testimonials">
-      <div class="container">
-        <div class="section-title">
-          <h2>What Our Clients Say</h2>
-          <p class="section-subtitle">Real feedback from clients we’ve helped grow.</p>
+      <div class="wkc rv d1">
+        <div class="wkt" style="background:linear-gradient(135deg,#0c1a2e,#0f2d4a);">
+          <div class="wktb" style="background:linear-gradient(135deg,rgba(6,182,212,0.3),rgba(99,102,241,0.2));"></div>
+          <div class="wktt">SaaS Platform</div>
+          <div class="wkti"><i class="fa-solid fa-layer-group"></i></div>
         </div>
-
-        <div class="testimonial-grid">
-          <div class="testimonial-card fade-in">
-            <div class="testimonial-content">
-              <p>"FLEXNORA transformed our online presence with a stunning website that perfectly represents our brand."</p>
-            </div>
-            <div class="testimonial-author">
-              <img src="images/ranuli.png" alt="Client" class="author-avatar" />
-              <div class="author-info">
-                <h4>Ranuli Shalinya</h4>
-                <p>Teacher, Nexora Institute of Education</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card fade-in">
-            <div class="testimonial-content">
-              <p>"The mobile app developed by FLEXNORA helped us increase customer engagement. Professional and fast."</p>
-            </div>
-            <div class="testimonial-author">
-              <img src="images/aloka.png" alt="Client" class="author-avatar" />
-              <div class="author-info">
-                <h4>Aloka Harshana</h4>
-                <p>Marketing Director, TMR (True Man Racing)</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card fade-in">
-            <div class="testimonial-content">
-              <p>"Their automation solutions saved us countless hours. FLEXNORA understands business and technology."</p>
-            </div>
-            <div class="testimonial-author">
-              <img src="images/theekshani.png" alt="Client" class="author-avatar" />
-              <div class="author-info">
-                <h4>Theekshani Aloka</h4>
-                <p>Teacher, St Mary's College Negambo</p>
-              </div>
-            </div>
-          </div>
+        <div class="wkb">
+          <h3>Admin Dashboards &amp; SaaS</h3>
+          <p>Complex data interfaces designed to be powerful and intuitive at the same time — scalable architecture included.</p>
+          <div class="wktags"><span class="wtag">React</span><span class="wtag">Django</span><span class="wtag">PostgreSQL</span></div>
         </div>
       </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="section-title">
-          <h2>Get In Touch</h2>
-          <p class="section-subtitle">Fastest response: WhatsApp. We also accept calls and email.</p>
+      <div class="wkc rv d2">
+        <div class="wkt" style="background:linear-gradient(135deg,#0a1f1a,#0d2c22);">
+          <div class="wktb" style="background:linear-gradient(135deg,rgba(16,185,129,0.3),rgba(6,182,212,0.2));"></div>
+          <div class="wktt">Mobile</div>
+          <div class="wkti"><i class="fa-solid fa-mobile-screen"></i></div>
         </div>
-
-        <div class="contact-container">
-          <div class="contact-info">
-            <div class="contact-method fade-in">
-              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-              <div class="contact-text">
-                <h3>Email</h3>
-                <a href="mailto:flexnoradigital@gmail.com">flexnoradigital@gmail.com</a>
-              </div>
-            </div>
-
-            <div class="contact-method fade-in">
-              <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-              <div class="contact-text">
-                <h3>Phone</h3>
-                <a href="tel:+94779400291">+94 77 9400 291</a>
-              </div>
-            </div>
-
-            <div class="contact-method fade-in">
-              <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-              <div class="contact-text">
-                <h3>Location</h3>
-                <p>Colombo, Sri Lanka</p>
-              </div>
-            </div>
-
-            <div class="contact-method fade-in">
-              <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-              <div class="contact-text">
-                <h3>WhatsApp</h3>
-                <a href="https://wa.me/94779400291" target="_blank" rel="noopener">+94 77 9400 291</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="contact-cta fade-in">
-            <h3>Start a Project Today</h3>
-            <p>Send a quick message and we’ll reply with a plan, timeline, and cost estimate.</p>
-
-            <div class="contact-cta-actions">
-              <a class="btn btn-primary btn-cta" href="https://wa.me/94779400291" target="_blank" rel="noopener">
-                <i class="fab fa-whatsapp"></i> WhatsApp Now
-              </a>
-              <a class="btn btn-outline btn-cta" href="tel:+94779400291">
-                <i class="fas fa-phone-alt"></i> Call Us
-              </a>
-              <a class="btn btn-outline btn-cta" href="mailto:flexnoradigital@gmail.com?subject=Project%20Inquiry%20-%20FLEXNORA">
-                <i class="fas fa-envelope"></i> Email Us
-              </a>
-            </div>
-          </div>
-
+        <div class="wkb">
+          <h3>Production Mobile Apps</h3>
+          <p>Cross-platform apps with native performance, published to App Store and Google Play — including AdMob monetization.</p>
+          <div class="wktags"><span class="wtag">Flutter</span><span class="wtag">Firebase</span><span class="wtag">AdMob</span></div>
         </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-bottom">
-        <p class="copyright">&copy; 2025 FLEXNORA Digital. All rights reserved.</p>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    // Navbar scroll effect
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-      if (!navbar) return;
-      if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(2, 6, 23, 0.95)';
-        navbar.style.boxShadow = '0 2px 14px rgba(0,0,0,0.25)';
-      } else {
-        navbar.style.background = 'rgba(2, 6, 23, 0.78)';
-        navbar.style.boxShadow = 'none';
+<!-- PROCESS -->
+<section id="process" aria-labelledby="proc-h">
+  <div class="container zi">
+    <div class="sec-hd">
+      <p class="lbl">How we work</p>
+      <h2 id="proc-h" class="rv">Your journey from<br /><span class="g">idea to launch.</span></h2>
+      <p class="rv d1">A clear, repeatable process that keeps projects on track and stakeholders aligned at every step.</p>
+    </div>
+    <div class="ps">
+      <div class="pstep rv">
+        <div class="pn">01</div>
+        <div class="pic"><i class="fa-solid fa-comments"></i></div>
+        <h3>Discovery</h3>
+        <p>Deep dive into your goals, audience, and landscape — defining exactly what we're building and why it matters.</p>
+      </div>
+      <div class="pstep rv d1">
+        <div class="pn">02</div>
+        <div class="pic"><i class="fa-solid fa-map"></i></div>
+        <h3>Design</h3>
+        <p>Wireframes and high-fidelity prototypes — reviewed and approved before a single line of code is written.</p>
+      </div>
+      <div class="pstep rv d2">
+        <div class="pn">03</div>
+        <div class="pic"><i class="fa-solid fa-code"></i></div>
+        <h3>Development</h3>
+        <p>Sprint-based development with weekly demos. Clean architecture, performance optimization, and thorough QA testing.</p>
+      </div>
+      <div class="pstep rv d3">
+        <div class="pn">04</div>
+        <div class="pic"><i class="fa-solid fa-rocket"></i></div>
+        <h3>Launch &amp; Scale</h3>
+        <p>Seamless deployment, zero downtime. Post-launch monitoring, support, and iteration based on real user data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="tsg" id="testimonials" aria-labelledby="ts-h">
+  <div class="container zi">
+    <div class="sec-hd">
+      <p class="lbl">Client love</p>
+      <h2 id="ts-h" class="rv">Don't take our word<br /><span class="g">for it.</span></h2>
+      <p class="rv d1">Real feedback from real clients who've seen the difference FLEXNORA makes.</p>
+    </div>
+    <div class="tcg">
+      <div class="tc rv">
+        <div class="ts"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="tq">"FLEXNORA transformed our online presence with a stunning website that perfectly represents our brand. The quality and attention to detail was far beyond what I expected."</p>
+        <div class="tau">
+          <img src="images/ranuli.png" alt="Ranuli Shalinya" class="tav" loading="lazy" />
+          <div><div class="tn">Ranuli Shalinya</div><div class="tr">Teacher · Nexora Institute of Education</div></div>
+        </div>
+      </div>
+      <div class="tc rv d1">
+        <div class="ts"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="tq">"The mobile app FLEXNORA built helped us increase customer engagement significantly. Professional, fast, and exactly what we envisioned — delivered on time, no compromises."</p>
+        <div class="tau">
+          <img src="images/aloka.png" alt="Aloka Harshana" class="tav" loading="lazy" />
+          <div><div class="tn">Aloka Harshana</div><div class="tr">Marketing Director · TMR (True Man Racing)</div></div>
+        </div>
+      </div>
+      <div class="tc rv d2">
+        <div class="ts"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="tq">"Their automation solutions saved us countless hours every week. FLEXNORA truly understands how technology can transform the way a business operates day to day."</p>
+        <div class="tau">
+          <img src="images/theekshani.png" alt="Theekshani Aloka" class="tav" loading="lazy" />
+          <div><div class="tn">Theekshani Aloka</div><div class="tr">Teacher · St Mary's College Negombo</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH -->
+<section id="tech" aria-labelledby="tech-h">
+  <div class="container zi">
+    <div class="sec-hd">
+      <p class="lbl">Tech stack</p>
+      <h2 id="tech-h" class="rv">The tools we<br /><span class="g">trust to ship.</span></h2>
+      <p class="rv d1">Modern, proven technologies chosen for performance, scalability, and developer experience.</p>
+    </div>
+    <div class="tpg rv d1">
+      <div class="tp"><i class="fa-brands fa-react" style="color:#61dafb"></i> React</div>
+      <div class="tp"><i class="fa-solid fa-n" style="color:#fff"></i> Next.js</div>
+      <div class="tp"><i class="fa-solid fa-mobile" style="color:#54c5f8"></i> Flutter</div>
+      <div class="tp"><i class="fa-brands fa-react" style="color:#61dafb"></i> React Native</div>
+      <div class="tp"><i class="fa-brands fa-python" style="color:#ffd43b"></i> Python</div>
+      <div class="tp"><i class="fa-solid fa-server" style="color:#44b78b"></i> Django</div>
+      <div class="tp"><i class="fa-brands fa-node-js" style="color:#83cd29"></i> Node.js</div>
+      <div class="tp"><i class="fa-brands fa-aws" style="color:#ff9900"></i> AWS</div>
+      <div class="tp"><i class="fa-brands fa-docker" style="color:#2496ed"></i> Docker</div>
+      <div class="tp"><i class="fa-solid fa-database" style="color:#336791"></i> PostgreSQL</div>
+      <div class="tp"><i class="fa-solid fa-fire" style="color:#ff6d00"></i> Firebase</div>
+      <div class="tp"><i class="fa-solid fa-database" style="color:#d82c20"></i> Redis</div>
+      <div class="tp"><i class="fa-solid fa-robot" style="color:#10b981"></i> Claude AI</div>
+      <div class="tp"><i class="fa-solid fa-wand-magic-sparkles" style="color:#a855f7"></i> OpenAI</div>
+      <div class="tp"><i class="fa-solid fa-bolt" style="color:#3ecf8e"></i> Supabase</div>
+      <div class="tp"><i class="fa-brands fa-figma" style="color:#f24e1e"></i> Figma</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="fq" id="faq" aria-labelledby="fq-h">
+  <div class="container zi">
+    <div class="sec-hd">
+      <p class="lbl">FAQ</p>
+      <h2 id="fq-h" class="rv">Questions we<br /><span class="g">hear often.</span></h2>
+    </div>
+    <div class="fql">
+      <div class="fqi">
+        <button class="fqb" aria-expanded="false">How long does a typical project take?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="fqa"><div class="fqai">A simple website typically takes 2–3 weeks. A complex web app or mobile product is usually 6–12 weeks. We'll give you a precise timeline after the discovery call — no guessing, no vague estimates.</div></div>
+      </div>
+      <div class="fqi">
+        <button class="fqb" aria-expanded="false">What does the process look like?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="fqa"><div class="fqai">Discovery → Strategy &amp; Design → Development → Testing → Launch → Support. We keep you in the loop at every stage with weekly updates, demos, and direct communication via WhatsApp or Slack.</div></div>
+      </div>
+      <div class="fqi">
+        <button class="fqb" aria-expanded="false">Do you work with clients outside Sri Lanka?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="fqa"><div class="fqai">Absolutely. We work with clients globally. Our timezone is UTC+5:30 and we're flexible with communication hours to fit international clients in Australia, Europe, or the US.</div></div>
+      </div>
+      <div class="fqi">
+        <button class="fqb" aria-expanded="false">What's included after launch?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="fqa"><div class="fqai">All projects include a post-launch support period. We fix bugs, handle deployment issues, and stay available for questions. Ongoing maintenance and growth retainers are also available.</div></div>
+      </div>
+      <div class="fqi">
+        <button class="fqb" aria-expanded="false">How do I get started?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="fqa"><div class="fqai">Send us a WhatsApp or email with a brief description of your project. We'll book a free 30-minute discovery call, then provide a proposal with scope, timeline, and cost — usually within 48 hours.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="ctsec" id="contact" aria-labelledby="ct-h">
+  <div class="orb" style="width:400px;height:400px;background:rgba(99,102,241,0.1);top:50%;left:50%;transform:translate(-50%,-50%);" aria-hidden="true"></div>
+  <div class="container zi">
+    <div class="ctg">
+      <div class="ctl">
+        <p class="lbl">Get in touch</p>
+        <h2 id="ct-h" class="rv">Let's build<br /><span class="g">something great.</span></h2>
+        <p class="rv d1" style="margin-bottom:40px;">Tell us about your project. We'll reply with a plan, timeline, and cost estimate — usually within 24 hours.</p>
+        <div class="cms">
+          <a href="https://wa.me/94779400291" class="cm rv d1" target="_blank" rel="noopener">
+            <div class="cmi"><i class="fa-brands fa-whatsapp"></i></div>
+            <div><div class="cml">WhatsApp (Fastest)</div><div class="cmv">+94 77 9400 291</div></div>
+          </a>
+          <a href="mailto:pradeepa@flexnora.com" class="cm rv d2">
+            <div class="cmi"><i class="fa-solid fa-envelope"></i></div>
+            <div><div class="cml">Email</div><div class="cmv">pradeepa@flexnora.com</div></div>
+          </a>
+          <a href="tel:+94779400291" class="cm rv d3">
+            <div class="cmi"><i class="fa-solid fa-phone"></i></div>
+            <div><div class="cml">Phone</div><div class="cmv">+94 77 9400 291</div></div>
+          </a>
+          <div class="cm rv d4" style="cursor:default;">
+            <div class="cmi"><i class="fa-solid fa-location-dot"></i></div>
+            <div><div class="cml">Location</div><div class="cmv">Colombo, Sri Lanka</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ctb rv d2">
+        <div class="badge" style="margin-bottom:24px;"><span class="dot"></span>Available for new projects</div>
+        <h3>Start Your Project Today.</h3>
+        <p style="margin-bottom:32px;">The fastest way to kick things off is a quick WhatsApp message. We'll schedule a call, understand your vision, and deliver a detailed proposal — no obligation.</p>
+        <div class="ctbs">
+          <a href="https://wa.me/94779400291?text=Hi%20FLEXNORA!%20I%20want%20to%20discuss%20a%20project." class="ctbtn wa" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i>
+            <div class="ctbt">WhatsApp Now<small>Typical reply in under 1 hour</small></div>
+          </a>
+          <a href="tel:+94779400291" class="ctbtn ph">
+            <i class="fa-solid fa-phone"></i>
+            <div class="ctbt">Call Us<small>+94 77 9400 291</small></div>
+          </a>
+          <a href="mailto:pradeepa@flexnora.com?subject=Project%20Inquiry%20-%20FLEXNORA" class="ctbtn em">
+            <i class="fa-solid fa-envelope"></i>
+            <div class="ctbt">Send an Email<small>pradeepa@flexnora.com</small></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="fg">
+      <div class="fb">
+        <a href="#top" class="nl" style="display:inline-flex;">
+          <div class="nl-icon"><img src="images/logo1.png" alt="FLEXNORA" loading="lazy" /></div>
+          <div class="nl-name">FLEXNORA<span>Digital</span></div>
+        </a>
+        <p>We build digital products that drive real business growth — for founders and companies who demand the very best.</p>
+        <div class="fso">
+          <a href="https://wa.me/94779400291" class="fsl" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="mailto:pradeepa@flexnora.com" class="fsl" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a href="tel:+94779400291" class="fsl" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+        </div>
+      </div>
+      <div class="fc">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Web Development</a></li>
+          <li><a href="#services">Mobile Apps</a></li>
+          <li><a href="#services">Business Automation</a></li>
+          <li><a href="#services">Brand &amp; Design</a></li>
+          <li><a href="#services">Video &amp; Motion</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#why">Why FLEXNORA</a></li>
+          <li><a href="#work">Our Work</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://wa.me/94779400291" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:pradeepa@flexnora.com">Email Us</a></li>
+          <li><a href="tel:+94779400291">+94 77 9400 291</a></li>
+          <li><a href="#contact">Get a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <p class="fcp">&copy; 2025 FLEXNORA Digital. All rights reserved. · Colombo, Sri Lanka</p>
+      <div class="flg">
+        <a href="/ball-sort-game/privacy-policy">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── NAV SCROLL ── */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>20),{passive:true});
+
+/* ── HAMBURGER ── */
+const ham=document.getElementById('ham'),nmob=document.getElementById('nmob');
+ham.addEventListener('click',()=>{
+  const op=nmob.classList.toggle('op');
+  ham.classList.toggle('op',op);
+  ham.setAttribute('aria-expanded',String(op));
+});
+nmob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  nmob.classList.remove('op');ham.classList.remove('op');ham.setAttribute('aria-expanded','false');
+}));
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');if(!id||id==='#')return;
+    const el=document.querySelector(id);if(!el)return;
+    e.preventDefault();
+    window.scrollTo({top:el.getBoundingClientRect().top+pageYOffset-88,behavior:'smooth'});
+  });
+});
+
+/* ── SCROLL REVEAL ── */
+const ro=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});
+},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+/* ── COUNT UP ── */
+const co=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.querySelectorAll('[data-count]').forEach(el=>{
+      const t=parseInt(el.dataset.count,10),sfx=el.dataset.sfx||'';
+      if(isNaN(t))return;
+      const dur=1800,s=performance.now();
+      const tick=n=>{
+        const p=Math.min((n-s)/dur,1);
+        el.textContent=Math.floor(p*t)+(p===1?sfx:'');
+        if(p<1)requestAnimationFrame(tick);
+      };requestAnimationFrame(tick);
+    });
+    co.unobserve(e.target);
+  });
+},{threshold:0.5});
+const stg=document.getElementById('stg');if(stg)co.observe(stg);
+
+/* ── TICKER ── */
+const items=[
+  {i:'fa-code',l:'Web Development'},{i:'fa-mobile-screen',l:'Mobile Apps'},
+  {i:'fa-bolt',l:'Automation'},{i:'fa-palette',l:'Brand Design'},
+  {i:'fa-film',l:'Video Production'},{i:'fa-pen-nib',l:'Content Strategy'},
+  {i:'fa-rocket',l:'Product Launch'},{i:'fa-shield-halved',l:'Secure Builds'},
+];
+const tt=document.getElementById('tt');
+if(tt){const h=items.map(i=>`<div class="ti"><i class="fa-solid ${i.i}"></i>${i.l}</div>`).join('');tt.innerHTML=h+h;}
+
+/* ── FAQ ── */
+document.querySelectorAll('.fqb').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const it=btn.closest('.fqi'),ans=it.querySelector('.fqa'),op=it.classList.contains('op');
+    document.querySelectorAll('.fqi.op').forEach(el=>{
+      el.classList.remove('op');el.querySelector('.fqb').setAttribute('aria-expanded','false');
+      el.querySelector('.fqa').style.maxHeight='0';
+    });
+    if(!op){it.classList.add('op');btn.setAttribute('aria-expanded','true');ans.style.maxHeight=ans.scrollHeight+'px';}
+  });
+});
+
+/* ── PARTICLES ── */
+(function(){
+  const cv=document.getElementById('hc');if(!cv)return;
+  const cx=cv.getContext('2d');let W,H,pts=[],aid;
+  function resize(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;}
+  window.addEventListener('resize',resize,{passive:true});resize();
+  const C=['rgba(99,102,241,','rgba(139,92,246,','rgba(6,182,212,'];
+  const N=Math.min(55,Math.floor(W*H/18000));
+  for(let i=0;i<N;i++)pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+0.5,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,c:C[Math.floor(Math.random()*C.length)],a:Math.random()*.5+.1});
+  let mx=W/2,my=H/2;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
+  function draw(){
+    cx.clearRect(0,0,W,H);
+    pts.forEach((p,i)=>{
+      const dx=mx-p.x,dy=my-p.y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<200){p.vx+=dx/d*.01;p.vy+=dy/d*.01;}
+      p.vx*=.99;p.vy*=.99;p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle=p.c+p.a+')';cx.fill();
+      for(let j=i+1;j<pts.length;j++){
+        const q=pts[j],dx2=p.x-q.x,dy2=p.y-q.y,d2=dx2*dx2+dy2*dy2;
+        if(d2<14400){cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.strokeStyle=p.c+(0.15*(1-d2/14400))+')';cx.lineWidth=.5;cx.stroke();}
       }
     });
-
-    // Mobile menu toggle
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.getElementById('navLinks');
-
-    if (mobileBtn && navLinks) {
-      mobileBtn.addEventListener('click', () => {
-        const isOpen = navLinks.classList.toggle('open');
-        mobileBtn.setAttribute('aria-expanded', String(isOpen));
-        mobileBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-      });
-
-      navLinks.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          navLinks.classList.remove('open');
-          mobileBtn.setAttribute('aria-expanded', 'false');
-          mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        });
-      });
-    }
-
-    // Stats counting (trigger when stats appears)
-    const animateStats = () => {
-      const statNumbers = document.querySelectorAll('.stat-number');
-      statNumbers.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-count'), 10);
-        if (Number.isNaN(target)) return;
-
-        const duration = 1600;
-        const start = performance.now();
-
-        const tick = (now) => {
-          const progress = Math.min((now - start) / duration, 1);
-          stat.textContent = Math.floor(progress * target);
-          if (progress < 1) requestAnimationFrame(tick);
-          else stat.textContent = target;
-        };
-
-        requestAnimationFrame(tick);
-      });
-    };
-
-    // Intersection Observer for fade-in + stats
-    const fadeElements = document.querySelectorAll('.fade-in');
-    const statsContainer = document.getElementById('statsContainer');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
-
-        if (entry.target === statsContainer) animateStats();
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -120px 0px' });
-
-    fadeElements.forEach(el => {
-      el.style.opacity = 0;
-      el.style.transform = 'translateY(16px)';
-      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-      observer.observe(el);
-    });
-
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if (!targetId || targetId === '#') return;
-        const targetElement = document.querySelector(targetId);
-        if (!targetElement) return;
-
-        e.preventDefault();
-        const offset = 92;
-        const top = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      });
-    });
-  </script>
+    aid=requestAnimationFrame(draw);
+  }
+  draw();
+  const hero=document.querySelector('.hero');
+  if(hero)new IntersectionObserver(([e])=>{
+    if(e.isIntersecting){if(!aid)draw();}else{cancelAnimationFrame(aid);aid=null;}
+  },{threshold:0}).observe(hero);
+})();
+</script>
 </body>
 </html>
