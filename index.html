@@ -120,7 +120,8 @@ section{position:relative;padding:120px 0;}
 /* ══════════ HERO ══════════ */
 .hero{min-height:100vh;display:flex;align-items:center;padding-top:var(--nav-h);position:relative;overflow:hidden;}
 #hc{position:absolute;inset:0;z-index:0;pointer-events:none;}
-.hg{position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:900px;height:600px;background:radial-gradient(ellipse,rgba(99,102,241,0.15) 0%,rgba(139,92,246,0.08) 40%,transparent 70%);pointer-events:none;z-index:0;}
+.hg{position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:900px;height:600px;background:radial-gradient(ellipse,rgba(99,102,241,0.35) 0%,rgba(139,92,246,0.18) 40%,transparent 70%);pointer-events:none;z-index:0;}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(99,102,241,0.06) 1px,transparent 1px);background-size:36px 36px;pointer-events:none;z-index:0;}
 .hi{position:relative;z-index:2;text-align:center;max-width:960px;margin:0 auto;padding:80px 0;}
 .ht{margin-bottom:28px;font-size:clamp(3.5rem,7vw,6.5rem);font-weight:800;line-height:1.0;letter-spacing:-2px;}
 .hs{max-width:620px;margin:0 auto 44px;font-size:clamp(1.05rem,1.5vw,1.2rem);color:var(--text2);}
@@ -150,14 +151,20 @@ section{position:relative;padding:120px 0;}
 .wb:first-child{padding-top:0;}
 .wb.rev{direction:rtl;}
 .wb.rev>*{direction:ltr;}
-.wv{border-radius:var(--r-lg);overflow:hidden;position:relative;aspect-ratio:4/3;background:var(--bg2);border:1px solid var(--border);}
-.wvi{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;}
-.wib{width:80px;height:80px;border-radius:20px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;box-shadow:0 20px 60px rgba(99,102,241,0.4);animation:fl 4s ease-in-out infinite;}
-@keyframes fl{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
-.wm{display:flex;align-items:center;gap:12px;padding:14px 20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px;backdrop-filter:blur(12px);position:absolute;}
-.wm-n{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--text);}
-.wm-l{font-size:0.75rem;color:var(--text3);}
-.wm.tl{top:24px;left:24px;}.wm.br{bottom:24px;right:24px;}
+.wv{border-radius:var(--r-lg);overflow:hidden;position:relative;aspect-ratio:4/3;background:linear-gradient(145deg,#0e0c2e 0%,#0a1228 50%,#0c1a2a 100%);border:1px solid var(--border);}
+.wv::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(99,102,241,0.07) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;z-index:0;}
+.wv::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,0.18) 0%,rgba(139,92,246,0.06) 50%,transparent 70%);pointer-events:none;z-index:0;}
+.wvi{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0;z-index:1;}
+.wib-wrap{position:relative;display:flex;align-items:center;justify-content:center;animation:fl 4s ease-in-out infinite;}
+.wib-ring{position:absolute;width:140px;height:140px;border-radius:50%;border:1px solid rgba(99,102,241,0.2);animation:ring-pulse 3s ease-in-out infinite;}
+.wib-ring2{position:absolute;width:108px;height:108px;border-radius:50%;border:1px solid rgba(99,102,241,0.15);animation:ring-pulse 3s ease-in-out infinite 0.5s;}
+.wib{width:72px;height:72px;border-radius:20px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#fff;box-shadow:0 0 40px rgba(99,102,241,0.5),0 20px 40px rgba(0,0,0,0.3);position:relative;z-index:1;}
+@keyframes fl{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes ring-pulse{0%,100%{transform:scale(1);opacity:0.6;}50%{transform:scale(1.06);opacity:1;}}
+.wm{display:flex;align-items:center;gap:12px;padding:14px 20px;background:rgba(8,13,31,0.8);border:1px solid rgba(255,255,255,0.10);border-radius:12px;backdrop-filter:blur(16px);position:absolute;z-index:2;box-shadow:0 8px 32px rgba(0,0,0,0.4);}
+.wm-n{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:var(--text);}
+.wm-l{font-size:0.72rem;color:var(--text3);}
+.wm.tl{top:20px;left:20px;}.wm.br{bottom:20px;right:20px;}
 .wc .badge{margin-bottom:20px;}
 .wc h3{font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:16px;}
 .wc p{margin-bottom:28px;}
@@ -290,6 +297,96 @@ footer{background:var(--bg1);border-top:1px solid var(--border);padding:80px 0 3
 .flg a{font-size:0.85rem;color:var(--text3);transition:var(--tf);}
 .flg a:hover{color:var(--text2);}
 
+/* ══════════ IT PARTNER ══════════ */
+.itp{background:var(--bg1);}
+.itp-top{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-bottom:80px;}
+.itp-cats{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.itp-cat{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:var(--r-sm);background:var(--surface);border:1px solid var(--border);transition:var(--tf);}
+.itp-cat:hover{background:rgba(99,102,241,0.08);border-color:rgba(99,102,241,0.3);}
+.itp-cat-ic{width:34px;height:34px;border-radius:8px;background:rgba(99,102,241,0.12);display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--indigo);flex-shrink:0;}
+.itp-cat-nm{font-size:0.82rem;font-weight:600;color:var(--text2);}
+.itp-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.itp-card{border-radius:var(--r-lg);padding:32px 28px;background:var(--surface);border:1px solid var(--border);transition:var(--t);text-align:center;}
+.itp-card:hover{border-color:rgba(99,102,241,0.4);transform:translateY(-6px);box-shadow:var(--shadow-card);}
+.itp-card-ic{width:56px;height:56px;border-radius:14px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--indigo);margin:0 auto 20px;transition:var(--t);}
+.itp-card:hover .itp-card-ic{background:var(--grad);border-color:transparent;color:#fff;}
+.itp-card h3{font-size:1rem;margin-bottom:8px;}
+.itp-card p{font-size:0.85rem;}
+
+/* ══════════ TAB SERVICES ══════════ */
+.tab-nav{display:flex;gap:4px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:5px;margin:0 auto 56px;width:fit-content;flex-wrap:wrap;justify-content:center;}
+.tab-btn{padding:10px 20px;border-radius:999px;font-size:0.85rem;font-weight:600;color:var(--text2);transition:var(--tf);white-space:nowrap;display:flex;align-items:center;gap:7px;cursor:pointer;}
+.tab-btn.act{background:var(--grad);color:#fff;box-shadow:0 4px 20px rgba(99,102,241,0.3);}
+.tab-btn:hover:not(.act){color:var(--text);background:var(--surface1);}
+.tab-pane{display:none;grid-template-columns:repeat(3,1fr);gap:20px;}
+.tab-pane.act{display:grid;}
+.tsvc{border-radius:var(--r);padding:24px;background:var(--surface);border:1px solid var(--border);transition:var(--t);display:flex;gap:14px;align-items:flex-start;}
+.tsvc:hover{border-color:rgba(99,102,241,0.35);transform:translateY(-3px);}
+.tsvc-ic{width:40px;height:40px;border-radius:10px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.2);display:flex;align-items:center;justify-content:center;font-size:0.95rem;color:var(--indigo);flex-shrink:0;transition:var(--t);}
+.tsvc:hover .tsvc-ic{background:var(--grad);border-color:transparent;color:#fff;}
+.tsvc h3{font-size:0.9rem;margin-bottom:4px;}
+.tsvc p{font-size:0.8rem;}
+
+/* ══════════ COMPARISON ══════════ */
+.cmp-sec{background:var(--bg);}
+.cmp-wrap{display:grid;grid-template-columns:1fr 1fr;max-width:860px;margin:0 auto;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);}
+.cmp-col{background:var(--bg1);}
+.cmp-col.good{background:linear-gradient(160deg,rgba(99,102,241,0.07),rgba(139,92,246,0.04));}
+.cmp-head{padding:24px 32px;border-bottom:1px solid var(--border);}
+.cmp-head-ttl{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;display:flex;align-items:center;gap:10px;}
+.cmp-head-ttl .cmp-dot{width:8px;height:8px;border-radius:50%;}
+.cmp-dot.r{background:#ef4444;}.cmp-dot.g{background:var(--green);}
+.cmp-head-sub{font-size:0.78rem;color:var(--text3);margin-top:4px;}
+.cmp-row{display:flex;align-items:center;gap:12px;padding:14px 32px;border-bottom:1px solid var(--border);font-size:0.88rem;color:var(--text2);}
+.cmp-row:last-child{border-bottom:0;}
+.cmp-ic{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;flex-shrink:0;}
+.cmp-ic.n{background:rgba(239,68,68,0.12);color:#ef4444;}
+.cmp-ic.y{background:rgba(16,185,129,0.12);color:var(--green);}
+
+/* ══════════ PRICING ══════════ */
+.prc{background:var(--bg1);}
+.prc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start;}
+.prc-card{border-radius:var(--r-lg);padding:40px;background:var(--surface);border:1px solid var(--border);position:relative;overflow:hidden;transition:var(--t);}
+.prc-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-card);}
+.prc-card.feat{border-color:rgba(99,102,241,0.5);background:linear-gradient(160deg,rgba(99,102,241,0.09),rgba(139,92,246,0.04));}
+.prc-card.feat::before{content:'';position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:var(--grad);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;}
+.prc-rec{display:inline-block;padding:4px 14px;border-radius:999px;font-size:0.7rem;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;background:var(--grad);color:#fff;margin-bottom:20px;}
+.prc-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:6px;}
+.prc-sub{font-size:0.85rem;color:var(--text3);margin-bottom:24px;}
+.prc-price{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--border);}
+.prc-from{font-size:0.72rem;color:var(--text3);display:block;margin-bottom:4px;}
+.prc-amt{font-family:'Syne',sans-serif;font-weight:800;font-size:3rem;color:var(--text);letter-spacing:-2px;line-height:1;}
+.prc-amt span{font-size:1rem;font-weight:500;color:var(--text3);letter-spacing:0;}
+.prc-feats{display:flex;flex-direction:column;gap:11px;margin-bottom:32px;}
+.prc-feat{display:flex;align-items:flex-start;gap:10px;font-size:0.875rem;color:var(--text2);}
+.prc-feat i{color:var(--green);margin-top:2px;flex-shrink:0;font-size:0.8rem;}
+
+/* ══════════ HIRE ══════════ */
+.hire-sec{background:var(--bg);}
+.hire-top{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center;margin-bottom:60px;}
+.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.role-card{padding:16px 18px;border-radius:var(--r);background:var(--surface);border:1px solid var(--border);transition:var(--t);display:flex;align-items:center;gap:12px;}
+.role-card:hover{border-color:rgba(99,102,241,0.4);background:rgba(99,102,241,0.06);transform:translateY(-2px);}
+.role-ic{width:38px;height:38px;border-radius:10px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.18);display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:var(--indigo);flex-shrink:0;transition:var(--t);}
+.role-card:hover .role-ic{background:var(--grad);border-color:transparent;color:#fff;}
+.role-nm{font-size:0.85rem;font-weight:600;color:var(--text2);}
+.eng-wrap{border-top:1px solid var(--border);padding-top:48px;text-align:center;}
+.eng-types{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;justify-content:center;}
+.eng-type{display:flex;align-items:center;gap:8px;padding:10px 22px;border-radius:999px;background:var(--surface1);border:1px solid var(--border);font-size:0.875rem;font-weight:600;color:var(--text2);transition:var(--tf);}
+.eng-type:hover{background:rgba(99,102,241,0.12);border-color:rgba(99,102,241,0.3);color:var(--text);}
+.eng-type i{color:var(--indigo);}
+
+/* ══════════ FINAL CTA ══════════ */
+.cta-fin{position:relative;overflow:hidden;text-align:center;padding:140px 0;background:var(--bg1);}
+.cta-fin::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(99,102,241,0.22) 0%,rgba(139,92,246,0.1) 40%,transparent 70%);pointer-events:none;}
+.cta-fin::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(99,102,241,0.06) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;}
+.cta-fin-inner{position:relative;z-index:1;max-width:720px;margin:0 auto;}
+.cta-fin-inner h2{margin-bottom:16px;}
+.cta-fin-inner p{margin-bottom:44px;font-size:1.1rem;}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-wa{background:#25d366;color:#fff;border-color:#25d366;}
+.btn-wa:hover{background:#1fb855;transform:translateY(-2px);box-shadow:0 12px 30px rgba(37,211,102,0.3);}
+
 /* ══════════ RESPONSIVE ══════════ */
 @media(max-width:1024px){
   .sg{grid-template-columns:repeat(2,1fr);}
@@ -297,6 +394,13 @@ footer{background:var(--bg1);border-top:1px solid var(--border);padding:80px 0 3
   .stg{grid-template-columns:repeat(2,1fr);}
   .wb{grid-template-columns:1fr;gap:40px;}
   .wb.rev{direction:ltr;}
+  .itp-top{grid-template-columns:1fr;gap:40px;}
+  .itp-cards{grid-template-columns:repeat(2,1fr);}
+  .prc-grid{grid-template-columns:1fr;}
+  .cmp-wrap{grid-template-columns:1fr;}
+  .hire-top{grid-template-columns:1fr;gap:40px;}
+  .tab-pane.act{grid-template-columns:repeat(2,1fr);}
+  .role-grid{grid-template-columns:repeat(2,1fr);}
   .fg{grid-template-columns:1fr 1fr;gap:36px;}
   .ps{grid-template-columns:repeat(2,1fr);}
   .ps::before{display:none;}
@@ -314,12 +418,19 @@ footer{background:var(--bg1);border-top:1px solid var(--border);padding:80px 0 3
   .ht{letter-spacing:-1px;}
   .fg{grid-template-columns:1fr;}
   .fbot{flex-direction:column;text-align:center;}
+  .itp-cards{grid-template-columns:1fr;}
+  .itp-cats{grid-template-columns:1fr;}
+  .tab-pane.act{grid-template-columns:1fr;}
+  .prc-grid{grid-template-columns:1fr;}
+  .role-grid{grid-template-columns:1fr 1fr;}
+  .cta-fin{padding:80px 0;}
 }
 @media(max-width:480px){
   .stg{grid-template-columns:1fr 1fr;}
   .ctb{padding:28px 24px;}
   .hpr{flex-direction:column;gap:12px;}
   .ps{grid-template-columns:1fr 1fr;}
+  .role-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -333,14 +444,13 @@ footer{background:var(--bg1);border-top:1px solid var(--border);padding:80px 0 3
       <div class="nl-name">FLEXNORA<span>Digital</span></div>
     </a>
     <ul class="nlinks" role="list">
-      <li><a href="#why" class="nlink">Why Us</a></li>
+      <li><a href="#itp" class="nlink">Solutions</a></li>
       <li><a href="#services" class="nlink">Services</a></li>
-      <li><a href="#work" class="nlink">Work</a></li>
-      <li><a href="#process" class="nlink">Process</a></li>
+      <li><a href="#hire" class="nlink">Hire</a></li>
       <li><a href="#contact" class="nlink">Contact</a></li>
     </ul>
     <div class="nact">
-      <a href="#contact" class="btn btn-p btn-sm">Start a Project</a>
+      <a href="#cta-fin" class="btn btn-p btn-sm">Book Consultation</a>
     </div>
     <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -348,12 +458,11 @@ footer{background:var(--bg1);border-top:1px solid var(--border);padding:80px 0 3
   </div>
 </nav>
 <div class="nmob" id="nmob">
-  <a href="#why" class="nlink">Why Us</a>
+  <a href="#itp" class="nlink">Solutions</a>
   <a href="#services" class="nlink">Services</a>
-  <a href="#work" class="nlink">Work</a>
-  <a href="#process" class="nlink">Process</a>
+  <a href="#hire" class="nlink">Hire</a>
   <a href="#contact" class="nlink">Contact</a>
-  <a href="#contact" class="btn btn-p">Start a Project</a>
+  <a href="#cta-fin" class="btn btn-p">Book Consultation</a>
 </div>
 
 <!-- HERO -->
@@ -363,17 +472,17 @@ footer{background:var(--bg1);border-top:1px solid var(--border);padding:80px 0 3
   <div class="container">
     <div class="hi">
       <div class="rv" style="margin-bottom:28px;">
-        <div class="badge"><span class="dot"></span>Available for New Projects · Colombo, Sri Lanka</div>
+        <div class="badge"><span class="dot"></span>Your Complete Technology Partner · Colombo, Sri Lanka</div>
       </div>
       <h1 class="ht rv d1">
-        We Build Digital<br /><span class="g">Products That Win.</span>
+        We Become Your<br /><span class="g">Technology Team.</span>
       </h1>
       <p class="hs rv d2">
-        FLEXNORA crafts world-class web apps, mobile experiences, and brand systems for founders and businesses who refuse to settle for ordinary.
+        Focus on your business. We'll handle the technology. FLEXNORA is your outsourced IT department — building, maintaining, scaling, and securing your entire digital infrastructure.
       </p>
       <div class="ha rv d3">
-        <a href="#contact" class="btn btn-p btn-lg"><i class="fa-brands fa-whatsapp"></i> Start Your Project</a>
-        <a href="#work" class="btn btn-g btn-lg">See Our Work <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#cta-fin" class="btn btn-p btn-lg"><i class="fa-solid fa-calendar-check"></i> Book Free Consultation</a>
+        <a href="#itp" class="btn btn-g btn-lg">See How It Works <i class="fa-solid fa-arrow-right"></i></a>
       </div>
       <div class="hpr rv d4">
         <div class="hav">
@@ -406,7 +515,7 @@ footer{background:var(--bg1);border-top:1px solid var(--border);padding:80px 0 3
 
     <div class="wb rv">
       <div class="wv">
-        <div class="wvi"><div class="wib"><i class="fa-solid fa-medal"></i></div></div>
+        <div class="wvi"><div class="wib-wrap"><div class="wib-ring"></div><div class="wib-ring2"></div><div class="wib"><i class="fa-solid fa-medal"></i></div></div></div>
         <div class="wm tl"><div><div class="wm-n">5★</div><div class="wm-l">Avg Rating</div></div></div>
         <div class="wm br"><div><div class="wm-n">98%</div><div class="wm-l">Satisfaction</div></div></div>
       </div>
@@ -425,7 +534,7 @@ footer{background:var(--bg1);border-top:1px solid var(--border);padding:80px 0 3
 
     <div class="wb rev rv">
       <div class="wv">
-        <div class="wvi"><div class="wib" style="animation-delay:0.5s"><i class="fa-solid fa-clock"></i></div></div>
+        <div class="wvi"><div class="wib-wrap" style="animation-delay:0.5s"><div class="wib-ring"></div><div class="wib-ring2"></div><div class="wib"><i class="fa-solid fa-clock"></i></div></div></div>
         <div class="wm tl"><div><div class="wm-n">On Time</div><div class="wm-l">Every Sprint</div></div></div>
         <div class="wm br"><div><div class="wm-n">24h</div><div class="wm-l">Response</div></div></div>
       </div>
@@ -444,7 +553,7 @@ footer{background:var(--bg1);border-top:1px solid var(--border);padding:80px 0 3
 
     <div class="wb rv">
       <div class="wv">
-        <div class="wvi"><div class="wib" style="animation-delay:1s"><i class="fa-solid fa-user-tie"></i></div></div>
+        <div class="wvi"><div class="wib-wrap" style="animation-delay:1s"><div class="wib-ring"></div><div class="wib-ring2"></div><div class="wib"><i class="fa-solid fa-user-tie"></i></div></div></div>
         <div class="wm tl"><div><div class="wm-n">50+</div><div class="wm-l">Projects</div></div></div>
         <div class="wm br"><div><div class="wm-n">5yr</div><div class="wm-l">Experience</div></div></div>
       </div>
@@ -463,52 +572,175 @@ footer{background:var(--bg1);border-top:1px solid var(--border);padding:80px 0 3
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- IT PARTNERSHIP -->
+<section class="itp" id="itp" aria-labelledby="itp-h">
+  <div class="container zi">
+    <div class="itp-top">
+      <div>
+        <p class="lbl rv">Your Outsourced IT Department</p>
+        <h2 id="itp-h" class="rv d1">We don't just build software.<br /><span class="g">We become your technology team.</span></h2>
+        <p class="rv d2" style="margin-bottom:32px;">Growing businesses shouldn't need to hire expensive in-house developers, manage HR, or worry about technology. Partner with FLEXNORA and get a complete, expert technology department — at a fraction of the cost.</p>
+        <ul class="wl rv d3">
+          <li class="wli"><i class="fa-solid fa-check"></i> No recruitment, no HR, no onboarding delays</li>
+          <li class="wli"><i class="fa-solid fa-check"></i> Ready-to-work experts across every discipline</li>
+          <li class="wli"><i class="fa-solid fa-check"></i> Scale your team up or down instantly</li>
+          <li class="wli"><i class="fa-solid fa-check"></i> One partner for everything — from websites to AI</li>
+          <li class="wli"><i class="fa-solid fa-check"></i> Continuous support — we don't disappear after launch</li>
+        </ul>
+        <div style="margin-top:32px;" class="rv d4">
+          <a href="#cta-fin" class="btn btn-p">Book Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="rv d2">
+        <div style="border-radius:var(--r-lg);background:linear-gradient(145deg,#0e0c2e,#0a1228);border:1px solid var(--border);padding:28px;position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(99,102,241,0.06) 1px,transparent 1px);background-size:22px 22px;pointer-events:none;"></div>
+          <p class="lbl" style="margin-bottom:20px;position:relative;">Everything we cover</p>
+          <div class="itp-cats" style="position:relative;">
+            <div class="itp-cat"><div class="itp-cat-ic"><i class="fa-solid fa-code"></i></div><div class="itp-cat-nm">Software Development</div></div>
+            <div class="itp-cat"><div class="itp-cat-ic"><i class="fa-brands fa-aws"></i></div><div class="itp-cat-nm">Cloud &amp; Infrastructure</div></div>
+            <div class="itp-cat"><div class="itp-cat-ic"><i class="fa-solid fa-robot"></i></div><div class="itp-cat-nm">AI &amp; Automation</div></div>
+            <div class="itp-cat"><div class="itp-cat-ic"><i class="fa-solid fa-shield-halved"></i></div><div class="itp-cat-nm">Security &amp; Updates</div></div>
+            <div class="itp-cat"><div class="itp-cat-ic"><i class="fa-solid fa-users"></i></div><div class="itp-cat-nm">Dedicated Teams</div></div>
+            <div class="itp-cat"><div class="itp-cat-ic"><i class="fa-solid fa-wrench"></i></div><div class="itp-cat-nm">Managed IT Services</div></div>
+            <div class="itp-cat"><div class="itp-cat-ic"><i class="fa-solid fa-chart-line"></i></div><div class="itp-cat-nm">Performance &amp; SEO</div></div>
+            <div class="itp-cat"><div class="itp-cat-ic"><i class="fa-solid fa-headset"></i></div><div class="itp-cat-nm">24/7 Tech Support</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="itp-cards">
+      <div class="itp-card rv">
+        <div class="itp-card-ic"><i class="fa-solid fa-user-slash"></i></div>
+        <h3>No Hiring Needed</h3>
+        <p>Skip the months-long recruitment process, interviews, and onboarding. Our experts are ready to start immediately.</p>
+      </div>
+      <div class="itp-card rv d1">
+        <div class="itp-card-ic"><i class="fa-solid fa-layer-group"></i></div>
+        <h3>Full-Stack Coverage</h3>
+        <p>From frontend to backend, mobile to cloud, AI to security — one partner covers every layer of your technology.</p>
+      </div>
+      <div class="itp-card rv d2">
+        <div class="itp-card-ic"><i class="fa-solid fa-arrows-up-down"></i></div>
+        <h3>Scale On Demand</h3>
+        <p>Need more developers for a big launch? Scaling down after? Adjust your team size instantly with no lock-in.</p>
+      </div>
+      <div class="itp-card rv d3">
+        <div class="itp-card-ic"><i class="fa-solid fa-piggy-bank"></i></div>
+        <h3>Lower Cost</h3>
+        <p>Get senior-level expertise at a fraction of the cost of in-house hiring — no salaries, benefits, or equipment costs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES (TABBED) -->
 <section id="services" aria-labelledby="svc-h">
-  <div class="orb" style="width:600px;height:600px;background:rgba(99,102,241,0.1);top:-200px;left:-200px;" aria-hidden="true"></div>
-  <div class="orb" style="width:500px;height:500px;background:rgba(139,92,246,0.08);bottom:-150px;right:-150px;" aria-hidden="true"></div>
+  <div class="orb" style="width:600px;height:600px;background:rgba(99,102,241,0.08);top:-200px;left:-200px;" aria-hidden="true"></div>
+  <div class="orb" style="width:500px;height:500px;background:rgba(139,92,246,0.06);bottom:-150px;right:-150px;" aria-hidden="true"></div>
   <div class="container zi">
     <div class="sec-hd">
-      <p class="lbl">What we do</p>
-      <h2 id="svc-h" class="rv">Services that scale<br /><span class="g">your ambition.</span></h2>
-      <p class="rv d1">From a single landing page to a full SaaS platform — we cover the entire stack, end to end.</p>
+      <p class="lbl">Full service coverage</p>
+      <h2 id="svc-h" class="rv">Everything your business<br /><span class="g">needs to grow.</span></h2>
+      <p class="rv d1">Five complete service pillars. One technology partner.</p>
     </div>
-    <div class="sg">
-      <div class="sc rv">
-        <div class="si"><i class="fa-solid fa-code"></i></div>
-        <h3>Web Development</h3>
-        <p>Modern, fast, and scalable web apps built with React, Next.js, and cutting-edge architecture — optimized for SEO and conversions from day one.</p>
-        <a href="#contact" class="sl">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="tab-nav rv d1" role="tablist">
+      <button class="tab-btn act" data-tab="t1" role="tab" aria-selected="true"><i class="fa-solid fa-code"></i> Software Dev</button>
+      <button class="tab-btn" data-tab="t2" role="tab" aria-selected="false"><i class="fa-brands fa-aws"></i> Cloud &amp; Infra</button>
+      <button class="tab-btn" data-tab="t3" role="tab" aria-selected="false"><i class="fa-solid fa-robot"></i> AI &amp; Automation</button>
+      <button class="tab-btn" data-tab="t4" role="tab" aria-selected="false"><i class="fa-solid fa-wrench"></i> Managed IT</button>
+      <button class="tab-btn" data-tab="t5" role="tab" aria-selected="false"><i class="fa-solid fa-users"></i> Dedicated Teams</button>
+    </div>
+    <div id="t1" class="tab-pane act" role="tabpanel">
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-globe"></i></div><div><h3>Company Websites</h3><p>High-performance marketing sites and landing pages built for speed, SEO, and conversions.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-cart-shopping"></i></div><div><h3>E-commerce Platforms</h3><p>Custom storefronts, payment integration, and inventory management for online businesses.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-window-restore"></i></div><div><h3>Web Applications</h3><p>Complex web apps, portals, and dashboards built with React and Next.js architecture.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-mobile-screen"></i></div><div><h3>Mobile Apps</h3><p>iOS and Android apps using Flutter or React Native — production-ready and App Store approved.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-cubes"></i></div><div><h3>SaaS Products</h3><p>Full SaaS platforms with multi-tenancy, billing, onboarding, and admin dashboards.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-building"></i></div><div><h3>ERP Systems</h3><p>Custom enterprise resource planning systems tailored to your business workflows.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-address-book"></i></div><div><h3>CRM Development</h3><p>Bespoke CRM systems that match how your sales and customer teams actually work.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-laptop-code"></i></div><div><h3>Desktop Applications</h3><p>Cross-platform desktop apps for internal tools, automation, and enterprise workflows.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-puzzle-piece"></i></div><div><h3>Custom Software</h3><p>Bespoke software solutions designed around your exact business requirements and processes.</p></div></div>
+    </div>
+    <div id="t2" class="tab-pane" role="tabpanel">
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-brands fa-aws"></i></div><div><h3>AWS</h3><p>Full AWS architecture, EC2, RDS, S3, Lambda, CloudFront — designed for reliability and scale.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-cloud"></i></div><div><h3>Azure &amp; GCP</h3><p>Microsoft Azure and Google Cloud setup, migration, and ongoing management.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-server"></i></div><div><h3>Server Management</h3><p>Linux server setup, configuration, hardening, monitoring, and ongoing administration.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-gear"></i></div><div><h3>DevOps &amp; CI/CD</h3><p>Automated pipelines, deployment workflows, and infrastructure-as-code with Terraform.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-brands fa-docker"></i></div><div><h3>Docker &amp; Kubernetes</h3><p>Containerization, orchestration, and microservices architecture for scalable systems.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-chart-line"></i></div><div><h3>Monitoring &amp; Alerts</h3><p>Real-time infrastructure monitoring, uptime checks, and proactive incident response.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-database"></i></div><div><h3>Database Management</h3><p>PostgreSQL, MySQL, MongoDB — setup, optimization, backups, and scaling.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-life-ring"></i></div><div><h3>Backup &amp; Recovery</h3><p>Automated backup strategies and disaster recovery plans that protect your business data.</p></div></div>
+    </div>
+    <div id="t3" class="tab-pane" role="tabpanel">
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-comments"></i></div><div><h3>AI Chatbots</h3><p>Intelligent customer-facing chatbots powered by Claude, OpenAI, or custom LLM pipelines.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-diagram-project"></i></div><div><h3>Workflow Automation</h3><p>Automate repetitive business processes — approvals, notifications, data entry, and reporting.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-gears"></i></div><div><h3>Business Process Automation</h3><p>End-to-end BPA solutions that connect your systems and eliminate manual handoffs.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-robot"></i></div><div><h3>AI Agents</h3><p>Autonomous AI agents that handle research, analysis, data processing, and decision support.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-wand-magic-sparkles"></i></div><div><h3>OpenAI &amp; Claude Integration</h3><p>Integrate cutting-edge AI models into your existing products and workflows seamlessly.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-file-lines"></i></div><div><h3>Document Processing</h3><p>Automated document extraction, classification, and processing using AI — invoices, contracts, reports.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-microphone"></i></div><div><h3>Voice AI</h3><p>Voice assistants, speech-to-text pipelines, and voice-enabled applications for modern UX.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-brain"></i></div><div><h3>Custom AI Solutions</h3><p>Bespoke AI systems fine-tuned on your business data for maximum relevance and accuracy.</p></div></div>
+    </div>
+    <div id="t4" class="tab-pane" role="tabpanel">
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-rotate"></i></div><div><h3>Website Maintenance</h3><p>Regular updates, content changes, plugin management, and ongoing website improvements.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-mobile-screen"></i></div><div><h3>App Maintenance</h3><p>OS compatibility updates, bug fixes, feature additions, and App Store re-submissions.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-shield-halved"></i></div><div><h3>Security Updates</h3><p>Vulnerability patching, dependency updates, penetration testing, and security hardening.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-gauge-high"></i></div><div><h3>Performance Optimization</h3><p>Speed audits, Core Web Vitals improvements, caching, and infrastructure tuning.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-database"></i></div><div><h3>Database Administration</h3><p>Query optimization, indexing, migrations, backups, and database health monitoring.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-bug-slash"></i></div><div><h3>Bug Fixes &amp; QA</h3><p>Rapid bug identification, root-cause analysis, fixing, and regression testing.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-plus-circle"></i></div><div><h3>Feature Development</h3><p>Build new features into existing systems — scoped, designed, built, and tested on a monthly basis.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-magnifying-glass-chart"></i></div><div><h3>Technical SEO</h3><p>Site speed, schema markup, crawlability, Core Web Vitals — technical SEO that moves rankings.</p></div></div>
+    </div>
+    <div id="t5" class="tab-pane" role="tabpanel">
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-display"></i></div><div><h3>Frontend Developers</h3><p>React, Next.js, Vue, Tailwind — pixel-perfect UI engineers who care about UX.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-server"></i></div><div><h3>Backend Developers</h3><p>Node.js, Django, FastAPI, PostgreSQL — robust API and system engineers.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-code-branch"></i></div><div><h3>Full Stack Developers</h3><p>End-to-end engineers who own features from database schema to polished UI.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-mobile-screen"></i></div><div><h3>Mobile Developers</h3><p>Flutter and React Native specialists for iOS and Android production apps.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-brands fa-figma"></i></div><div><h3>UI/UX Designers</h3><p>Product designers who create beautiful, user-tested interfaces that convert.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-vial"></i></div><div><h3>QA Engineers</h3><p>Manual and automated testing specialists who ensure your software ships bug-free.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-gear"></i></div><div><h3>DevOps Engineers</h3><p>Cloud, CI/CD, Docker, Kubernetes — infrastructure engineers who keep systems running.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-brain"></i></div><div><h3>AI Engineers</h3><p>LLM integration, RAG pipelines, fine-tuning, and AI product development specialists.</p></div></div>
+      <div class="tsvc"><div class="tsvc-ic"><i class="fa-solid fa-diagram-project"></i></div><div><h3>Project Managers</h3><p>Experienced PMs who keep projects on time, on scope, and stakeholders aligned.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="cmp-sec" id="compare" aria-labelledby="cmp-h">
+  <div class="container zi">
+    <div class="sec-hd">
+      <p class="lbl">The smarter choice</p>
+      <h2 id="cmp-h" class="rv">Hiring internally vs<br /><span class="g">partnering with FLEXNORA.</span></h2>
+      <p class="rv d1">The numbers speak for themselves. See why smart businesses outsource their technology.</p>
+    </div>
+    <div class="cmp-wrap rv d1">
+      <div class="cmp-col">
+        <div class="cmp-head">
+          <div class="cmp-head-ttl"><span class="cmp-dot r"></span>Traditional In-House Hiring</div>
+          <div class="cmp-head-sub">The expensive, slow, and unpredictable way</div>
+        </div>
+        <div class="cmp-row"><div class="cmp-ic n"><i class="fa-solid fa-xmark"></i></div>High developer salaries ($60k–$150k/yr)</div>
+        <div class="cmp-row"><div class="cmp-ic n"><i class="fa-solid fa-xmark"></i></div>Months of recruitment &amp; interviews</div>
+        <div class="cmp-row"><div class="cmp-ic n"><i class="fa-solid fa-xmark"></i></div>Expensive onboarding &amp; training</div>
+        <div class="cmp-row"><div class="cmp-ic n"><i class="fa-solid fa-xmark"></i></div>Annual leave &amp; sick days affect delivery</div>
+        <div class="cmp-row"><div class="cmp-ic n"><i class="fa-solid fa-xmark"></i></div>Equipment, software, and licenses costs</div>
+        <div class="cmp-row"><div class="cmp-ic n"><i class="fa-solid fa-xmark"></i></div>HR management &amp; employment compliance</div>
+        <div class="cmp-row"><div class="cmp-ic n"><i class="fa-solid fa-xmark"></i></div>Limited to one or two skill sets</div>
+        <div class="cmp-row"><div class="cmp-ic n"><i class="fa-solid fa-xmark"></i></div>Knowledge lost when staff leave</div>
       </div>
-      <div class="sc rv d1">
-        <div class="si"><i class="fa-solid fa-mobile-screen"></i></div>
-        <h3>Mobile Apps</h3>
-        <p>Beautiful iOS and Android apps with Flutter or React Native. Ship once, run everywhere — without sacrificing native performance or user experience.</p>
-        <a href="#contact" class="sl">Start a project <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-      <div class="sc rv d2">
-        <div class="si"><i class="fa-solid fa-bolt"></i></div>
-        <h3>Business Automation</h3>
-        <p>Custom dashboards, workflow automation, and smart tools that eliminate repetitive work and give your team their most valuable resource back — time.</p>
-        <a href="#contact" class="sl">Start a project <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-      <div class="sc rv d1">
-        <div class="si"><i class="fa-solid fa-palette"></i></div>
-        <h3>Brand &amp; Design</h3>
-        <p>Visual identities that make people stop scrolling. Logos, design systems, pitch decks, and marketing assets built to impress and convert.</p>
-        <a href="#contact" class="sl">Start a project <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-      <div class="sc rv d2">
-        <div class="si"><i class="fa-solid fa-film"></i></div>
-        <h3>Video &amp; Motion</h3>
-        <p>Cinematic video editing, motion graphics, and commercial production that tells your brand story in a way that stays with people long after watching.</p>
-        <a href="#contact" class="sl">Start a project <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-      <div class="sc rv d3">
-        <div class="si"><i class="fa-solid fa-pen-nib"></i></div>
-        <h3>Content Strategy</h3>
-        <p>Copy, documentation, and content strategy that converts. We write for humans and optimize for search — never the other way around.</p>
-        <a href="#contact" class="sl">Start a project <i class="fa-solid fa-arrow-right"></i></a>
+      <div class="cmp-col good">
+        <div class="cmp-head">
+          <div class="cmp-head-ttl"><span class="cmp-dot g"></span>FLEXNORA Technology Partner</div>
+          <div class="cmp-head-sub">The smart, scalable, and cost-effective way</div>
+        </div>
+        <div class="cmp-row"><div class="cmp-ic y"><i class="fa-solid fa-check"></i></div>Predictable monthly investment</div>
+        <div class="cmp-row"><div class="cmp-ic y"><i class="fa-solid fa-check"></i></div>Ready-to-work experts, start within days</div>
+        <div class="cmp-row"><div class="cmp-ic y"><i class="fa-solid fa-check"></i></div>No onboarding — we hit the ground running</div>
+        <div class="cmp-row"><div class="cmp-ic y"><i class="fa-solid fa-check"></i></div>Continuous delivery, no interruptions</div>
+        <div class="cmp-row"><div class="cmp-ic y"><i class="fa-solid fa-check"></i></div>No overhead costs whatsoever</div>
+        <div class="cmp-row"><div class="cmp-ic y"><i class="fa-solid fa-check"></i></div>Zero HR burden — we handle everything</div>
+        <div class="cmp-row"><div class="cmp-ic y"><i class="fa-solid fa-check"></i></div>Full team: dev, design, cloud, AI, QA</div>
+        <div class="cmp-row"><div class="cmp-ic y"><i class="fa-solid fa-check"></i></div>Institutional knowledge stays with your system</div>
       </div>
     </div>
   </div>
@@ -678,6 +910,51 @@ footer{background:var(--bg1);border-top:1px solid var(--border);padding:80px 0 3
   </div>
 </section>
 
+<!-- HIRE DEVELOPERS -->
+<section class="hire-sec" id="hire" aria-labelledby="hire-h">
+  <div class="container zi">
+    <div class="hire-top">
+      <div>
+        <p class="lbl rv">Dedicated developers</p>
+        <h2 id="hire-h" class="rv d1">Hire expert developers<br /><span class="g">that work as your own.</span></h2>
+        <p class="rv d2" style="margin-bottom:28px;">Need a specific expert embedded in your team? Hire dedicated developers from FLEXNORA — they integrate seamlessly with your workflow, communicate on your channels, and deliver as if they're sitting in your office.</p>
+        <ul class="wl rv d3">
+          <li class="wli"><i class="fa-solid fa-check"></i>Start within 48 hours — no long recruitment cycles</li>
+          <li class="wli"><i class="fa-solid fa-check"></i>Deeply vetted engineers with proven track records</li>
+          <li class="wli"><i class="fa-solid fa-check"></i>Flexible engagement — part-time, full-time, or project-based</li>
+          <li class="wli"><i class="fa-solid fa-check"></i>Daily standups, your tools, your timezone</li>
+        </ul>
+        <div style="margin-top:32px;" class="rv d4">
+          <a href="#contact" class="btn btn-p">Hire a Developer <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="role-grid rv d2">
+        <div class="role-card"><div class="role-ic"><i class="fa-solid fa-display"></i></div><div class="role-nm">Frontend Developer</div></div>
+        <div class="role-card"><div class="role-ic"><i class="fa-solid fa-server"></i></div><div class="role-nm">Backend Developer</div></div>
+        <div class="role-card"><div class="role-ic"><i class="fa-solid fa-code-branch"></i></div><div class="role-nm">Full Stack Developer</div></div>
+        <div class="role-card"><div class="role-ic"><i class="fa-solid fa-mobile-screen"></i></div><div class="role-nm">Mobile Developer</div></div>
+        <div class="role-card"><div class="role-ic"><i class="fa-brands fa-figma"></i></div><div class="role-nm">UI/UX Designer</div></div>
+        <div class="role-card"><div class="role-ic"><i class="fa-solid fa-vial"></i></div><div class="role-nm">QA Engineer</div></div>
+        <div class="role-card"><div class="role-ic"><i class="fa-solid fa-gear"></i></div><div class="role-nm">DevOps Engineer</div></div>
+        <div class="role-card"><div class="role-ic"><i class="fa-solid fa-brain"></i></div><div class="role-nm">AI Engineer</div></div>
+        <div class="role-card"><div class="role-ic"><i class="fa-brands fa-aws"></i></div><div class="role-nm">Cloud Engineer</div></div>
+      </div>
+    </div>
+    <div class="eng-wrap rv">
+      <p class="lbl" style="margin-bottom:8px;">Engagement models</p>
+      <h3 style="margin-bottom:6px;">Work the way that suits your business.</h3>
+      <p style="max-width:580px;margin:0 auto 20px;">From a few hours a week to a fully embedded full-time team — we flex to your needs.</p>
+      <div class="eng-types">
+        <div class="eng-type"><i class="fa-solid fa-clock"></i>Full Time · 160 hrs/mo</div>
+        <div class="eng-type"><i class="fa-solid fa-hourglass-half"></i>Part Time · 80 hrs/mo</div>
+        <div class="eng-type"><i class="fa-solid fa-list-check"></i>Project Based</div>
+        <div class="eng-type"><i class="fa-solid fa-users"></i>Dedicated Team</div>
+        <div class="eng-type"><i class="fa-solid fa-handshake"></i>Long-Term Contract</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="fq" id="faq" aria-labelledby="fq-h">
   <div class="container zi">
@@ -687,24 +964,44 @@ footer{background:var(--bg1);border-top:1px solid var(--border);padding:80px 0 3
     </div>
     <div class="fql">
       <div class="fqi">
-        <button class="fqb" aria-expanded="false">How long does a typical project take?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
-        <div class="fqa"><div class="fqai">A simple website typically takes 2–3 weeks. A complex web app or mobile product is usually 6–12 weeks. We'll give you a precise timeline after the discovery call — no guessing, no vague estimates.</div></div>
+        <button class="fqb" aria-expanded="false">Can FLEXNORA replace our in-house IT team?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="fqa"><div class="fqai">Yes — many of our clients use FLEXNORA as their complete, outsourced technology department. We cover everything from development and cloud infrastructure to security, maintenance, and ongoing support. You get a full team without the overhead of hiring.</div></div>
       </div>
       <div class="fqi">
-        <button class="fqb" aria-expanded="false">What does the process look like?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
-        <div class="fqa"><div class="fqai">Discovery → Strategy &amp; Design → Development → Testing → Launch → Support. We keep you in the loop at every stage with weekly updates, demos, and direct communication via WhatsApp or Slack.</div></div>
+        <button class="fqb" aria-expanded="false">What's included in the monthly partnership plans?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="fqa"><div class="fqai">Monthly plans include dedicated development hours, maintenance, security updates, bug fixes, and a direct communication channel. Higher tiers add feature development, cloud monitoring, strategy calls, and larger developer teams. Everything is documented and transparent.</div></div>
       </div>
       <div class="fqi">
-        <button class="fqb" aria-expanded="false">Do you work with clients outside Sri Lanka?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
-        <div class="fqa"><div class="fqai">Absolutely. We work with clients globally. Our timezone is UTC+5:30 and we're flexible with communication hours to fit international clients in Australia, Europe, or the US.</div></div>
+        <button class="fqb" aria-expanded="false">How does hiring a dedicated developer work?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="fqa"><div class="fqai">Tell us the role, skills, and engagement type you need. We match you with the right engineer, do a brief intro call, and they can start within 48 hours. They'll join your Slack, attend your standups, and work as part of your team — just without the HR burden.</div></div>
       </div>
       <div class="fqi">
-        <button class="fqb" aria-expanded="false">What's included after launch?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
-        <div class="fqa"><div class="fqai">All projects include a post-launch support period. We fix bugs, handle deployment issues, and stay available for questions. Ongoing maintenance and growth retainers are also available.</div></div>
+        <button class="fqb" aria-expanded="false">Do you provide support after a project launches?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="fqa"><div class="fqai">We don't disappear after go-live. All projects include a post-launch support window. After that, clients typically move onto a monthly maintenance plan so we remain their long-term technology partner for updates, new features, monitoring, and growth.</div></div>
       </div>
       <div class="fqi">
-        <button class="fqb" aria-expanded="false">How do I get started?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
-        <div class="fqa"><div class="fqai">Send us a WhatsApp or email with a brief description of your project. We'll book a free 30-minute discovery call, then provide a proposal with scope, timeline, and cost — usually within 48 hours.</div></div>
+        <button class="fqb" aria-expanded="false">How long does a project typically take?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="fqa"><div class="fqai">A simple website takes 2–3 weeks. A complex web app or mobile product is usually 6–12 weeks. ERP or SaaS platforms vary based on scope. We give you a precise timeline after the discovery call — always with milestones, never vague.</div></div>
+      </div>
+      <div class="fqi">
+        <button class="fqb" aria-expanded="false">Do you work with international clients?<span class="fqic"><i class="fa-solid fa-plus"></i></span></button>
+        <div class="fqa"><div class="fqai">Absolutely. We work with businesses across Australia, Europe, the US, and beyond. Our team adapts to your timezone for meetings and standups, and we use tools like Slack, Notion, and Linear to keep everything transparent regardless of location.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-fin" id="cta-fin" aria-labelledby="ctaf-h">
+  <div class="container">
+    <div class="cta-fin-inner">
+      <p class="lbl rv">Ready to get started?</p>
+      <h2 id="ctaf-h" class="rv d1">Need a reliable<br /><span class="g">technology partner?</span></h2>
+      <p class="rv d2">Let's build and grow your business together. Book a free 30-minute consultation — no obligation, no sales pitch. Just an honest conversation about your technology needs.</p>
+      <div class="cta-btns rv d3">
+        <a href="https://wa.me/94779400291?text=Hi%20FLEXNORA!%20I%20want%20to%20book%20a%20free%20consultation." class="btn btn-wa btn-lg" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Talk on WhatsApp</a>
+        <a href="mailto:flexnoradigital@gmail.com?subject=Free%20Consultation%20Request%20-%20FLEXNORA" class="btn btn-p btn-lg"><i class="fa-solid fa-calendar-check"></i> Book Free Consultation</a>
+        <a href="tel:+94779400291" class="btn btn-g btn-lg"><i class="fa-solid fa-phone"></i> Call Us Now</a>
       </div>
     </div>
   </div>
@@ -778,13 +1075,14 @@ footer{background:var(--bg1);border-top:1px solid var(--border);padding:80px 0 3
         </div>
       </div>
       <div class="fc">
-        <h4>Services</h4>
+        <h4>Solutions</h4>
         <ul>
-          <li><a href="#services">Web Development</a></li>
-          <li><a href="#services">Mobile Apps</a></li>
-          <li><a href="#services">Business Automation</a></li>
-          <li><a href="#services">Brand &amp; Design</a></li>
-          <li><a href="#services">Video &amp; Motion</a></li>
+          <li><a href="#itp">Tech Partnership</a></li>
+          <li><a href="#services">Software Development</a></li>
+          <li><a href="#services">Cloud &amp; Infrastructure</a></li>
+          <li><a href="#services">AI &amp; Automation</a></li>
+          <li><a href="#services">Managed IT</a></li>
+          <li><a href="#hire">Hire Developers</a></li>
         </ul>
       </div>
       <div class="fc">
@@ -876,6 +1174,18 @@ const items=[
 ];
 const tt=document.getElementById('tt');
 if(tt){const h=items.map(i=>`<div class="ti"><i class="fa-solid ${i.i}"></i>${i.l}</div>`).join('');tt.innerHTML=h+h;}
+
+/* ── TABS ── */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const t=btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('act');b.setAttribute('aria-selected','false');});
+    document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('act'));
+    btn.classList.add('act');btn.setAttribute('aria-selected','true');
+    const pane=document.getElementById(t);
+    if(pane){pane.classList.add('act');pane.querySelectorAll('.tsvc').forEach((el,i)=>{el.style.opacity=0;el.style.transform='translateY(16px)';setTimeout(()=>{el.style.transition='opacity 0.4s ease,transform 0.4s ease';el.style.opacity=1;el.style.transform='translateY(0)';},i*40);});}
+  });
+});
 
 /* ── FAQ ── */
 document.querySelectorAll('.fqb').forEach(btn=>{
