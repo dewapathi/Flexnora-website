@@ -29,7 +29,7 @@ export default function Contact() {
                   href="https://wa.me/94779400291"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-5 py-[18px] transition-all hover:translate-x-1.5 hover:border-indigo/40 hover:bg-indigo/5"
+                  className="group flex items-center gap-4 rounded-2xl border border-border bg-surface px-5 py-[18px] transition-all hover:translate-x-1.5 hover:border-indigo/40 hover:bg-indigo/5"
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-indigo/20 bg-indigo/10 text-indigo transition-all group-hover:bg-gradient-to-br group-hover:from-indigo group-hover:to-violet group-hover:text-white">
                     <FaWhatsapp className="h-[1.1rem] w-[1.1rem]" />
@@ -41,7 +41,7 @@ export default function Contact() {
                 </a>
                 <a
                   href="mailto:pradeepa@flexnora.com"
-                  className="group flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-5 py-[18px] transition-all hover:translate-x-1.5 hover:border-indigo/40 hover:bg-indigo/5"
+                  className="group flex items-center gap-4 rounded-2xl border border-border bg-surface px-5 py-[18px] transition-all hover:translate-x-1.5 hover:border-indigo/40 hover:bg-indigo/5"
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-indigo/20 bg-indigo/10 text-indigo transition-all group-hover:bg-gradient-to-br group-hover:from-indigo group-hover:to-violet group-hover:text-white">
                     <Mail className="h-[1.1rem] w-[1.1rem]" />
@@ -53,7 +53,7 @@ export default function Contact() {
                 </a>
                 <a
                   href="tel:+94779400291"
-                  className="group flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-5 py-[18px] transition-all hover:translate-x-1.5 hover:border-indigo/40 hover:bg-indigo/5"
+                  className="group flex items-center gap-4 rounded-2xl border border-border bg-surface px-5 py-[18px] transition-all hover:translate-x-1.5 hover:border-indigo/40 hover:bg-indigo/5"
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-indigo/20 bg-indigo/10 text-indigo transition-all group-hover:bg-gradient-to-br group-hover:from-indigo group-hover:to-violet group-hover:text-white">
                     <Phone className="h-[1.1rem] w-[1.1rem]" />
@@ -63,7 +63,7 @@ export default function Contact() {
                     <span className="block text-[0.95rem] font-semibold text-text">+94 77 9400 291</span>
                   </span>
                 </a>
-                <div className="flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-5 py-[18px]">
+                <div className="flex items-center gap-4 rounded-2xl border border-border bg-surface px-5 py-[18px]">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-indigo/20 bg-indigo/10 text-indigo">
                     <MapPin className="h-[1.1rem] w-[1.1rem]" />
                   </span>
@@ -76,7 +76,7 @@ export default function Contact() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-12">
+              <div className="relative overflow-hidden rounded-3xl border border-border bg-surface p-12 shadow-card">
                 <div
                   aria-hidden="true"
                   className="absolute -right-[100px] -top-[100px] h-[300px] w-[300px] rounded-full pointer-events-none"
@@ -106,7 +106,7 @@ export default function Contact() {
                     </a>
                     <a
                       href="tel:+94779400291"
-                      className="flex items-center gap-3.5 rounded-2xl border border-white/[0.14] bg-white/[0.06] px-6 py-[18px] font-semibold text-text transition-all hover:-translate-y-0.5 hover:bg-white/[0.08]"
+                      className="flex items-center gap-3.5 rounded-2xl border border-border-strong bg-surface-2 px-6 py-[18px] font-semibold text-text transition-all hover:-translate-y-0.5 hover:bg-surface-3"
                     >
                       <Phone className="h-5 w-5" />
                       <span>

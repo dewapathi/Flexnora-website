@@ -43,7 +43,7 @@ export default function Testimonials() {
           <div className="grid gap-6 md:grid-cols-3">
             {testimonials.map((t, i) => (
               <Reveal key={t.name} delay={i * 0.08}>
-                <div className="relative h-full overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-9 backdrop-blur-xl transition-all hover:-translate-y-1.5 hover:border-indigo/30">
+                <div className="relative h-full overflow-hidden rounded-3xl border border-border bg-surface p-9 shadow-card backdrop-blur-xl transition-all hover:-translate-y-1.5 hover:border-indigo/30">
                   <span
                     aria-hidden="true"
                     className="pointer-events-none absolute -top-2.5 right-6 font-display text-[8rem] font-extrabold leading-none text-indigo/[0.08]"
@@ -62,7 +62,7 @@ export default function Testimonials() {
                       alt={t.name}
                       width={48}
                       height={48}
-                      className="h-12 w-12 rounded-full border-2 border-white/[0.14] bg-bg-2 object-cover"
+                      className="h-12 w-12 rounded-full border-2 border-border-strong bg-bg-2 object-cover"
                     />
                     <div>
                       <div className="font-display text-[0.95rem] font-bold text-text">{t.name}</div>

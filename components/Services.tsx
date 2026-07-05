@@ -127,7 +127,7 @@ export default function Services() {
             desc="Five complete service pillars. One technology partner."
           />
 
-          <Reveal className="mb-14 flex w-fit max-w-full flex-wrap justify-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.03] p-1.5 mx-auto">
+          <Reveal className="mb-14 flex w-fit max-w-full flex-wrap justify-center gap-1 rounded-full border border-border bg-surface p-1.5 mx-auto">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -137,7 +137,7 @@ export default function Services() {
                 className={`flex items-center gap-1.5 whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${
                   activeTab === tab.id
                     ? 'bg-gradient-to-br from-indigo to-violet text-white shadow-[0_4px_20px_rgba(99,102,241,0.3)]'
-                    : 'text-text-2 hover:bg-white/[0.06] hover:text-text'
+                    : 'text-text-2 hover:bg-surface-2 hover:text-text'
                 }`}
               >
                 <tab.icon className="h-4 w-4" /> {tab.label}
@@ -158,7 +158,7 @@ export default function Services() {
               {active.items.map((item) => (
                 <div
                   key={item.title}
-                  className="group flex items-start gap-3.5 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 transition-all hover:-translate-y-0.5 hover:border-indigo/35"
+                  className="group flex items-start gap-3.5 rounded-2xl border border-border bg-surface p-6 transition-all hover:-translate-y-0.5 hover:border-indigo/35"
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] border border-indigo/20 bg-indigo/10 text-indigo transition-all group-hover:border-transparent group-hover:bg-gradient-to-br group-hover:from-indigo group-hover:to-violet group-hover:text-white">
                     <item.icon className="h-[0.95rem] w-[0.95rem]" />

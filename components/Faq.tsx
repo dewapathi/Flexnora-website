@@ -54,8 +54,8 @@ export default function Faq() {
               return (
                 <div
                   key={faq.q}
-                  className={`overflow-hidden rounded-2xl border bg-white/[0.03] transition-colors ${
-                    isOpen ? 'border-indigo/35' : 'border-white/[0.08] hover:border-white/[0.14]'
+                  className={`overflow-hidden rounded-2xl border bg-surface shadow-card transition-colors ${
+                    isOpen ? 'border-indigo/35' : 'border-border hover:border-border-strong'
                   }`}
                 >
                   <button
@@ -65,8 +65,8 @@ export default function Faq() {
                   >
                     {faq.q}
                     <span
-                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/[0.08] transition-all duration-300 ${
-                        isOpen ? 'rotate-45 bg-indigo/15 text-indigo' : 'bg-white/[0.06] text-indigo'
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-border transition-all duration-300 ${
+                        isOpen ? 'rotate-45 bg-indigo/15 text-indigo' : 'bg-surface-2 text-indigo'
                       }`}
                     >
                       <Plus className="h-3.5 w-3.5" />

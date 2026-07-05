@@ -6,12 +6,12 @@ import { Container } from './ui';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.08] bg-bg-1 pb-9 pt-20">
+    <footer className="border-t border-border bg-bg-1 pb-9 pt-20">
       <Container>
         <div className="mb-[60px] grid gap-12 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
           <div>
             <a href="#top" className="inline-flex items-center gap-3">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/[0.14] bg-white/[0.06]">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border-strong bg-surface-2">
                 <Image src="/images/logo1.png" alt="FLEXNORA" width={34} height={34} className="object-contain" />
               </span>
               <span className="font-display text-[1.1rem] font-extrabold tracking-tight text-text">
@@ -28,21 +28,21 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="flex h-[38px] w-[38px] items-center justify-center rounded-[10px] border border-white/[0.08] bg-white/[0.06] text-text-2 transition-colors hover:border-indigo/30 hover:bg-indigo/15 hover:text-indigo"
+                className="flex h-[38px] w-[38px] items-center justify-center rounded-[10px] border border-border bg-surface-2 text-text-2 transition-colors hover:border-indigo/30 hover:bg-indigo/15 hover:text-indigo"
               >
                 <FaWhatsapp className="h-4 w-4" />
               </a>
               <a
                 href="mailto:pradeepa@flexnora.com"
                 aria-label="Email"
-                className="flex h-[38px] w-[38px] items-center justify-center rounded-[10px] border border-white/[0.08] bg-white/[0.06] text-text-2 transition-colors hover:border-indigo/30 hover:bg-indigo/15 hover:text-indigo"
+                className="flex h-[38px] w-[38px] items-center justify-center rounded-[10px] border border-border bg-surface-2 text-text-2 transition-colors hover:border-indigo/30 hover:bg-indigo/15 hover:text-indigo"
               >
                 <Mail className="h-4 w-4" />
               </a>
               <a
                 href="tel:+94779400291"
                 aria-label="Phone"
-                className="flex h-[38px] w-[38px] items-center justify-center rounded-[10px] border border-white/[0.08] bg-white/[0.06] text-text-2 transition-colors hover:border-indigo/30 hover:bg-indigo/15 hover:text-indigo"
+                className="flex h-[38px] w-[38px] items-center justify-center rounded-[10px] border border-border bg-surface-2 text-text-2 transition-colors hover:border-indigo/30 hover:bg-indigo/15 hover:text-indigo"
               >
                 <Phone className="h-4 w-4" />
               </a>
@@ -82,7 +82,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/[0.08] pt-7">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border pt-7">
           <p className="text-sm text-text-3">&copy; 2026 FLEXNORA Digital. All rights reserved. · Colombo, Sri Lanka</p>
           <div className="flex gap-5">
             <Link href="/ball-sort-game/privacy-policy" className="text-sm text-text-3 transition-colors hover:text-text-2">

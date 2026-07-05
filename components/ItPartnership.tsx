@@ -57,7 +57,7 @@ export default function ItPartnership() {
               </ul>
               <a
                 href="#cta-fin"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-indigo to-violet px-[30px] py-3.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-indigo to-cyan px-[30px] py-3.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(29,78,216,0.3)] transition-all hover:-translate-y-0.5 dark:shadow-[0_0_30px_rgba(99,102,241,0.3)]"
               >
                 Book Free Consultation <ArrowRight className="h-4 w-4" />
               </a>
@@ -65,17 +65,17 @@ export default function ItPartnership() {
 
             <Reveal delay={0.1}>
               <div className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-br from-[#0e0c2e] to-[#0a1228] p-7 bg-noise">
-                <p className="relative mb-5 text-xs font-bold uppercase tracking-[2px] text-indigo">Everything we cover</p>
+                <p className="relative mb-5 text-xs font-bold uppercase tracking-[2px] text-[#818cf8]">Everything we cover</p>
                 <div className="relative grid grid-cols-2 gap-3">
                   {categories.map((c) => (
                     <div
                       key={c.label}
-                      className="flex items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 transition-colors hover:border-indigo/30 hover:bg-indigo/[0.08]"
+                      className="flex items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 transition-colors hover:border-[#818cf8]/30 hover:bg-[#6366f1]/[0.08]"
                     >
-                      <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-lg bg-indigo/10 text-indigo">
+                      <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-lg bg-[#6366f1]/10 text-[#818cf8]">
                         <c.icon className="h-[0.85rem] w-[0.85rem]" />
                       </div>
-                      <span className="text-[0.82rem] font-semibold text-text-2">{c.label}</span>
+                      <span className="text-[0.82rem] font-semibold text-slate-300">{c.label}</span>
                     </div>
                   ))}
                 </div>
@@ -86,7 +86,7 @@ export default function ItPartnership() {
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {cards.map((c, i) => (
               <Reveal key={c.title} delay={(i % 4) * 0.06}>
-                <div className="h-full rounded-3xl border border-white/[0.08] bg-white/[0.03] p-8 text-center transition-all hover:-translate-y-1.5 hover:border-indigo/40">
+                <div className="h-full rounded-3xl border border-border bg-surface p-8 text-center shadow-card transition-all hover:-translate-y-1.5 hover:border-indigo/40">
                   <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-indigo/20 bg-indigo/10 text-indigo transition-all group-hover:bg-gradient-to-br">
                     <c.icon className="h-6 w-6" />
                   </div>

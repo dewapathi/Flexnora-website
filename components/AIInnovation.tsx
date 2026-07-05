@@ -40,13 +40,13 @@ export default function AIInnovation() {
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.25 }}
-                  className="group h-full rounded-3xl border border-white/[0.08] bg-white/[0.03] p-7"
+                  className="group h-full rounded-3xl border border-border bg-surface p-7 shadow-card"
                 >
                   <div className="mb-3 flex items-center justify-between">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan/25 bg-cyan/10 text-cyan transition-all group-hover:border-transparent group-hover:bg-gradient-to-br group-hover:from-cyan group-hover:to-indigo group-hover:text-white">
                       <c.icon className="h-5 w-5" />
                     </div>
-                    <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-wide text-text-3">
+                    <span className="rounded-full border border-border bg-surface px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-wide text-text-3">
                       Capability
                     </span>
                   </div>

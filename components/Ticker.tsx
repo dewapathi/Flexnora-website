@@ -15,7 +15,7 @@ export default function Ticker() {
   return (
     <div
       aria-hidden="true"
-      className="group overflow-hidden border-y border-white/[0.08] bg-white/[0.015] py-[18px]"
+      className="group overflow-hidden border-y border-border bg-surface py-[18px]"
     >
       <div className="flex w-max animate-tick gap-[60px] group-hover:[animation-play-state:paused]">
         {[...items, ...items].map((item, i) => (

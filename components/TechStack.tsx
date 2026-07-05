@@ -96,7 +96,7 @@ export default function TechStack() {
             desc="Modern, proven technologies chosen for performance, scalability, and developer experience."
           />
 
-          <Reveal className="mx-auto mb-12 flex w-fit max-w-full flex-wrap justify-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.03] p-1.5">
+          <Reveal className="mx-auto mb-12 flex w-fit max-w-full flex-wrap justify-center gap-1 rounded-full border border-border bg-surface p-1.5">
             {categories.map((c) => (
               <button
                 key={c.id}
@@ -104,7 +104,7 @@ export default function TechStack() {
                 className={`flex items-center gap-1.5 whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${
                   active === c.id
                     ? 'bg-gradient-to-br from-indigo to-violet text-white shadow-[0_4px_20px_rgba(99,102,241,0.3)]'
-                    : 'text-text-2 hover:bg-white/[0.06] hover:text-text'
+                    : 'text-text-2 hover:bg-surface-2 hover:text-text'
                 }`}
               >
                 <c.icon className="h-4 w-4" /> {c.label}
@@ -124,7 +124,7 @@ export default function TechStack() {
               {cat.items.map((t) => (
                 <div
                   key={t.label}
-                  className="flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.06] px-[18px] py-2.5 text-sm font-semibold text-text-2 transition-all hover:-translate-y-0.5 hover:border-indigo/30 hover:bg-indigo/10 hover:text-text"
+                  className="flex items-center gap-2 rounded-full border border-border bg-surface-2 px-[18px] py-2.5 text-sm font-semibold text-text-2 transition-all hover:-translate-y-0.5 hover:border-indigo/30 hover:bg-indigo/10 hover:text-text"
                 >
                   <t.icon className="h-4 w-4" style={{ color: t.color }} />
                   {t.label}

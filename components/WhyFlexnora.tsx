@@ -70,7 +70,7 @@ export default function WhyFlexnora() {
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.25 }}
-                  className="group relative h-full overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-8 transition-colors hover:border-indigo/40"
+                  className="group relative h-full overflow-hidden rounded-3xl border border-border bg-surface p-8 shadow-card transition-colors hover:border-indigo/40"
                 >
                   <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-indigo/20 bg-indigo/10 text-indigo transition-all duration-300 group-hover:scale-110 group-hover:border-transparent group-hover:bg-gradient-to-br group-hover:from-indigo group-hover:to-violet group-hover:text-white group-hover:shadow-[0_12px_30px_rgba(99,102,241,0.4)]">
                     <p.icon className="h-6 w-6" />

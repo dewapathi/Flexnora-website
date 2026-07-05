@@ -36,12 +36,22 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#050816',
+  themeColor: '#f7faff',
 };
+
+const THEME_INIT_SCRIPT = `
+try {
+  var t = localStorage.getItem('flexnora-theme');
+  if (t === 'dark') document.documentElement.classList.add('dark');
+} catch (e) {}
+`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${syne.variable} ${inter.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body className="bg-bg font-sans text-text antialiased overflow-x-hidden">{children}</body>
     </html>
   );

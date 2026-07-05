@@ -38,13 +38,13 @@ export default function FinalCta() {
             </a>
             <a
               href="mailto:flexnoradigital@gmail.com?subject=Free%20Consultation%20Request%20-%20FLEXNORA"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-indigo to-violet px-[42px] py-[18px] text-[1.05rem] font-semibold text-white shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_50px_rgba(99,102,241,0.5)]"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-indigo to-cyan px-[42px] py-[18px] text-[1.05rem] font-semibold text-white shadow-[0_0_30px_rgba(29,78,216,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_50px_rgba(29,78,216,0.5)] dark:shadow-[0_0_30px_rgba(99,102,241,0.3)] dark:hover:shadow-[0_0_50px_rgba(99,102,241,0.5)]"
             >
               <CalendarCheck className="h-5 w-5" /> Book Free Consultation
             </a>
             <a
               href="tel:+94779400291"
-              className="inline-flex items-center gap-2 rounded-full border border-white/[0.14] bg-white/[0.06] px-[42px] py-[18px] text-[1.05rem] font-semibold text-text backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface-2 px-[42px] py-[18px] text-[1.05rem] font-semibold text-text backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:bg-surface-3"
             >
               <Phone className="h-5 w-5" /> Call Us Now
             </a>

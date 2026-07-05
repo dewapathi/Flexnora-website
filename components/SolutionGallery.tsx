@@ -71,7 +71,7 @@ export default function SolutionGallery() {
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.25 }}
-                  className="group h-full overflow-hidden rounded-3xl border border-white/[0.08] bg-bg-2 transition-colors hover:border-indigo/40"
+                  className="group h-full overflow-hidden rounded-3xl border border-border bg-bg-2 shadow-card transition-colors hover:border-indigo/40"
                 >
                   <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${s.grad} p-4`}>
                     <div className="flex gap-1.5">

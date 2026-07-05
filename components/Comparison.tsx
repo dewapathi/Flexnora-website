@@ -40,9 +40,9 @@ export default function Comparison() {
             desc="The numbers speak for themselves. See why smart businesses outsource their technology."
           />
 
-          <Reveal className="mx-auto grid max-w-[860px] overflow-hidden rounded-3xl border border-white/[0.08] sm:grid-cols-2">
+          <Reveal className="mx-auto grid max-w-[860px] overflow-hidden rounded-3xl border border-border shadow-card sm:grid-cols-2">
             <div className="bg-bg-1">
-              <div className="border-b border-white/[0.08] px-8 py-6">
+              <div className="border-b border-border px-8 py-6">
                 <div className="flex items-center gap-2.5 font-display text-[1.05rem] font-bold text-text">
                   <span className="h-2 w-2 rounded-full bg-red-500" />
                   Traditional In-House Hiring
@@ -50,7 +50,7 @@ export default function Comparison() {
                 <div className="mt-1 text-[0.78rem] text-text-3">The expensive, slow, and unpredictable way</div>
               </div>
               {bad.map((row) => (
-                <div key={row} className="flex items-center gap-3 border-b border-white/[0.08] px-8 py-3.5 text-[0.88rem] text-text-2 last:border-b-0">
+                <div key={row} className="flex items-center gap-3 border-b border-border px-8 py-3.5 text-[0.88rem] text-text-2 last:border-b-0">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-red-500">
                     <X className="h-3.5 w-3.5" />
                   </span>
@@ -59,7 +59,7 @@ export default function Comparison() {
               ))}
             </div>
             <div className="bg-gradient-to-br from-indigo/[0.07] to-violet/[0.04]">
-              <div className="border-b border-white/[0.08] px-8 py-6">
+              <div className="border-b border-border px-8 py-6">
                 <div className="flex items-center gap-2.5 font-display text-[1.05rem] font-bold text-text">
                   <span className="h-2 w-2 rounded-full bg-green" />
                   FLEXNORA Technology Partner
@@ -67,7 +67,7 @@ export default function Comparison() {
                 <div className="mt-1 text-[0.78rem] text-text-3">The smart, scalable, and cost-effective way</div>
               </div>
               {good.map((row) => (
-                <div key={row} className="flex items-center gap-3 border-b border-white/[0.08] px-8 py-3.5 text-[0.88rem] text-text-2 last:border-b-0">
+                <div key={row} className="flex items-center gap-3 border-b border-border px-8 py-3.5 text-[0.88rem] text-text-2 last:border-b-0">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green/10 text-green">
                     <Check className="h-3.5 w-3.5" />
                   </span>

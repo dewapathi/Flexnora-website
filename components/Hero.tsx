@@ -161,13 +161,13 @@ export default function Hero() {
           >
             <a
               href="#cta-fin"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-br from-indigo to-violet px-[42px] py-[18px] text-[1.05rem] font-semibold text-white shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_50px_rgba(99,102,241,0.5)]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-br from-indigo to-cyan px-[42px] py-[18px] text-[1.05rem] font-semibold text-white shadow-[0_0_30px_rgba(29,78,216,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_50px_rgba(29,78,216,0.5)] dark:shadow-[0_0_30px_rgba(99,102,241,0.3)] dark:hover:shadow-[0_0_50px_rgba(99,102,241,0.5)]"
             >
               <CalendarCheck className="h-5 w-5" /> Book Free Consultation
             </a>
             <a
               href="#solutions"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.14] bg-white/[0.06] px-[42px] py-[18px] text-[1.05rem] font-semibold text-text backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/10"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface-2 px-[42px] py-[18px] text-[1.05rem] font-semibold text-text backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-border-strong hover:bg-surface-3"
             >
               Explore Solutions <ArrowRight className="h-5 w-5" />
             </a>
@@ -194,24 +194,24 @@ export default function Hero() {
             <p className="text-text-2">
               <strong className="text-text">50+ projects</strong> delivered
             </p>
-            <span className="h-1 w-1 rounded-full bg-white/[0.14]" />
+            <span className="h-1 w-1 rounded-full bg-border-strong" />
             <p className="text-text-2">
               <strong className="text-text">98%</strong> satisfaction
             </p>
-            <span className="h-1 w-1 rounded-full bg-white/[0.14]" />
+            <span className="h-1 w-1 rounded-full bg-border-strong" />
             <p className="flex items-center gap-1 text-text-2">
               <Star className="h-3.5 w-3.5 fill-amber text-amber" /> <strong className="text-text">5.0</strong> rated
             </p>
           </motion.div>
-        </div>
-      </div>
 
-      <div
-        aria-hidden="true"
-        className="absolute bottom-9 left-1/2 flex animate-bob flex-col items-center gap-2 text-[0.75rem] font-medium tracking-wider text-text-3"
-      >
-        SCROLL
-        <span className="block h-10 w-px bg-gradient-to-b from-indigo to-transparent" />
+          <div
+            aria-hidden="true"
+            className="mx-auto mt-16 flex w-fit animate-bob flex-col items-center gap-2 text-[0.75rem] font-medium tracking-wider text-text-3"
+          >
+            SCROLL
+            <span className="block h-10 w-px bg-gradient-to-b from-indigo to-transparent" />
+          </div>
+        </div>
       </div>
     </section>
   );

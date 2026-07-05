@@ -57,7 +57,7 @@ export default function HireDevelopers() {
               </ul>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-indigo to-violet px-[30px] py-3.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-indigo to-cyan px-[30px] py-3.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(29,78,216,0.3)] transition-all hover:-translate-y-0.5 dark:shadow-[0_0_30px_rgba(99,102,241,0.3)]"
               >
                 Hire a Developer <ArrowRight className="h-4 w-4" />
               </a>
@@ -67,7 +67,7 @@ export default function HireDevelopers() {
               {roles.map((r) => (
                 <div
                   key={r.label}
-                  className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-4.5 py-4 transition-all hover:-translate-y-0.5 hover:border-indigo/40 hover:bg-indigo/[0.06]"
+                  className="flex items-center gap-3 rounded-2xl border border-border bg-surface px-4.5 py-4 transition-all hover:-translate-y-0.5 hover:border-indigo/40 hover:bg-indigo/[0.06]"
                 >
                   <div className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[10px] bg-indigo/10 text-indigo">
                     <r.icon className="h-[0.9rem] w-[0.9rem]" />
@@ -78,7 +78,7 @@ export default function HireDevelopers() {
             </Reveal>
           </div>
 
-          <Reveal className="border-t border-white/[0.08] pt-12 text-center">
+          <Reveal className="border-t border-border pt-12 text-center">
             <Kicker>Engagement models</Kicker>
             <h3 className="mb-1.5 font-display text-xl font-bold text-text">Work the way that suits your business.</h3>
             <p className="mx-auto mb-6 max-w-[580px] text-text-2">
@@ -88,7 +88,7 @@ export default function HireDevelopers() {
               {engagements.map((e) => (
                 <div
                   key={e.label}
-                  className="flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.06] px-[22px] py-2.5 text-sm font-semibold text-text-2 transition-colors hover:border-indigo/30 hover:bg-indigo/10 hover:text-text"
+                  className="flex items-center gap-2 rounded-full border border-border bg-surface-2 px-[22px] py-2.5 text-sm font-semibold text-text-2 transition-colors hover:border-indigo/30 hover:bg-indigo/10 hover:text-text"
                 >
                   <e.icon className="h-4 w-4 text-indigo" /> {e.label}
                 </div>

@@ -42,7 +42,7 @@ export default function Process() {
                   transition={{ duration: 0.5, delay: (i % 3) * 0.06 }}
                   className="relative flex items-start gap-6 pl-16"
                 >
-                  <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full border-2 border-white/[0.14] bg-bg font-display text-sm font-extrabold text-text-2">
+                  <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full border-2 border-border-strong bg-bg font-display text-sm font-extrabold text-text-2">
                     {s.num}
                   </div>
                   <div>

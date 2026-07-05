@@ -48,7 +48,7 @@ export default function Stats() {
       <Container>
         <div
           ref={gridRef}
-          className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.08] lg:grid-cols-4"
+          className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-border bg-surface-3 shadow-card lg:grid-cols-4"
         >
           {stats.map((s) => (
             <div key={s.label} className="bg-bg-1 px-8 py-[50px] text-center transition-colors hover:bg-bg-2">
