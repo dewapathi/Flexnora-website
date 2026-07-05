@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import { Container } from './ui';
 
 const stats = [
   { count: 50, sfx: '+', label: 'Projects Delivered' },
@@ -43,17 +44,26 @@ export default function Stats() {
   }, []);
 
   return (
-    <section className="st-s" id="stats" aria-label="Statistics">
-      <div className="container">
-        <div className="stg rv" ref={gridRef}>
-          {stats.map((s, i) => (
-            <div key={i} className="stc">
-              <span className="stn" data-count={s.count} data-sfx={s.sfx}>0</span>
-              <div className="stl">{s.label}</div>
+    <section aria-label="Statistics" className="py-20">
+      <Container>
+        <div
+          ref={gridRef}
+          className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.08] lg:grid-cols-4"
+        >
+          {stats.map((s) => (
+            <div key={s.label} className="bg-bg-1 px-8 py-[50px] text-center transition-colors hover:bg-bg-2">
+              <span
+                data-count={s.count}
+                data-sfx={s.sfx}
+                className="mb-2.5 block bg-gradient-to-br from-text to-lilac bg-clip-text font-display text-[clamp(2.5rem,4vw,4rem)] font-extrabold leading-none tracking-[-2px] text-transparent"
+              >
+                0
+              </span>
+              <div className="text-sm font-medium text-text-3">{s.label}</div>
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

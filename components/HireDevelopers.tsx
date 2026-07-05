@@ -1,73 +1,101 @@
+import {
+  Monitor, Server, GitBranch, Smartphone, TestTube, Settings, BrainCircuit, Cloud,
+  Clock, Hourglass, ListChecks, Users, Handshake, Check, ArrowRight,
+} from 'lucide-react';
+import { SiFigma } from 'react-icons/si';
+import { Container, Kicker, GradientText, Reveal } from './ui';
+
 const roles = [
-  { icon: 'fa-display', label: 'Frontend Developer' },
-  { icon: 'fa-server', label: 'Backend Developer' },
-  { icon: 'fa-code-branch', label: 'Full Stack Developer' },
-  { icon: 'fa-mobile-screen', label: 'Mobile Developer' },
-  { icon: 'fa-brands fa-figma', label: 'UI/UX Designer' },
-  { icon: 'fa-vial', label: 'QA Engineer' },
-  { icon: 'fa-gear', label: 'DevOps Engineer' },
-  { icon: 'fa-brain', label: 'AI Engineer' },
-  { icon: 'fa-brands fa-aws', label: 'Cloud Engineer' },
+  { icon: Monitor, label: 'Frontend Developer' },
+  { icon: Server, label: 'Backend Developer' },
+  { icon: GitBranch, label: 'Full Stack Developer' },
+  { icon: Smartphone, label: 'Mobile Developer' },
+  { icon: SiFigma, label: 'UI/UX Designer' },
+  { icon: TestTube, label: 'QA Engineer' },
+  { icon: Settings, label: 'DevOps Engineer' },
+  { icon: BrainCircuit, label: 'AI Engineer' },
+  { icon: Cloud, label: 'Cloud Engineer' },
 ];
 
 const engagements = [
-  { icon: 'fa-clock', label: 'Full Time · 160 hrs/mo' },
-  { icon: 'fa-hourglass-half', label: 'Part Time · 80 hrs/mo' },
-  { icon: 'fa-list-check', label: 'Project Based' },
-  { icon: 'fa-users', label: 'Dedicated Team' },
-  { icon: 'fa-handshake', label: 'Long-Term Contract' },
+  { icon: Clock, label: 'Full Time · 160 hrs/mo' },
+  { icon: Hourglass, label: 'Part Time · 80 hrs/mo' },
+  { icon: ListChecks, label: 'Project Based' },
+  { icon: Users, label: 'Dedicated Team' },
+  { icon: Handshake, label: 'Long-Term Contract' },
 ];
 
 export default function HireDevelopers() {
   return (
-    <section className="hire-sec" id="hire" aria-labelledby="hire-h">
-      <div className="container zi">
-        <div className="hire-top">
-          <div>
-            <p className="lbl rv">Dedicated developers</p>
-            <h2 id="hire-h" className="rv d1">
-              Hire expert developers<br /><span className="g">that work as your own.</span>
-            </h2>
-            <p className="rv d2" style={{ marginBottom: '28px' }}>
-              Need a specific expert embedded in your team? Hire dedicated developers from FLEXNORA —
-              they integrate seamlessly with your workflow, communicate on your channels, and deliver
-              as if they&apos;re sitting in your office.
-            </p>
-            <ul className="wl rv d3">
-              <li className="wli"><i className="fa-solid fa-check"></i>Start within 48 hours — no long recruitment cycles</li>
-              <li className="wli"><i className="fa-solid fa-check"></i>Deeply vetted engineers with proven track records</li>
-              <li className="wli"><i className="fa-solid fa-check"></i>Flexible engagement — part-time, full-time, or project-based</li>
-              <li className="wli"><i className="fa-solid fa-check"></i>Daily standups, your tools, your timezone</li>
-            </ul>
-            <div style={{ marginTop: '32px' }} className="rv d4">
-              <a href="#contact" className="btn btn-p">
-                Hire a Developer <i className="fa-solid fa-arrow-right"></i>
+    <section id="hire" aria-labelledby="hire-h" className="scroll-mt-20">
+      <div className="py-[120px]">
+        <Container>
+          <div className="mb-16 grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+            <Reveal>
+              <Kicker>Dedicated developers</Kicker>
+              <h2 id="hire-h" className="mb-6 font-display text-[clamp(2.2rem,4vw,3.5rem)] font-bold leading-[1.1] text-text">
+                Hire expert developers
+                <br />
+                <GradientText>that work as your own.</GradientText>
+              </h2>
+              <p className="mb-7 text-text-2">
+                Need a specific expert embedded in your team? Hire dedicated developers from FLEXNORA —
+                they integrate seamlessly with your workflow, communicate on your channels, and deliver
+                as if they&apos;re sitting in your office.
+              </p>
+              <ul className="mb-8 flex flex-col gap-3">
+                {[
+                  'Start within 48 hours — no long recruitment cycles',
+                  'Deeply vetted engineers with proven track records',
+                  'Flexible engagement — part-time, full-time, or project-based',
+                  'Daily standups, your tools, your timezone',
+                ].map((b) => (
+                  <li key={b} className="flex items-start gap-3 text-sm text-text-2">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-green" /> {b}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-indigo to-violet px-[30px] py-3.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all hover:-translate-y-0.5"
+              >
+                Hire a Developer <ArrowRight className="h-4 w-4" />
               </a>
+            </Reveal>
+
+            <Reveal delay={0.1} className="grid grid-cols-3 gap-3">
+              {roles.map((r) => (
+                <div
+                  key={r.label}
+                  className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-4.5 py-4 transition-all hover:-translate-y-0.5 hover:border-indigo/40 hover:bg-indigo/[0.06]"
+                >
+                  <div className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[10px] bg-indigo/10 text-indigo">
+                    <r.icon className="h-[0.9rem] w-[0.9rem]" />
+                  </div>
+                  <span className="text-[0.85rem] font-semibold text-text-2">{r.label}</span>
+                </div>
+              ))}
+            </Reveal>
+          </div>
+
+          <Reveal className="border-t border-white/[0.08] pt-12 text-center">
+            <Kicker>Engagement models</Kicker>
+            <h3 className="mb-1.5 font-display text-xl font-bold text-text">Work the way that suits your business.</h3>
+            <p className="mx-auto mb-6 max-w-[580px] text-text-2">
+              From a few hours a week to a fully embedded full-time team — we flex to your needs.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {engagements.map((e) => (
+                <div
+                  key={e.label}
+                  className="flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.06] px-[22px] py-2.5 text-sm font-semibold text-text-2 transition-colors hover:border-indigo/30 hover:bg-indigo/10 hover:text-text"
+                >
+                  <e.icon className="h-4 w-4 text-indigo" /> {e.label}
+                </div>
+              ))}
             </div>
-          </div>
-          <div className="role-grid rv d2">
-            {roles.map((r, i) => (
-              <div key={i} className="role-card">
-                <div className="role-ic"><i className={`fa-solid ${r.icon}`}></i></div>
-                <div className="role-nm">{r.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="eng-wrap rv">
-          <p className="lbl" style={{ marginBottom: '8px' }}>Engagement models</p>
-          <h3 style={{ marginBottom: '6px' }}>Work the way that suits your business.</h3>
-          <p style={{ maxWidth: '580px', margin: '0 auto 20px' }}>
-            From a few hours a week to a fully embedded full-time team — we flex to your needs.
-          </p>
-          <div className="eng-types">
-            {engagements.map((e, i) => (
-              <div key={i} className="eng-type">
-                <i className={`fa-solid ${e.icon}`}></i>{e.label}
-              </div>
-            ))}
-          </div>
-        </div>
+          </Reveal>
+        </Container>
       </div>
     </section>
   );

@@ -1,82 +1,102 @@
+import {
+  Check, ArrowRight, Code2, Cloud, Bot, ShieldCheck, Users, Wrench, LineChart, Headset,
+  UserX, Layers, ArrowUpDown, PiggyBank,
+} from 'lucide-react';
+import { Container, Kicker, GradientText, Reveal } from './ui';
+
+const categories = [
+  { icon: Code2, label: 'Software Development' },
+  { icon: Cloud, label: 'Cloud & Infrastructure' },
+  { icon: Bot, label: 'AI & Automation' },
+  { icon: ShieldCheck, label: 'Security & Updates' },
+  { icon: Users, label: 'Dedicated Teams' },
+  { icon: Wrench, label: 'Managed IT Services' },
+  { icon: LineChart, label: 'Performance & SEO' },
+  { icon: Headset, label: '24/7 Tech Support' },
+];
+
+const bullets = [
+  'No recruitment, no HR, no onboarding delays',
+  'Ready-to-work experts across every discipline',
+  'Scale your team up or down instantly',
+  'One partner for everything — from websites to AI',
+  "Continuous support — we don't disappear after launch",
+];
+
+const cards = [
+  { icon: UserX, title: 'No Hiring Needed', desc: 'Skip the months-long recruitment process, interviews, and onboarding. Our experts are ready to start immediately.' },
+  { icon: Layers, title: 'Full-Stack Coverage', desc: 'From frontend to backend, mobile to cloud, AI to security — one partner covers every layer of your technology.' },
+  { icon: ArrowUpDown, title: 'Scale On Demand', desc: 'Need more developers for a big launch? Scaling down after? Adjust your team size instantly with no lock-in.' },
+  { icon: PiggyBank, title: 'Lower Cost', desc: 'Get senior-level expertise at a fraction of the cost of in-house hiring — no salaries, benefits, or equipment costs.' },
+];
+
 export default function ItPartnership() {
   return (
-    <section className="itp" id="itp" aria-labelledby="itp-h">
-      <div className="container zi">
-        <div className="itp-top">
-          <div>
-            <p className="lbl rv">Your Outsourced IT Department</p>
-            <h2 id="itp-h" className="rv d1">
-              We don&apos;t just build software.<br />
-              <span className="g">We become your technology team.</span>
-            </h2>
-            <p className="rv d2" style={{ marginBottom: '32px' }}>
-              Growing businesses shouldn&apos;t need to hire expensive in-house developers, manage HR,
-              or worry about technology. Partner with FLEXNORA and get a complete, expert technology
-              department — at a fraction of the cost.
-            </p>
-            <ul className="wl rv d3">
-              <li className="wli"><i className="fa-solid fa-check"></i> No recruitment, no HR, no onboarding delays</li>
-              <li className="wli"><i className="fa-solid fa-check"></i> Ready-to-work experts across every discipline</li>
-              <li className="wli"><i className="fa-solid fa-check"></i> Scale your team up or down instantly</li>
-              <li className="wli"><i className="fa-solid fa-check"></i> One partner for everything — from websites to AI</li>
-              <li className="wli"><i className="fa-solid fa-check"></i> Continuous support — we don&apos;t disappear after launch</li>
-            </ul>
-            <div style={{ marginTop: '32px' }} className="rv d4">
-              <a href="#cta-fin" className="btn btn-p">
-                Book Free Consultation <i className="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-          <div className="rv d2">
-            <div style={{
-              borderRadius: 'var(--r-lg)',
-              background: 'linear-gradient(145deg,#0e0c2e,#0a1228)',
-              border: '1px solid var(--border)',
-              padding: '28px',
-              position: 'relative',
-              overflow: 'hidden',
-            }}>
-              <div style={{
-                position: 'absolute', inset: 0,
-                backgroundImage: 'radial-gradient(rgba(99,102,241,0.06) 1px,transparent 1px)',
-                backgroundSize: '22px 22px',
-                pointerEvents: 'none',
-              }}></div>
-              <p className="lbl" style={{ marginBottom: '20px', position: 'relative' }}>Everything we cover</p>
-              <div className="itp-cats" style={{ position: 'relative' }}>
-                {[
-                  { icon: 'fa-code', label: 'Software Development' },
-                  { icon: 'fa-brands fa-aws', label: 'Cloud & Infrastructure' },
-                  { icon: 'fa-robot', label: 'AI & Automation' },
-                  { icon: 'fa-shield-halved', label: 'Security & Updates' },
-                  { icon: 'fa-users', label: 'Dedicated Teams' },
-                  { icon: 'fa-wrench', label: 'Managed IT Services' },
-                  { icon: 'fa-chart-line', label: 'Performance & SEO' },
-                  { icon: 'fa-headset', label: '24/7 Tech Support' },
-                ].map((cat, i) => (
-                  <div key={i} className="itp-cat">
-                    <div className="itp-cat-ic"><i className={`fa-solid ${cat.icon}`}></i></div>
-                    <div className="itp-cat-nm">{cat.label}</div>
-                  </div>
+    <section id="itp" aria-labelledby="itp-h" className="scroll-mt-20 bg-bg-1">
+      <div className="py-[120px]">
+        <Container>
+          <div className="mb-20 grid gap-16 lg:grid-cols-2 lg:items-center">
+            <Reveal>
+              <Kicker>Your Outsourced IT Department</Kicker>
+              <h2 id="itp-h" className="mb-8 font-display text-[clamp(2.2rem,4vw,3.5rem)] font-bold leading-[1.1] text-text">
+                We don&apos;t just build software.
+                <br />
+                <GradientText>We become your technology team.</GradientText>
+              </h2>
+              <p className="mb-8 text-text-2">
+                Growing businesses shouldn&apos;t need to hire expensive in-house developers, manage HR,
+                or worry about technology. Partner with FLEXNORA and get a complete, expert technology
+                department — at a fraction of the cost.
+              </p>
+              <ul className="mb-8 flex flex-col gap-3">
+                {bullets.map((b) => (
+                  <li key={b} className="flex items-start gap-3 text-sm text-text-2">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-green" /> {b}
+                  </li>
                 ))}
+              </ul>
+              <a
+                href="#cta-fin"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-indigo to-violet px-[30px] py-3.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all hover:-translate-y-0.5"
+              >
+                Book Free Consultation <ArrowRight className="h-4 w-4" />
+              </a>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-br from-[#0e0c2e] to-[#0a1228] p-7 bg-noise">
+                <p className="relative mb-5 text-xs font-bold uppercase tracking-[2px] text-indigo">Everything we cover</p>
+                <div className="relative grid grid-cols-2 gap-3">
+                  {categories.map((c) => (
+                    <div
+                      key={c.label}
+                      className="flex items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 transition-colors hover:border-indigo/30 hover:bg-indigo/[0.08]"
+                    >
+                      <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-lg bg-indigo/10 text-indigo">
+                        <c.icon className="h-[0.85rem] w-[0.85rem]" />
+                      </div>
+                      <span className="text-[0.82rem] font-semibold text-text-2">{c.label}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            </Reveal>
           </div>
-        </div>
-        <div className="itp-cards">
-          {[
-            { icon: 'fa-user-slash', title: 'No Hiring Needed', desc: 'Skip the months-long recruitment process, interviews, and onboarding. Our experts are ready to start immediately.' },
-            { icon: 'fa-layer-group', title: 'Full-Stack Coverage', desc: 'From frontend to backend, mobile to cloud, AI to security — one partner covers every layer of your technology.' },
-            { icon: 'fa-arrows-up-down', title: 'Scale On Demand', desc: 'Need more developers for a big launch? Scaling down after? Adjust your team size instantly with no lock-in.' },
-            { icon: 'fa-piggy-bank', title: 'Lower Cost', desc: 'Get senior-level expertise at a fraction of the cost of in-house hiring — no salaries, benefits, or equipment costs.' },
-          ].map((card, i) => (
-            <div key={i} className={`itp-card rv${i > 0 ? ` d${i}` : ''}`}>
-              <div className="itp-card-ic"><i className={`fa-solid ${card.icon}`}></i></div>
-              <h3>{card.title}</h3>
-              <p>{card.desc}</p>
-            </div>
-          ))}
-        </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {cards.map((c, i) => (
+              <Reveal key={c.title} delay={(i % 4) * 0.06}>
+                <div className="h-full rounded-3xl border border-white/[0.08] bg-white/[0.03] p-8 text-center transition-all hover:-translate-y-1.5 hover:border-indigo/40">
+                  <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-indigo/20 bg-indigo/10 text-indigo transition-all group-hover:bg-gradient-to-br">
+                    <c.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mb-2 text-base font-bold text-text">{c.title}</h3>
+                  <p className="text-sm leading-relaxed text-text-2">{c.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
       </div>
     </section>
   );

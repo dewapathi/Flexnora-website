@@ -1,102 +1,87 @@
+'use client';
+import { motion } from 'framer-motion';
+import { Lightbulb, ShieldCheck, Gauge, Layers, Award, Eye, Handshake } from 'lucide-react';
+import { Container, SectionHeader, Reveal } from './ui';
+
+const pillars = [
+  {
+    icon: Lightbulb,
+    title: 'Innovation',
+    desc: 'We track and adopt the technology that actually moves the needle — AI, modern frameworks, and lean architectures — not hype for its own sake.',
+    big: true,
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Security',
+    desc: 'Security reviews, dependency hygiene, and hardened infrastructure baked into every build, not bolted on after launch.',
+  },
+  {
+    icon: Gauge,
+    title: 'Performance',
+    desc: 'Lighthouse scores above 95, sub-second loads, and Core Web Vitals treated as a feature, not an afterthought.',
+  },
+  {
+    icon: Layers,
+    title: 'Scalability',
+    desc: 'Architecture designed to handle 10x growth without a rewrite — from database schema to cloud infrastructure.',
+  },
+  {
+    icon: Award,
+    title: 'Quality',
+    desc: 'Clean, documented, reviewed code. Every interface tested across devices before it ever reaches your users.',
+  },
+  {
+    icon: Eye,
+    title: 'Transparency',
+    desc: 'Weekly demos, honest timelines, and a direct line to the people actually building your product.',
+  },
+  {
+    icon: Handshake,
+    title: 'Long-Term Partnership',
+    desc: "We stay on after launch — as your technology team, not a vendor you never hear from again.",
+    big: true,
+  },
+];
+
 export default function WhyFlexnora() {
   return (
-    <section className="why" id="why" aria-labelledby="why-h">
-      <div className="container zi">
-        <div className="sec-hd">
-          <p className="lbl">Why choose us</p>
-          <h2 id="why-h" className="rv">
-            Built Different.<br /><span className="g">Delivered Better.</span>
-          </h2>
-          <p className="rv d1">
-            We don&apos;t just write code. We think like a product team — obsessing over every pixel,
-            every interaction, and every business outcome.
-          </p>
-        </div>
+    <section id="why" aria-labelledby="why-h" className="scroll-mt-20 bg-bg-1">
+      <div className="py-[120px]">
+        <Container>
+          <SectionHeader
+            kicker="Why choose us"
+            title={
+              <>
+                Built Different.
+                <br />
+                <span className="text-gradient">Delivered Better.</span>
+              </>
+            }
+            desc="We don't just write code. We think like a product team — obsessing over every pixel, every interaction, and every business outcome."
+          />
 
-        <div className="wb rv">
-          <div className="wv">
-            <div className="wvi">
-              <div className="wib-wrap">
-                <div className="wib-ring"></div>
-                <div className="wib-ring2"></div>
-                <div className="wib"><i className="fa-solid fa-medal"></i></div>
-              </div>
-            </div>
-            <div className="wm tl"><div><div className="wm-n">5★</div><div className="wm-l">Avg Rating</div></div></div>
-            <div className="wm br"><div><div className="wm-n">98%</div><div className="wm-l">Satisfaction</div></div></div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {pillars.map((p, i) => (
+              <Reveal
+                key={p.title}
+                delay={(i % 4) * 0.06}
+                className={p.big ? 'md:col-span-2' : ''}
+              >
+                <motion.div
+                  whileHover={{ y: -6 }}
+                  transition={{ duration: 0.25 }}
+                  className="group relative h-full overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-8 transition-colors hover:border-indigo/40"
+                >
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-indigo/20 bg-indigo/10 text-indigo transition-all duration-300 group-hover:scale-110 group-hover:border-transparent group-hover:bg-gradient-to-br group-hover:from-indigo group-hover:to-violet group-hover:text-white group-hover:shadow-[0_12px_30px_rgba(99,102,241,0.4)]">
+                    <p.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mb-2 text-lg font-bold text-text">{p.title}</h3>
+                  <p className="text-sm leading-relaxed text-text-2">{p.desc}</p>
+                </motion.div>
+              </Reveal>
+            ))}
           </div>
-          <div className="wc">
-            <div className="badge" style={{ marginBottom: '20px' }}>Premium Quality</div>
-            <h3>Pixel-perfect.<br />Performance-first.</h3>
-            <p style={{ marginBottom: '28px' }}>
-              We hold ourselves to the same standards as the world&apos;s best product studios. Every
-              line of code is clean, every interface is considered, every interaction is deliberate —
-              not because we have to, because we can&apos;t help it.
-            </p>
-            <ul className="wl">
-              <li className="wli"><i className="fa-solid fa-check"></i> Lighthouse scores above 95 on every project</li>
-              <li className="wli"><i className="fa-solid fa-check"></i> Responsive and tested across all devices</li>
-              <li className="wli"><i className="fa-solid fa-check"></i> Accessibility-first development (WCAG 2.1)</li>
-              <li className="wli"><i className="fa-solid fa-check"></i> Clean, documented, maintainable code</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="wb rev rv">
-          <div className="wv">
-            <div className="wvi">
-              <div className="wib-wrap" style={{ animationDelay: '0.5s' }}>
-                <div className="wib-ring"></div>
-                <div className="wib-ring2"></div>
-                <div className="wib"><i className="fa-solid fa-clock"></i></div>
-              </div>
-            </div>
-            <div className="wm tl"><div><div className="wm-n">On Time</div><div className="wm-l">Every Sprint</div></div></div>
-            <div className="wm br"><div><div className="wm-n">24h</div><div className="wm-l">Response</div></div></div>
-          </div>
-          <div className="wc">
-            <div className="badge" style={{ marginBottom: '20px' }}>Reliable Delivery</div>
-            <h3>Clear roadmap.<br />No surprises.</h3>
-            <p style={{ marginBottom: '28px' }}>
-              We run in sprints, communicate proactively, and ship on time. You always know where your
-              project stands — no chasing, no guessing, no 3am panic about your launch date.
-            </p>
-            <ul className="wl">
-              <li className="wli"><i className="fa-solid fa-check"></i> Weekly progress reports and live demos</li>
-              <li className="wli"><i className="fa-solid fa-check"></i> Milestone-based delivery with clear ownership</li>
-              <li className="wli"><i className="fa-solid fa-check"></i> Dedicated Slack / WhatsApp channel</li>
-              <li className="wli"><i className="fa-solid fa-check"></i> Post-launch support included on all projects</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="wb rv">
-          <div className="wv">
-            <div className="wvi">
-              <div className="wib-wrap" style={{ animationDelay: '1s' }}>
-                <div className="wib-ring"></div>
-                <div className="wib-ring2"></div>
-                <div className="wib"><i className="fa-solid fa-user-tie"></i></div>
-              </div>
-            </div>
-            <div className="wm tl"><div><div className="wm-n">50+</div><div className="wm-l">Projects</div></div></div>
-            <div className="wm br"><div><div className="wm-n">5yr</div><div className="wm-l">Experience</div></div></div>
-          </div>
-          <div className="wc">
-            <div className="badge" style={{ marginBottom: '20px' }}>Strategic Partnership</div>
-            <h3>Your product team,<br />not a vendor.</h3>
-            <p style={{ marginBottom: '28px' }}>
-              We embed ourselves in your business. We ask the uncomfortable questions. We push back
-              when something won&apos;t serve your users — because your success is our reputation.
-            </p>
-            <ul className="wl">
-              <li className="wli"><i className="fa-solid fa-check"></i> Strategy and discovery before any code</li>
-              <li className="wli"><i className="fa-solid fa-check"></i> Growth-focused UX recommendations</li>
-              <li className="wli"><i className="fa-solid fa-check"></i> Honest, direct communication always</li>
-              <li className="wli"><i className="fa-solid fa-check"></i> Long-term relationship, not one-and-done</li>
-            </ul>
-          </div>
-        </div>
+        </Container>
       </div>
     </section>
   );

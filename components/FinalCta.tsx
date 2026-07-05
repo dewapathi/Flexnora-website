@@ -1,37 +1,56 @@
+import { CalendarCheck, Phone } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+import { Container, Kicker, GradientText, Reveal } from './ui';
+
 export default function FinalCta() {
   return (
-    <section className="cta-fin" id="cta-fin" aria-labelledby="ctaf-h">
-      <div className="container">
-        <div className="cta-fin-inner">
-          <p className="lbl rv">Ready to get started?</p>
-          <h2 id="ctaf-h" className="rv d1">
-            Need a reliable<br /><span className="g">technology partner?</span>
+    <section id="cta-fin" aria-labelledby="ctaf-h" className="relative scroll-mt-20 overflow-hidden bg-bg-1 py-[140px] text-center">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at 50% 50%,rgba(99,102,241,0.22) 0%,rgba(139,92,246,0.1) 40%,transparent 70%)' }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{ backgroundImage: 'radial-gradient(rgba(99,102,241,0.06) 1px,transparent 1px)', backgroundSize: '32px 32px' }}
+      />
+      <Container>
+        <Reveal className="relative mx-auto max-w-[720px]">
+          <Kicker>Ready to get started?</Kicker>
+          <h2 id="ctaf-h" className="mb-4 font-display text-[clamp(2.2rem,4vw,3.5rem)] font-bold leading-[1.1] text-text">
+            Need a reliable
+            <br />
+            <GradientText>technology partner?</GradientText>
           </h2>
-          <p className="rv d2">
+          <p className="mx-auto mb-11 max-w-2xl text-[1.1rem] text-text-2">
             Let&apos;s build and grow your business together. Book a free 30-minute consultation — no
             obligation, no sales pitch. Just an honest conversation about your technology needs.
           </p>
-          <div className="cta-btns rv d3">
+          <div className="flex flex-wrap justify-center gap-3.5">
             <a
               href="https://wa.me/94779400291?text=Hi%20FLEXNORA!%20I%20want%20to%20book%20a%20free%20consultation."
-              className="btn btn-wa btn-lg"
               target="_blank"
               rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25d366] px-[42px] py-[18px] text-[1.05rem] font-semibold text-white shadow-[0_12px_30px_rgba(37,211,102,0.25)] transition-all hover:-translate-y-0.5 hover:bg-[#1fb855] hover:shadow-[0_16px_40px_rgba(37,211,102,0.4)]"
             >
-              <i className="fa-brands fa-whatsapp"></i> Talk on WhatsApp
+              <FaWhatsapp className="h-5 w-5" /> Talk on WhatsApp
             </a>
             <a
               href="mailto:flexnoradigital@gmail.com?subject=Free%20Consultation%20Request%20-%20FLEXNORA"
-              className="btn btn-p btn-lg"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-indigo to-violet px-[42px] py-[18px] text-[1.05rem] font-semibold text-white shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_50px_rgba(99,102,241,0.5)]"
             >
-              <i className="fa-solid fa-calendar-check"></i> Book Free Consultation
+              <CalendarCheck className="h-5 w-5" /> Book Free Consultation
             </a>
-            <a href="tel:+94779400291" className="btn btn-g btn-lg">
-              <i className="fa-solid fa-phone"></i> Call Us Now
+            <a
+              href="tel:+94779400291"
+              className="inline-flex items-center gap-2 rounded-full border border-white/[0.14] bg-white/[0.06] px-[42px] py-[18px] text-[1.05rem] font-semibold text-text backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:bg-white/10"
+            >
+              <Phone className="h-5 w-5" /> Call Us Now
             </a>
           </div>
-        </div>
-      </div>
+        </Reveal>
+      </Container>
     </section>
   );
 }

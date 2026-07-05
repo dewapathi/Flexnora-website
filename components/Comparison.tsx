@@ -1,3 +1,6 @@
+import { X, Check } from 'lucide-react';
+import { Container, SectionHeader, Reveal } from './ui';
+
 const bad = [
   'High developer salaries ($60k–$150k/yr)',
   'Months of recruitment & interviews',
@@ -22,47 +25,58 @@ const good = [
 
 export default function Comparison() {
   return (
-    <section className="cmp-sec" id="compare" aria-labelledby="cmp-h">
-      <div className="container zi">
-        <div className="sec-hd">
-          <p className="lbl">The smarter choice</p>
-          <h2 id="cmp-h" className="rv">
-            Hiring internally vs<br /><span className="g">partnering with FLEXNORA.</span>
-          </h2>
-          <p className="rv d1">
-            The numbers speak for themselves. See why smart businesses outsource their technology.
-          </p>
-        </div>
-        <div className="cmp-wrap rv d1">
-          <div className="cmp-col">
-            <div className="cmp-head">
-              <div className="cmp-head-ttl">
-                <span className="cmp-dot r"></span>Traditional In-House Hiring
+    <section id="compare" aria-labelledby="cmp-h" className="scroll-mt-20">
+      <div className="py-[120px]">
+        <Container>
+          <SectionHeader
+            kicker="The smarter choice"
+            title={
+              <>
+                Hiring internally vs
+                <br />
+                <span className="text-gradient">partnering with FLEXNORA.</span>
+              </>
+            }
+            desc="The numbers speak for themselves. See why smart businesses outsource their technology."
+          />
+
+          <Reveal className="mx-auto grid max-w-[860px] overflow-hidden rounded-3xl border border-white/[0.08] sm:grid-cols-2">
+            <div className="bg-bg-1">
+              <div className="border-b border-white/[0.08] px-8 py-6">
+                <div className="flex items-center gap-2.5 font-display text-[1.05rem] font-bold text-text">
+                  <span className="h-2 w-2 rounded-full bg-red-500" />
+                  Traditional In-House Hiring
+                </div>
+                <div className="mt-1 text-[0.78rem] text-text-3">The expensive, slow, and unpredictable way</div>
               </div>
-              <div className="cmp-head-sub">The expensive, slow, and unpredictable way</div>
+              {bad.map((row) => (
+                <div key={row} className="flex items-center gap-3 border-b border-white/[0.08] px-8 py-3.5 text-[0.88rem] text-text-2 last:border-b-0">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-red-500">
+                    <X className="h-3.5 w-3.5" />
+                  </span>
+                  {row}
+                </div>
+              ))}
             </div>
-            {bad.map((row, i) => (
-              <div key={i} className="cmp-row">
-                <div className="cmp-ic n"><i className="fa-solid fa-xmark"></i></div>
-                {row}
+            <div className="bg-gradient-to-br from-indigo/[0.07] to-violet/[0.04]">
+              <div className="border-b border-white/[0.08] px-8 py-6">
+                <div className="flex items-center gap-2.5 font-display text-[1.05rem] font-bold text-text">
+                  <span className="h-2 w-2 rounded-full bg-green" />
+                  FLEXNORA Technology Partner
+                </div>
+                <div className="mt-1 text-[0.78rem] text-text-3">The smart, scalable, and cost-effective way</div>
               </div>
-            ))}
-          </div>
-          <div className="cmp-col good">
-            <div className="cmp-head">
-              <div className="cmp-head-ttl">
-                <span className="cmp-dot g"></span>FLEXNORA Technology Partner
-              </div>
-              <div className="cmp-head-sub">The smart, scalable, and cost-effective way</div>
+              {good.map((row) => (
+                <div key={row} className="flex items-center gap-3 border-b border-white/[0.08] px-8 py-3.5 text-[0.88rem] text-text-2 last:border-b-0">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green/10 text-green">
+                    <Check className="h-3.5 w-3.5" />
+                  </span>
+                  {row}
+                </div>
+              ))}
             </div>
-            {good.map((row, i) => (
-              <div key={i} className="cmp-row">
-                <div className="cmp-ic y"><i className="fa-solid fa-check"></i></div>
-                {row}
-              </div>
-            ))}
-          </div>
-        </div>
+          </Reveal>
+        </Container>
       </div>
     </section>
   );

@@ -1,5 +1,8 @@
 'use client';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Plus } from 'lucide-react';
+import { Container, SectionHeader } from './ui';
 
 const faqs = [
   {
@@ -7,12 +10,12 @@ const faqs = [
     a: 'Yes — many of our clients use FLEXNORA as their complete, outsourced technology department. We cover everything from development and cloud infrastructure to security, maintenance, and ongoing support. You get a full team without the overhead of hiring.',
   },
   {
-    q: 'What\'s included in the monthly partnership plans?',
+    q: "What's included in the monthly partnership plans?",
     a: 'Monthly plans include dedicated development hours, maintenance, security updates, bug fixes, and a direct communication channel. Higher tiers add feature development, cloud monitoring, strategy calls, and larger developer teams. Everything is documented and transparent.',
   },
   {
     q: 'How does hiring a dedicated developer work?',
-    a: 'Tell us the role, skills, and engagement type you need. We match you with the right engineer, do a brief intro call, and they can start within 48 hours. They\'ll join your Slack, attend your standups, and work as part of your team — just without the HR burden.',
+    a: "Tell us the role, skills, and engagement type you need. We match you with the right engineer, do a brief intro call, and they can start within 48 hours. They'll join your Slack, attend your standups, and work as part of your team — just without the HR burden.",
   },
   {
     q: 'Do you provide support after a project launches?',
@@ -29,46 +32,64 @@ const faqs = [
 ];
 
 export default function Faq() {
-  const [open, setOpen] = useState<number | null>(null);
-  const ansRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  const toggle = (i: number) => {
-    setOpen((prev) => (prev === i ? null : i));
-  };
+  const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="fq" id="faq" aria-labelledby="fq-h">
-      <div className="container zi">
-        <div className="sec-hd">
-          <p className="lbl">FAQ</p>
-          <h2 id="fq-h" className="rv">
-            Questions we<br /><span className="g">hear often.</span>
-          </h2>
-        </div>
-        <div className="fql">
-          {faqs.map((faq, i) => {
-            const isOpen = open === i;
-            return (
-              <div key={i} className={`fqi${isOpen ? ' op' : ''}`}>
-                <button
-                  className="fqb"
-                  aria-expanded={isOpen}
-                  onClick={() => toggle(i)}
-                >
-                  {faq.q}
-                  <span className="fqic"><i className="fa-solid fa-plus"></i></span>
-                </button>
+    <section id="faq" aria-labelledby="fq-h" className="scroll-mt-20 bg-bg-1">
+      <div className="py-[120px]">
+        <Container>
+          <SectionHeader
+            kicker="FAQ"
+            title={
+              <>
+                Questions we
+                <br />
+                <span className="text-gradient">hear often.</span>
+              </>
+            }
+          />
+          <div className="mx-auto flex max-w-3xl flex-col gap-3">
+            {faqs.map((faq, i) => {
+              const isOpen = open === i;
+              return (
                 <div
-                  className="fqa"
-                  ref={(el) => { ansRefs.current[i] = el; }}
-                  style={{ maxHeight: isOpen ? (ansRefs.current[i]?.scrollHeight ?? 0) + 'px' : '0' }}
+                  key={faq.q}
+                  className={`overflow-hidden rounded-2xl border bg-white/[0.03] transition-colors ${
+                    isOpen ? 'border-indigo/35' : 'border-white/[0.08] hover:border-white/[0.14]'
+                  }`}
                 >
-                  <div className="fqai">{faq.a}</div>
+                  <button
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    aria-expanded={isOpen}
+                    className="flex w-full items-center justify-between gap-4 px-6 py-[22px] text-left font-display text-base font-semibold text-text transition-colors hover:text-lilac"
+                  >
+                    {faq.q}
+                    <span
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/[0.08] transition-all duration-300 ${
+                        isOpen ? 'rotate-45 bg-indigo/15 text-indigo' : 'bg-white/[0.06] text-indigo'
+                      }`}
+                    >
+                      <Plus className="h-3.5 w-3.5" />
+                    </span>
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 pb-[22px] leading-relaxed text-text-2">{faq.a}</div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </Container>
       </div>
     </section>
   );

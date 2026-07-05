@@ -1,5 +1,8 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { CalendarCheck, ArrowRight, Star } from 'lucide-react';
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -21,12 +24,13 @@ export default function Hero() {
     window.addEventListener('resize', resize, { passive: true });
     resize();
 
-    const N = Math.min(55, Math.floor(W * H / 18000));
+    const N = Math.min(55, Math.floor((W * H) / 18000));
     type Pt = { x: number; y: number; r: number; vx: number; vy: number; c: string; a: number };
     const pts: Pt[] = [];
     for (let i = 0; i < N; i++) {
       pts.push({
-        x: Math.random() * W, y: Math.random() * H,
+        x: Math.random() * W,
+        y: Math.random() * H,
         r: Math.random() * 2 + 0.5,
         vx: (Math.random() - 0.5) * 0.4,
         vy: (Math.random() - 0.5) * 0.4,
@@ -58,7 +62,7 @@ export default function Hero() {
             cx!.beginPath();
             cx!.moveTo(p.x, p.y);
             cx!.lineTo(q.x, q.y);
-            cx!.strokeStyle = p.c + (0.15 * (1 - d2 / 14400)) + ')';
+            cx!.strokeStyle = p.c + 0.15 * (1 - d2 / 14400) + ')';
             cx!.lineWidth = 0.5;
             cx!.stroke();
           }
@@ -68,13 +72,16 @@ export default function Hero() {
     }
     draw();
 
-    const heroEl = cv.closest('.hero');
+    const heroEl = cv.closest('section');
     let visObs: IntersectionObserver | null = null;
     if (heroEl) {
-      visObs = new IntersectionObserver(([e]) => {
-        if (e.isIntersecting) { if (!aid) draw(); }
-        else { if (aid) { cancelAnimationFrame(aid); aid = null; } }
-      }, { threshold: 0 });
+      visObs = new IntersectionObserver(
+        ([e]) => {
+          if (e.isIntersecting) { if (!aid) draw(); }
+          else if (aid) { cancelAnimationFrame(aid); aid = null; }
+        },
+        { threshold: 0 }
+      );
       visObs.observe(heroEl);
     }
 
@@ -87,51 +94,124 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="hero" id="top" aria-label="Hero">
-      <canvas id="hc" ref={canvasRef} aria-hidden="true"></canvas>
-      <div className="hg" aria-hidden="true"></div>
-      <div className="container">
-        <div className="hi">
-          <div className="rv" style={{ marginBottom: '28px' }}>
-            <div className="badge">
-              <span className="dot"></span>Your Complete Technology Partner · Colombo, Sri Lanka
-            </div>
-          </div>
-          <h1 className="ht rv d1">
-            We Become Your<br /><span className="g">Technology Team.</span>
-          </h1>
-          <p className="hs rv d2">
-            Focus on your business. We&apos;ll handle the technology. FLEXNORA is your outsourced IT
-            department — building, maintaining, scaling, and securing your entire digital
-            infrastructure.
-          </p>
-          <div className="ha rv d3">
-            <a href="#cta-fin" className="btn btn-p btn-lg">
-              <i className="fa-solid fa-calendar-check"></i> Book Free Consultation
+    <section
+      id="top"
+      aria-label="Hero"
+      className="relative flex min-h-screen scroll-mt-20 items-center overflow-hidden pt-20"
+    >
+      <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none" />
+      <div
+        aria-hidden="true"
+        className="absolute left-1/2 top-[30%] z-0 h-[600px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse,rgba(99,102,241,0.35) 0%,rgba(139,92,246,0.18) 40%,transparent 70%)',
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(99,102,241,0.06) 1px,transparent 1px)',
+          backgroundSize: '36px 36px',
+        }}
+      />
+
+      <div className="relative z-10 mx-auto w-full max-w-[1200px] px-6">
+        <div className="mx-auto max-w-[960px] py-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-7 inline-flex"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-indigo/25 bg-indigo/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-lilac">
+              <span className="h-1.5 w-1.5 animate-blink rounded-full bg-cyan" />
+              Global Digital Solutions · Colombo, Sri Lanka
+            </span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mb-7 break-words font-display text-[2.75rem] font-extrabold leading-[1.05] tracking-[-1px] text-text sm:text-[3.5rem] sm:tracking-[-2px] md:text-[5rem] lg:text-[6.5rem] lg:leading-[1.0]"
+          >
+            We Build World-Class
+            <br />
+            <span className="text-gradient">Software Products.</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mx-auto mb-11 max-w-[620px] text-[clamp(1.05rem,1.5vw,1.2rem)] text-text-2"
+          >
+            FLEXNORA designs and engineers custom software, mobile apps, and AI-powered products for
+            ambitious businesses across Australia, Europe, the US, and the Middle East — from first
+            prototype to production scale.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mb-[70px] flex flex-wrap justify-center gap-3.5"
+          >
+            <a
+              href="#cta-fin"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-br from-indigo to-violet px-[42px] py-[18px] text-[1.05rem] font-semibold text-white shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_50px_rgba(99,102,241,0.5)]"
+            >
+              <CalendarCheck className="h-5 w-5" /> Book Free Consultation
             </a>
-            <a href="#itp" className="btn btn-g btn-lg">
-              See How It Works <i className="fa-solid fa-arrow-right"></i>
+            <a
+              href="#solutions"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/[0.14] bg-white/[0.06] px-[42px] py-[18px] text-[1.05rem] font-semibold text-text backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/10"
+            >
+              Explore Solutions <ArrowRight className="h-5 w-5" />
             </a>
-          </div>
-          <div className="hpr rv d4">
-            <div className="hav">
-              <img src="/images/ranuli.png" alt="Client" loading="lazy" />
-              <img src="/images/aloka.png" alt="Client" loading="lazy" />
-              <img src="/images/theekshani.png" alt="Client" loading="lazy" />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-text-3"
+          >
+            <div className="flex items-center">
+              {['/images/ranuli.png', '/images/aloka.png', '/images/theekshani.png'].map((src, i) => (
+                <Image
+                  key={src}
+                  src={src}
+                  alt="Client"
+                  width={34}
+                  height={34}
+                  className={`h-[34px] w-[34px] rounded-full border-2 border-bg bg-bg-2 object-cover ${i > 0 ? '-ml-2.5' : ''}`}
+                />
+              ))}
             </div>
-            <p className="hpr-t"><strong>50+ projects</strong> delivered</p>
-            <div className="hpr-s"></div>
-            <p className="hpr-t"><strong>98%</strong> satisfaction</p>
-            <div className="hpr-s"></div>
-            <p className="hpr-t">
-              <i className="fa-solid fa-star" style={{ color: '#fbbf24' }}></i>{' '}
-              <strong>5.0</strong> rated
+            <p className="text-text-2">
+              <strong className="text-text">50+ projects</strong> delivered
             </p>
-          </div>
+            <span className="h-1 w-1 rounded-full bg-white/[0.14]" />
+            <p className="text-text-2">
+              <strong className="text-text">98%</strong> satisfaction
+            </p>
+            <span className="h-1 w-1 rounded-full bg-white/[0.14]" />
+            <p className="flex items-center gap-1 text-text-2">
+              <Star className="h-3.5 w-3.5 fill-amber text-amber" /> <strong className="text-text">5.0</strong> rated
+            </p>
+          </motion.div>
         </div>
       </div>
-      <div className="hscroll" aria-hidden="true">
-        SCROLL<span></span>
+
+      <div
+        aria-hidden="true"
+        className="absolute bottom-9 left-1/2 flex animate-bob flex-col items-center gap-2 text-[0.75rem] font-medium tracking-wider text-text-3"
+      >
+        SCROLL
+        <span className="block h-10 w-px bg-gradient-to-b from-indigo to-transparent" />
       </div>
     </section>
   );
