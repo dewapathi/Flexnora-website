@@ -6,6 +6,12 @@ import { doctor } from '@/lib/demo/healthcare-data';
 
 const BASE = '/demo/healthcare';
 
+const notifications = [
+  { title: 'Lab results ready', desc: 'Marcus Webb — Angiogram results uploaded', time: '5m ago' },
+  { title: 'Appointment reminder', desc: 'Isabelle Moreau in 45 minutes (Video)', time: '20m ago' },
+  { title: 'New message', desc: 'Nurse station flagged a medication refill request', time: '1h ago' },
+];
+
 const navItems: DemoNavItem[] = [
   { href: `${BASE}/dashboard`, label: 'Dashboard', icon: LayoutDashboard },
   { href: `${BASE}/patients`, label: 'Patients', icon: Users },
@@ -22,7 +28,7 @@ export default function HealthcareAppLayout({ children }: { children: React.Reac
     <div className="min-h-screen bg-background">
       <DemoSidebar items={navItems} basePath={BASE} industryLabel="Health Portal" industryIcon={HeartPulse} />
       <div className="lg:pl-64">
-        <DemoTopbar items={navItems} user={doctor} basePath={BASE} />
+        <DemoTopbar items={navItems} user={doctor} basePath={BASE} notifications={notifications} searchPlaceholder="Search patients, appointments..." />
         <main className="p-5 lg:p-8">{children}</main>
       </div>
     </div>

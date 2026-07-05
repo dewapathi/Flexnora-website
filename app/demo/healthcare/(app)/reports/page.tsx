@@ -24,8 +24,8 @@ export default function ReportsPage() {
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard icon={Clock} label="Avg Consult Time" value={reportStats.avgConsultTime} suffix=" min" accent="indigo" />
-        <StatCard icon={Repeat} label="Readmission Rate" value={reportStats.readmissionRate} suffix="%" trend="down" delta="-0.6% vs last quarter" accent="amber" />
-        <StatCard icon={FileCheck2} label="Report Turnaround" value={reportStats.reportTurnaround} suffix=" days" accent="cyan" />
+        <StatCard icon={Repeat} label="Readmission Rate" value={reportStats.readmissionRate} suffix="%" decimals={1} trend="down" delta="-0.6% vs last quarter" accent="amber" />
+        <StatCard icon={FileCheck2} label="Report Turnaround" value={reportStats.reportTurnaround} suffix=" days" decimals={1} accent="cyan" />
         <StatCard icon={Heart} label="Patient Retention" value={reportStats.retention} suffix="%" trend="up" delta="+2% vs last quarter" accent="green" />
       </div>
 

@@ -17,6 +17,7 @@ export function StatCard({
   label,
   value,
   suffix = '',
+  decimals = 0,
   delta,
   trend = 'up',
   accent = 'indigo',
@@ -25,11 +26,12 @@ export function StatCard({
   label: string;
   value: number;
   suffix?: string;
+  decimals?: number;
   delta?: string;
   trend?: 'up' | 'down';
   accent?: 'indigo' | 'cyan' | 'violet' | 'green' | 'amber';
 }) {
-  const [display, setDisplay] = useState(0);
+  const [display, setDisplay] = useState('0');
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,7 +44,7 @@ export function StatCard({
         const start = performance.now();
         const tick = (now: number) => {
           const p = Math.min((now - start) / dur, 1);
-          setDisplay(Math.floor(p * value));
+          setDisplay((p * value).toFixed(decimals));
           if (p < 1) requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);
@@ -52,7 +54,7 @@ export function StatCard({
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [value]);
+  }, [value, decimals]);
 
   return (
     <div ref={ref}>

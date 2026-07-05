@@ -3,11 +3,26 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Send, Bot } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
-import { useAIChat } from '@/lib/demo/store';
-import { getAIResponse, aiSuggestedPrompts } from '@/lib/demo/healthcare-data';
 
-export function AIChatWindow() {
-  const { messages, isTyping, addMessage, setTyping } = useAIChat();
+type ChatMessage = { id: string; role: 'user' | 'assistant'; content: string };
+
+export function AIChatWindow({
+  assistantName,
+  assistantDescription,
+  seedMessage,
+  suggestedPrompts,
+  getResponse,
+  placeholder = 'Ask a question...',
+}: {
+  assistantName: string;
+  assistantDescription: string;
+  seedMessage: string;
+  suggestedPrompts: string[];
+  getResponse: (input: string) => string;
+  placeholder?: string;
+}) {
+  const [messages, setMessages] = useState<ChatMessage[]>([{ id: 'seed', role: 'assistant', content: seedMessage }]);
+  const [isTyping, setTyping] = useState(false);
   const [input, setInput] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -17,11 +32,11 @@ export function AIChatWindow() {
 
   function send(content: string) {
     if (!content.trim()) return;
-    addMessage({ id: crypto.randomUUID(), role: 'user', content });
+    setMessages((m) => [...m, { id: crypto.randomUUID(), role: 'user', content }]);
     setInput('');
     setTyping(true);
     setTimeout(() => {
-      addMessage({ id: crypto.randomUUID(), role: 'assistant', content: getAIResponse(content) });
+      setMessages((m) => [...m, { id: crypto.randomUUID(), role: 'assistant', content: getResponse(content) }]);
       setTyping(false);
     }, 1100);
   }
@@ -33,8 +48,8 @@ export function AIChatWindow() {
           <Sparkles className="h-[1.05rem] w-[1.05rem]" />
         </div>
         <div>
-          <p className="text-sm font-bold text-foreground">AI Medical Assistant</p>
-          <p className="text-xs text-muted-foreground">Trained on de-identified clinical guidelines &amp; patient records</p>
+          <p className="text-sm font-bold text-foreground">{assistantName}</p>
+          <p className="text-xs text-muted-foreground">{assistantDescription}</p>
         </div>
       </div>
 
@@ -84,7 +99,7 @@ export function AIChatWindow() {
 
       {messages.length < 3 && (
         <div className="flex flex-wrap gap-2 border-t border-border px-5 py-3">
-          {aiSuggestedPrompts.map((p) => (
+          {suggestedPrompts.map((p) => (
             <button
               key={p}
               onClick={() => send(p)}
@@ -112,7 +127,7 @@ export function AIChatWindow() {
               send(input);
             }
           }}
-          placeholder="Ask about a patient, medication, or guideline..."
+          placeholder={placeholder}
           className="max-h-32 min-h-10 flex-1 resize-none"
         />
         <button

@@ -16,20 +16,20 @@ import ThemeToggle from '@/components/ThemeToggle';
 import { useDemoUI } from '@/lib/demo/store';
 import type { DemoNavItem } from './DemoSidebar';
 
-const notifications = [
-  { title: 'Lab results ready', desc: 'Marcus Webb — Angiogram results uploaded', time: '5m ago' },
-  { title: 'Appointment reminder', desc: 'Isabelle Moreau in 45 minutes (Video)', time: '20m ago' },
-  { title: 'New message', desc: 'Nurse station flagged a medication refill request', time: '1h ago' },
-];
+export type DemoNotification = { title: string; desc: string; time: string };
 
 export function DemoTopbar({
   items,
   user,
   basePath,
+  notifications,
+  searchPlaceholder = 'Search...',
 }: {
   items: DemoNavItem[];
   user: { name: string; role: string; initials: string };
   basePath: string;
+  notifications: DemoNotification[];
+  searchPlaceholder?: string;
 }) {
   const { setMobileSidebarOpen } = useDemoUI();
   const pathname = usePathname();
@@ -49,7 +49,7 @@ export function DemoTopbar({
 
       <div className="relative ml-auto flex max-w-sm flex-1 items-center lg:ml-8">
         <Search className="pointer-events-none absolute left-3 h-4 w-4 text-muted-foreground" />
-        <Input placeholder="Search patients, appointments..." className="pl-9" />
+        <Input placeholder={searchPlaceholder} className="pl-9" />
       </div>
 
       <DropdownMenu>
