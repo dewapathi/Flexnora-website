@@ -52,7 +52,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
-      <body className="bg-bg font-sans text-text antialiased overflow-x-hidden">{children}</body>
+      <body className="bg-bg font-sans text-text antialiased overflow-x-hidden">
+        <div className="grain-overlay" aria-hidden="true" />
+        {children}
+      </body>
     </html>
   );
 }

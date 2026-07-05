@@ -1,6 +1,7 @@
 import { CalendarCheck, Phone } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Container, Kicker, GradientText, Reveal } from './ui';
+import { MagneticButton } from './MagneticButton';
 
 export default function FinalCta() {
   return (
@@ -36,12 +37,14 @@ export default function FinalCta() {
             >
               <FaWhatsapp className="h-5 w-5" /> Talk on WhatsApp
             </a>
-            <a
-              href="mailto:flexnoradigital@gmail.com?subject=Free%20Consultation%20Request%20-%20FLEXNORA"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-indigo to-cyan px-[42px] py-[18px] text-[1.05rem] font-semibold text-white shadow-[0_0_30px_rgba(29,78,216,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_50px_rgba(29,78,216,0.5)] dark:shadow-[0_0_30px_rgba(99,102,241,0.3)] dark:hover:shadow-[0_0_50px_rgba(99,102,241,0.5)]"
-            >
-              <CalendarCheck className="h-5 w-5" /> Book Free Consultation
-            </a>
+            <MagneticButton>
+              <a
+                href="mailto:flexnoradigital@gmail.com?subject=Free%20Consultation%20Request%20-%20FLEXNORA"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-indigo to-cyan px-[42px] py-[18px] text-[1.05rem] font-semibold text-white shadow-[0_0_30px_rgba(29,78,216,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_50px_rgba(29,78,216,0.5)] dark:shadow-[0_0_30px_rgba(99,102,241,0.3)] dark:hover:shadow-[0_0_50px_rgba(99,102,241,0.5)]"
+              >
+                <CalendarCheck className="h-5 w-5" /> Book Free Consultation
+              </a>
+            </MagneticButton>
             <a
               href="tel:+94779400291"
               className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface-2 px-[42px] py-[18px] text-[1.05rem] font-semibold text-text backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:bg-surface-3"

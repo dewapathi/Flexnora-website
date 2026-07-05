@@ -35,6 +35,7 @@
   --animate-float: float 4s ease-in-out infinite;
   --animate-ring-pulse: ring-pulse 3s ease-in-out infinite;
   --animate-orbit: orbit 14s linear infinite;
+  --animate-drift: drift 16s ease-in-out infinite;
 }
 
 /* Light theme (default) */
@@ -148,6 +149,11 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -24px) scale(1.08); }
+  66% { transform: translate(-24px, 20px) scale(0.95); }
+}
 
 html {
   scroll-behavior: smooth;
@@ -158,6 +164,32 @@ body {
   color: var(--color-text);
   font-family: var(--font-sans);
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@media (prefers-reduced-motion: reduce) {
+  .grain-overlay {
+    display: none;
+  }
+}
+
+.marketing-cursor-none,
+.marketing-cursor-none * {
+  cursor: none !important;
+}
+@media (pointer: coarse), (hover: none) {
+  .marketing-cursor-none,
+  .marketing-cursor-none * {
+    cursor: auto !important;
+  }
 }
 
 * {

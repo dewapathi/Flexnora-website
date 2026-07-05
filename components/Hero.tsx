@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { CalendarCheck, ArrowRight, Star } from 'lucide-react';
+import { MagneticButton } from './MagneticButton';
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -102,10 +103,26 @@ export default function Hero() {
       <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none" />
       <div
         aria-hidden="true"
-        className="absolute left-1/2 top-[30%] z-0 h-[600px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+        className="absolute left-1/2 top-[30%] z-0 h-[600px] w-[900px] -translate-x-1/2 -translate-y-1/2 animate-drift rounded-full pointer-events-none"
         style={{
           background:
             'radial-gradient(ellipse,rgba(99,102,241,0.35) 0%,rgba(139,92,246,0.18) 40%,transparent 70%)',
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute right-[5%] top-[10%] z-0 h-[420px] w-[420px] animate-drift rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle,rgba(6,182,212,0.22) 0%,transparent 70%)',
+          animationDelay: '-5s',
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute bottom-[5%] left-[8%] z-0 h-[380px] w-[380px] animate-drift rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle,rgba(139,92,246,0.18) 0%,transparent 70%)',
+          animationDelay: '-10s',
         }}
       />
       <div
@@ -131,16 +148,28 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-7 break-words font-display text-[2.75rem] font-extrabold leading-[1.05] tracking-[-1px] text-text sm:text-[3.5rem] sm:tracking-[-2px] md:text-[5rem] lg:text-[6.5rem] lg:leading-[1.0]"
-          >
-            We Build World-Class
-            <br />
-            <span className="text-gradient">Software Products.</span>
-          </motion.h1>
+          <h1 className="mb-7 break-words font-display text-[2.75rem] font-extrabold leading-[1.05] tracking-[-1px] text-text sm:text-[3.5rem] sm:tracking-[-2px] md:text-[5rem] lg:text-[6.5rem] lg:leading-[1.0]">
+            <span className="block overflow-hidden">
+              <motion.span
+                initial={{ y: '100%' }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.9, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+                className="block"
+              >
+                We Build World-Class
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden">
+              <motion.span
+                initial={{ y: '100%' }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="block text-gradient"
+              >
+                Software Products.
+              </motion.span>
+            </span>
+          </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -159,12 +188,14 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mb-[70px] flex flex-wrap justify-center gap-3.5"
           >
-            <a
-              href="#cta-fin"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-br from-indigo to-cyan px-[42px] py-[18px] text-[1.05rem] font-semibold text-white shadow-[0_0_30px_rgba(29,78,216,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_50px_rgba(29,78,216,0.5)] dark:shadow-[0_0_30px_rgba(99,102,241,0.3)] dark:hover:shadow-[0_0_50px_rgba(99,102,241,0.5)]"
-            >
-              <CalendarCheck className="h-5 w-5" /> Book Free Consultation
-            </a>
+            <MagneticButton>
+              <a
+                href="#cta-fin"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-br from-indigo to-cyan px-[42px] py-[18px] text-[1.05rem] font-semibold text-white shadow-[0_0_30px_rgba(29,78,216,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_50px_rgba(29,78,216,0.5)] dark:shadow-[0_0_30px_rgba(99,102,241,0.3)] dark:hover:shadow-[0_0_50px_rgba(99,102,241,0.5)]"
+              >
+                <CalendarCheck className="h-5 w-5" /> Book Free Consultation
+              </a>
+            </MagneticButton>
             <a
               href="#solutions"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface-2 px-[42px] py-[18px] text-[1.05rem] font-semibold text-text backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-border-strong hover:bg-surface-3"

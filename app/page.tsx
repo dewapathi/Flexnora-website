@@ -1,4 +1,6 @@
 import Navbar from '@/components/Navbar';
+import { CustomCursor } from '@/components/CustomCursor';
+import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
 import Hero from '@/components/Hero';
 import Ticker from '@/components/Ticker';
 import WhyFlexnora from '@/components/WhyFlexnora';
@@ -20,7 +22,8 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <>
+    <SmoothScrollProvider>
+      <CustomCursor />
       <Navbar />
       <main>
         <Hero />
@@ -42,6 +45,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </SmoothScrollProvider>
   );
 }
