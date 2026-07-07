@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Clock } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Sparkles, Clock } from 'lucide-react';
 import { Container, SectionHeader, Reveal } from './ui';
 import { industries } from '@/lib/demo/industries';
 
@@ -34,6 +34,7 @@ export default function SolutionGallery() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {industries.map((s, i) => {
               const isLive = s.status === 'live';
+              const isExternal = Boolean(s.externalUrl);
               return (
                 <Reveal key={s.slug} delay={(i % 3) * 0.08}>
                   <motion.div
@@ -48,7 +49,11 @@ export default function SolutionGallery() {
                           <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
                           <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
                         </div>
-                        {isLive ? (
+                        {isExternal ? (
+                          <span className="flex items-center gap-1 rounded-full bg-white/90 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-indigo">
+                            <ArrowUpRight className="h-3 w-3" /> Live Client Site
+                          </span>
+                        ) : isLive ? (
                           <span className="flex items-center gap-1 rounded-full bg-white/90 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-indigo">
                             <Sparkles className="h-3 w-3" /> Live Demo
                           </span>
@@ -92,10 +97,13 @@ export default function SolutionGallery() {
                         ))}
                       </div>
                       <Link
-                        href={`/demo/${s.slug}`}
+                        href={isExternal ? s.externalUrl! : `/demo/${s.slug}`}
+                        target={isExternal ? '_blank' : undefined}
+                        rel={isExternal ? 'noopener noreferrer' : undefined}
                         className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo transition-transform hover:gap-2.5"
                       >
-                        {isLive ? '✨ Explore Live Demo' : 'Preview & get notified'} <ArrowRight className="h-4 w-4" />
+                        {isExternal ? 'Visit Live Site' : isLive ? '✨ Explore Live Demo' : 'Preview & get notified'}{' '}
+                        {isExternal ? <ArrowUpRight className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}
                       </Link>
                     </div>
                   </motion.div>

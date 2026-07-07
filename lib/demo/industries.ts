@@ -1,4 +1,4 @@
-import { Hotel, ShoppingCart, HeartPulse, Building2, Home, UtensilsCrossed, type LucideIcon } from 'lucide-react';
+import { Hotel, ShoppingCart, HeartPulse, Building2, Home, UtensilsCrossed, Palmtree, type LucideIcon } from 'lucide-react';
 
 export type Industry = {
   slug: string;
@@ -9,6 +9,8 @@ export type Industry = {
   tagline: string;
   features: string[];
   stack: string[];
+  /** Set for real, shipped client work — links out to the live site instead of an internal /demo/{slug} route. */
+  externalUrl?: string;
 };
 
 export const industries: Industry[] = [
@@ -71,6 +73,17 @@ export const industries: Industry[] = [
     tagline: 'Ordering, kitchen display, POS, and reservations in a single system.',
     features: ['Online ordering', 'Kitchen display system', 'POS', 'Reservations', 'Driver tracking', 'Customer app'],
     stack: ['React Native', 'Node.js', 'Redis'],
+  },
+  {
+    slug: 'relax-villa',
+    name: 'Villa & Vacation Rentals',
+    icon: Palmtree,
+    grad: 'from-green/40 to-amber/20',
+    status: 'live',
+    tagline: 'Relax Villa — a real, shipped booking site for a boutique villa & B&B in Negombo, Sri Lanka. Live client work, not a mockup.',
+    features: ['Elegant room & amenity showcase', 'Photo gallery', 'Multi-channel booking (WhatsApp, phone, form)', 'Location & nearby attractions'],
+    stack: ['Next.js'],
+    externalUrl: 'https://relax-villa.vercel.app',
   },
 ];
 

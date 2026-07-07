@@ -1,11 +1,12 @@
 'use client';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Sparkles, ArrowRight, Clock } from 'lucide-react';
+import { Sparkles, ArrowRight, ArrowUpRight, Clock } from 'lucide-react';
 import type { Industry } from '@/lib/demo/industries';
 
 export function IndustryCard({ industry, index }: { industry: Industry; index: number }) {
   const isLive = industry.status === 'live';
+  const isExternal = Boolean(industry.externalUrl);
 
   return (
     <motion.div
@@ -16,7 +17,9 @@ export function IndustryCard({ industry, index }: { industry: Industry; index: n
       whileHover={{ y: -6 }}
     >
       <Link
-        href={`/demo/${industry.slug}`}
+        href={isExternal ? industry.externalUrl! : `/demo/${industry.slug}`}
+        target={isExternal ? '_blank' : undefined}
+        rel={isExternal ? 'noopener noreferrer' : undefined}
         className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-bg-2 shadow-card transition-colors hover:border-indigo/40"
       >
         <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${industry.grad} p-4`}>
@@ -26,7 +29,11 @@ export function IndustryCard({ industry, index }: { industry: Industry; index: n
               <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
               <span className="h-2.5 w-2.5 rounded-full bg-white/25" />
             </div>
-            {isLive ? (
+            {isExternal ? (
+              <span className="flex items-center gap-1 rounded-full bg-white/90 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-indigo">
+                <ArrowUpRight className="h-3 w-3" /> Live Client Site
+              </span>
+            ) : isLive ? (
               <span className="flex items-center gap-1 rounded-full bg-white/90 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-indigo">
                 <Sparkles className="h-3 w-3" /> Live Demo
               </span>
@@ -61,7 +68,8 @@ export function IndustryCard({ industry, index }: { industry: Industry; index: n
             ))}
           </div>
           <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo transition-transform group-hover:gap-2.5">
-            {isLive ? '✨ Explore Live Demo' : 'Preview & get notified'} <ArrowRight className="h-4 w-4" />
+            {isExternal ? 'Visit Live Site' : isLive ? '✨ Explore Live Demo' : 'Preview & get notified'}{' '}
+            {isExternal ? <ArrowUpRight className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}
           </span>
         </div>
       </Link>
