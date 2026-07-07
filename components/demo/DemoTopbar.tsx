@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -60,7 +61,9 @@ export function DemoTopbar({
           <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-cyan" />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-80">
-          <DropdownMenuLabel>Notifications</DropdownMenuLabel>
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>Notifications</DropdownMenuLabel>
+          </DropdownMenuGroup>
           <DropdownMenuSeparator />
           {notifications.map((n) => (
             <DropdownMenuItem key={n.title} className="flex flex-col items-start gap-0.5 whitespace-normal py-2.5">
@@ -81,10 +84,12 @@ export function DemoTopbar({
           </Avatar>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-56">
-          <DropdownMenuLabel className="flex flex-col">
-            <span className="text-sm font-semibold text-foreground">{user.name}</span>
-            <span className="text-xs font-normal text-muted-foreground">{user.role}</span>
-          </DropdownMenuLabel>
+          <DropdownMenuGroup>
+            <DropdownMenuLabel className="flex flex-col">
+              <span className="text-sm font-semibold text-foreground">{user.name}</span>
+              <span className="text-xs font-normal text-muted-foreground">{user.role}</span>
+            </DropdownMenuLabel>
+          </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem render={<Link href={`${basePath}/profile`} />}>
             <User className="h-4 w-4" /> Profile
