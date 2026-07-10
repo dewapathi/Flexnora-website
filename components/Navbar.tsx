@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import { MagneticButton } from './MagneticButton';
 
 const links = [
   { href: '#why', label: 'Why Us' },
@@ -28,7 +29,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed inset-x-0 top-0 z-[1000] h-20 transition-all duration-300 ${
-        scrolled ? 'border-b border-border bg-bg/85 shadow-[0_4px_40px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:shadow-[0_4px_40px_rgba(0,0,0,0.4)]' : ''
+        scrolled ? 'border-b border-border bg-bg/70 backdrop-blur-2xl' : ''
       }`}
     >
       <div className="mx-auto flex h-full max-w-[1200px] items-center justify-between px-6">
@@ -52,7 +53,7 @@ export default function Navbar() {
                 className="group relative text-sm font-medium text-text-2 transition-colors hover:text-text"
               >
                 {l.label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-indigo transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-electric-blue transition-all duration-300 group-hover:w-full" />
               </a>
             </li>
           ))}
@@ -60,12 +61,14 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <ThemeToggle />
-          <a
-            href="#cta-fin"
-            className="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-indigo to-cyan px-6 py-2.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(29,78,216,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_50px_rgba(29,78,216,0.5)] dark:shadow-[0_0_30px_rgba(99,102,241,0.3)] dark:hover:shadow-[0_0_50px_rgba(99,102,241,0.5)]"
-          >
-            Book Consultation
-          </a>
+          <MagneticButton>
+            <a
+              href="#cta-fin"
+              className="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-electric-blue to-royal-blue px-6 py-2.5 text-sm font-semibold text-white shadow-glow transition-all hover:-translate-y-0.5"
+            >
+              Book Consultation
+            </a>
+          </MagneticButton>
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
@@ -103,7 +106,7 @@ export default function Navbar() {
             <a
               href="#cta-fin"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center rounded-full bg-gradient-to-br from-indigo to-cyan px-6 py-3 text-sm font-semibold text-white"
+              className="mt-2 inline-flex items-center justify-center rounded-full bg-gradient-to-br from-electric-blue to-royal-blue px-6 py-3 text-sm font-semibold text-white"
             >
               Book Consultation
             </a>

@@ -23,10 +23,15 @@
   --color-border: rgba(29, 78, 216, 0.14);
   --color-border-strong: rgba(29, 78, 216, 0.26);
 
-  --shadow-card: 0 10px 30px -6px rgba(29, 78, 216, 0.14), 0 4px 10px -6px rgba(15, 23, 42, 0.06);
+  --color-electric-blue: #1d4ed8;
+  --color-royal-blue: #4338ca;
+  --color-purple: #7c3aed;
 
-  --font-display: var(--font-syne), ui-sans-serif, sans-serif;
-  --font-sans: var(--font-inter), ui-sans-serif, sans-serif;
+  --shadow-card: 0 10px 30px -6px rgba(29, 78, 216, 0.14), 0 4px 10px -6px rgba(15, 23, 42, 0.06);
+  --shadow-glow: 0 8px 40px -10px rgba(29, 78, 216, 0.22);
+
+  --font-display: var(--font-satoshi), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-general-sans), ui-sans-serif, sans-serif;
 
   --animate-shimmer: shimmer 6s linear infinite;
   --animate-blink: blink 2s infinite;
@@ -57,7 +62,13 @@
   --color-surface-3: #eaf1ff;
   --color-border: rgba(29, 78, 216, 0.14);
   --color-border-strong: rgba(29, 78, 216, 0.26);
+
+  --color-electric-blue: #1d4ed8;
+  --color-royal-blue: #4338ca;
+  --color-purple: #7c3aed;
+
   --shadow-card: 0 10px 30px -6px rgba(29, 78, 216, 0.14), 0 4px 10px -6px rgba(15, 23, 42, 0.06);
+  --shadow-glow: 0 8px 40px -10px rgba(29, 78, 216, 0.22);
 
   /* shadcn/ui bridge — every raw token below points at our own design tokens above,
      so shadcn primitives automatically inherit the same light/dark system (no
@@ -100,11 +111,11 @@
 
 /* Dark theme */
 .dark {
-  --color-bg: #050816;
-  --color-bg-1: #080d1f;
-  --color-bg-2: #0c1228;
-  --color-indigo: #6366f1;
-  --color-violet: #8b5cf6;
+  --color-bg: #05070f;
+  --color-bg-1: #090c18;
+  --color-bg-2: #0d1120;
+  --color-indigo: #3355f5;
+  --color-violet: #6d46e0;
   --color-cyan: #06b6d4;
   --color-green: #10b981;
   --color-amber: #fbbf24;
@@ -117,7 +128,14 @@
   --color-surface-3: rgba(255, 255, 255, 0.08);
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-strong: rgba(255, 255, 255, 0.14);
+
+  /* premium accent system — used sparingly (Hero, Navbar CTA, a few WhyFlexnora/Services accents) */
+  --color-electric-blue: #2e6bff;
+  --color-royal-blue: #4f46e5;
+  --color-purple: #a855f7;
+
   --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 8px 40px -10px rgba(46, 107, 255, 0.35);
 }
 
 @keyframes shimmer {
@@ -210,6 +228,18 @@ body {
     background-clip: text;
     color: transparent;
     animation: var(--animate-shimmer);
+  }
+
+  .text-gradient-premium {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-electric-blue) 0%,
+      var(--color-royal-blue) 55%,
+      var(--color-purple) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .bg-noise::before {

@@ -15,13 +15,14 @@ import type { IconType } from 'react-icons';
 import { Container, SectionHeader, Reveal } from './ui';
 
 type Item = { icon: LucideIcon | IconType; title: string; desc: string };
-type Tab = { id: string; icon: LucideIcon; label: string; items: Item[] };
+type Tab = { id: string; icon: LucideIcon; label: string; blurb: string; items: Item[] };
 
 const tabs: Tab[] = [
   {
     id: 't1',
     icon: Code2,
     label: 'Software Dev',
+    blurb: 'Websites, web apps, SaaS platforms, and mobile apps — engineered, not templated.',
     items: [
       { icon: Globe, title: 'Company Websites', desc: 'High-performance marketing sites and landing pages built for speed, SEO, and conversions.' },
       { icon: ShoppingCart, title: 'E-commerce Platforms', desc: 'Custom storefronts, payment integration, and inventory management for online businesses.' },
@@ -38,6 +39,7 @@ const tabs: Tab[] = [
     id: 't2',
     icon: Cloud,
     label: 'Cloud & Infra',
+    blurb: 'Architecture, DevOps, and databases built to stay up and scale without drama.',
     items: [
       { icon: CloudCog, title: 'AWS', desc: 'Full AWS architecture, EC2, RDS, S3, Lambda, CloudFront — designed for reliability and scale.' },
       { icon: Cloud, title: 'Azure & GCP', desc: 'Microsoft Azure and Google Cloud setup, migration, and ongoing management.' },
@@ -53,6 +55,7 @@ const tabs: Tab[] = [
     id: 't3',
     icon: Bot,
     label: 'AI & Automation',
+    blurb: 'Chatbots, agents, and workflow automation that remove real manual work.',
     items: [
       { icon: MessageSquare, title: 'AI Chatbots', desc: 'Intelligent customer-facing chatbots powered by Claude, OpenAI, or custom LLM pipelines.' },
       { icon: Workflow, title: 'Workflow Automation', desc: 'Automate repetitive business processes — approvals, notifications, data entry, and reporting.' },
@@ -68,6 +71,7 @@ const tabs: Tab[] = [
     id: 't4',
     icon: Wrench,
     label: 'Managed IT',
+    blurb: 'Ongoing maintenance, security, and performance work — so nothing quietly breaks.',
     items: [
       { icon: RefreshCw, title: 'Website Maintenance', desc: 'Regular updates, content changes, plugin management, and ongoing website improvements.' },
       { icon: Smartphone, title: 'App Maintenance', desc: 'OS compatibility updates, bug fixes, feature additions, and App Store re-submissions.' },
@@ -83,6 +87,7 @@ const tabs: Tab[] = [
     id: 't5',
     icon: Users,
     label: 'Dedicated Teams',
+    blurb: 'Engineers, designers, and PMs embedded in your team, not a ticket queue.',
     items: [
       { icon: Monitor, title: 'Frontend Developers', desc: 'React, Next.js, Vue, Tailwind — pixel-perfect UI engineers who care about UX.' },
       { icon: Server, title: 'Backend Developers', desc: 'Node.js, Django, FastAPI, PostgreSQL — robust API and system engineers.' },
@@ -106,12 +111,12 @@ export default function Services() {
       <div
         aria-hidden="true"
         className="absolute -left-[200px] -top-[200px] h-[600px] w-[600px] rounded-full blur-[80px]"
-        style={{ background: 'rgba(99,102,241,0.08)' }}
+        style={{ background: 'rgba(46,107,255,0.06)' }}
       />
       <div
         aria-hidden="true"
         className="absolute -bottom-[150px] -right-[150px] h-[500px] w-[500px] rounded-full blur-[80px]"
-        style={{ background: 'rgba(139,92,246,0.06)' }}
+        style={{ background: 'rgba(168,85,247,0.05)' }}
       />
       <div className="relative py-[120px]">
         <Container>
@@ -121,58 +126,108 @@ export default function Services() {
               <>
                 Everything your business
                 <br />
-                <span className="text-gradient">needs to grow.</span>
+                <span className="text-gradient-premium">needs to grow.</span>
               </>
             }
             desc="Five complete service pillars. One technology partner."
           />
 
-          <Reveal className="mb-14 flex w-fit max-w-full flex-wrap justify-center gap-1 rounded-full border border-border bg-surface p-1.5 mx-auto">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                role="tab"
-                aria-selected={activeTab === tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-1.5 whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${
-                  activeTab === tab.id
-                    ? 'bg-gradient-to-br from-indigo to-violet text-white shadow-[0_4px_20px_rgba(99,102,241,0.3)]'
-                    : 'text-text-2 hover:bg-surface-2 hover:text-text'
-                }`}
-              >
-                <tab.icon className="h-4 w-4" /> {tab.label}
-              </button>
-            ))}
-          </Reveal>
+          <div className="grid gap-10 lg:grid-cols-[5fr_7fr] lg:gap-16">
+            {/* Left: sticky index rail */}
+            <Reveal className="lg:sticky lg:top-32 lg:self-start">
+              <div className="flex flex-col">
+                {tabs.map((tab, i) => {
+                  const isActive = activeTab === tab.id;
+                  return (
+                    <div key={tab.id} className="border-b border-border last:border-b-0 lg:border-none">
+                      <button
+                        onClick={() => setActiveTab(tab.id)}
+                        onMouseEnter={() => setActiveTab(tab.id)}
+                        className={`group relative flex w-full items-start gap-4 border-l-2 py-5 pl-5 text-left transition-colors ${
+                          isActive ? 'border-electric-blue' : 'border-transparent hover:border-border-strong'
+                        }`}
+                      >
+                        <span className={`font-display text-sm font-bold ${isActive ? 'text-electric-blue' : 'text-text-3'}`}>
+                          0{i + 1}
+                        </span>
+                        <span>
+                          <span
+                            className={`block font-display text-xl font-bold transition-colors sm:text-2xl ${
+                              isActive ? 'text-text' : 'text-text-2 group-hover:text-text'
+                            }`}
+                          >
+                            {tab.label}
+                          </span>
+                          {isActive && (
+                            <span className="mt-1 block text-sm leading-relaxed text-text-2">{tab.blurb}</span>
+                          )}
+                        </span>
+                      </button>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.25 }}
-              role="tabpanel"
-              className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-            >
-              {active.items.map((item) => (
-                <div
-                  key={item.title}
-                  className="group flex items-start gap-3.5 rounded-2xl border border-border bg-surface p-6 transition-all hover:-translate-y-0.5 hover:border-indigo/35"
-                >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] border border-indigo/20 bg-indigo/10 text-indigo transition-all group-hover:border-transparent group-hover:bg-gradient-to-br group-hover:from-indigo group-hover:to-violet group-hover:text-white">
-                    <item.icon className="h-[0.95rem] w-[0.95rem]" />
-                  </div>
-                  <div>
-                    <h3 className="mb-1 text-[0.9rem] font-bold text-text">{item.title}</h3>
-                    <p className="text-[0.8rem] leading-relaxed text-text-2">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+                      {/* Mobile accordion body */}
+                      <AnimatePresence initial={false}>
+                        {isActive && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="overflow-hidden lg:hidden"
+                          >
+                            <ServiceList items={tab.items} />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
+              </div>
+            </Reveal>
+
+            {/* Right: animated detail canvas (desktop only) */}
+            <div className="hidden lg:block">
+              <div
+                data-lenis-prevent
+                className="relative max-h-[560px] overflow-y-auto rounded-3xl border border-border bg-surface p-2"
+                style={{
+                  maskImage: 'linear-gradient(to bottom, transparent, black 24px, black calc(100% - 24px), transparent)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 24px, black calc(100% - 24px), transparent)',
+                }}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ServiceList items={active.items} />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
+          </div>
         </Container>
       </div>
     </section>
+  );
+}
+
+function ServiceList({ items }: { items: Item[] }) {
+  return (
+    <div className="divide-y divide-border px-3 py-2 lg:px-4">
+      {items.map((item) => (
+        <div key={item.title} className="flex items-start gap-4 py-4">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] border border-electric-blue/20 bg-electric-blue/10 text-electric-blue">
+            <item.icon className="h-[0.9rem] w-[0.9rem]" />
+          </div>
+          <div>
+            <h3 className="mb-1 text-[0.9rem] font-bold text-text">{item.title}</h3>
+            <p className="text-[0.8rem] leading-relaxed text-text-2">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
-import { motion, type Variants } from 'framer-motion';
-import type { ReactNode } from 'react';
+import { motion, useInView, useReducedMotion, type Variants } from 'framer-motion';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 export function Container({ className = '', children }: { className?: string; children: ReactNode }) {
   return <div className={`mx-auto w-full max-w-[1200px] px-6 ${className}`}>{children}</div>;
@@ -49,6 +49,69 @@ export function Kicker({ children }: { children: ReactNode }) {
 
 export function GradientText({ children }: { children: ReactNode }) {
   return <span className="text-gradient">{children}</span>;
+}
+
+export function GlassCard({
+  children,
+  className = '',
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`rounded-2xl border border-white/8 bg-surface shadow-card backdrop-blur-2xl dark:border-white/8 ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
+
+export function StatCounter({
+  value,
+  decimals = 0,
+  prefix = '',
+  suffix = '',
+  duration = 1.2,
+  className = '',
+}: {
+  value: number;
+  decimals?: number;
+  prefix?: string;
+  suffix?: string;
+  duration?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-40px' });
+  const reduceMotion = useReducedMotion();
+  const [display, setDisplay] = useState((0).toFixed(decimals));
+
+  useEffect(() => {
+    if (!inView) return;
+    if (reduceMotion) {
+      setDisplay(value.toFixed(decimals));
+      return;
+    }
+    const start = performance.now();
+    const durMs = duration * 1000;
+    let raf = 0;
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / durMs, 1);
+      setDisplay((p * value).toFixed(decimals));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, value, decimals, duration, reduceMotion]);
+
+  return (
+    <span ref={ref} className={className}>
+      {prefix}
+      {display}
+      {suffix}
+    </span>
+  );
 }
 
 export function SectionHeader({

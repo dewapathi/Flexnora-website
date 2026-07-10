@@ -15,7 +15,12 @@ export default function Ticker() {
   return (
     <div
       aria-hidden="true"
-      className="group overflow-hidden border-y border-border bg-surface py-[18px]"
+      className="group relative overflow-hidden py-[18px]"
+      style={{
+        borderTop: '1px solid transparent',
+        borderBottom: '1px solid transparent',
+        borderImage: 'linear-gradient(90deg, transparent, var(--color-border-strong) 20%, var(--color-border-strong) 80%, transparent) 1',
+      }}
     >
       <div className="flex w-max animate-tick gap-[60px] group-hover:[animation-play-state:paused]">
         {[...items, ...items].map((item, i) => (
@@ -23,7 +28,7 @@ export default function Ticker() {
             key={i}
             className="flex items-center gap-2.5 whitespace-nowrap text-sm font-semibold uppercase tracking-wide text-text-3"
           >
-            <item.icon className="h-[0.95rem] w-[0.95rem] text-indigo" />
+            <item.icon className="h-[0.95rem] w-[0.95rem] text-electric-blue" />
             {item.label}
           </div>
         ))}
