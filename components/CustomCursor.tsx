@@ -53,7 +53,7 @@ export function CustomCursor() {
       aria-hidden="true"
       className={`pointer-events-none fixed left-0 top-0 z-[10000] rounded-full transition-colors duration-200 ${
         hovering
-          ? 'border border-white/25 shadow-[0_0_18px_rgba(255,255,255,0.15)]'
+          ? 'border-2 border-electric-blue/60 shadow-[0_0_18px_rgba(46,107,255,0.35)]'
           : 'mix-blend-difference bg-white'
       }`}
       style={{

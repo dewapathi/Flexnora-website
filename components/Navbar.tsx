@@ -48,13 +48,18 @@ export default function Navbar() {
         <ul className="hidden items-center gap-9 lg:flex">
           {links.map((l) => (
             <li key={l.href}>
-              <a
+              <MagneticCTA
                 href={l.href}
-                className="group relative text-sm font-medium text-text-2 transition-colors hover:text-text"
+                className="group text-sm font-medium text-text-2 transition-all hover:text-text hover:scale-[1.06]"
+                magneticRange={40}
+                magneticMax={5}
+                magneticContentMax={7}
+                lensRadius={22}
+                lensZoom={1.3}
               >
                 {l.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-electric-blue transition-all duration-300 group-hover:w-full" />
-              </a>
+              </MagneticCTA>
             </li>
           ))}
         </ul>
@@ -92,14 +97,19 @@ export default function Navbar() {
             className="absolute inset-x-0 top-20 flex flex-col gap-1 border-b border-border bg-bg/97 p-6 backdrop-blur-xl lg:hidden"
           >
             {links.map((l) => (
-              <a
+              <MagneticCTA
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-4 py-3 text-base text-text-2 transition-colors hover:bg-surface-2 hover:text-text"
+                className="rounded-lg px-4 py-3 text-base text-text-2 transition-all hover:bg-surface-2 hover:text-text hover:scale-[1.03]"
+                magneticRange={40}
+                magneticMax={5}
+                magneticContentMax={7}
+                lensRadius={22}
+                lensZoom={1.3}
               >
                 {l.label}
-              </a>
+              </MagneticCTA>
             ))}
             <MagneticCTA
               href="#cta-fin"

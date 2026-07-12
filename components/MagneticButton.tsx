@@ -6,8 +6,8 @@ import { useMagneticHover } from '@/hooks/useMagneticHover';
 const RANGE = 70;
 const STRENGTH = 0.35;
 
-const LENS_RADIUS = 32;
-const LENS_ZOOM = 1.35;
+const DEFAULT_LENS_RADIUS = 32;
+const DEFAULT_LENS_ZOOM = 1.35;
 
 export function MagneticButton({ children, className = '' }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -59,6 +59,11 @@ export function MagneticCTA({
   as,
   className = '',
   contentClassName = 'inline-flex items-center gap-2',
+  magneticRange = 70,
+  magneticMax = 8,
+  magneticContentMax = 11,
+  lensRadius = DEFAULT_LENS_RADIUS,
+  lensZoom = DEFAULT_LENS_ZOOM,
   children,
   ...rest
 }: {
@@ -67,10 +72,21 @@ export function MagneticCTA({
   className?: string;
   /** Layout classes for the icon/text wrapper — match the gap/alignment already in `className` (default gap-2) so spacing doesn't shift. */
   contentClassName?: string;
+  /** Tune down for small/compact links (e.g. nav text) so the pull doesn't feel oversized relative to the element. */
+  magneticRange?: number;
+  magneticMax?: number;
+  magneticContentMax?: number;
+  /** Tune down the loupe for small text so it doesn't dwarf the element it's zooming. */
+  lensRadius?: number;
+  lensZoom?: number;
   children: ReactNode;
 } & AnchorHTMLAttributes<HTMLAnchorElement>) {
   const Tag = (as ?? 'a') as ElementType;
-  const { ref, enabled, style, contentStyle, handlers } = useMagneticHover({ range: 70, max: 8, contentMax: 11 });
+  const { ref, enabled, style, contentStyle, handlers } = useMagneticHover({
+    range: magneticRange,
+    max: magneticMax,
+    contentMax: magneticContentMax,
+  });
   const linkRef = useRef<HTMLAnchorElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
   const [lensPos, setLensPos] = useState<{ x: number; y: number } | null>(null);
@@ -99,7 +115,7 @@ export function MagneticCTA({
   }
 
   const maskImage = maskPos
-    ? `radial-gradient(circle at ${maskPos.x}px ${maskPos.y}px, transparent ${LENS_RADIUS}px, black ${LENS_RADIUS + 1}px)`
+    ? `radial-gradient(circle at ${maskPos.x}px ${maskPos.y}px, transparent ${lensRadius}px, black ${lensRadius + 1}px)`
     : undefined;
 
   return (
@@ -130,11 +146,11 @@ export function MagneticCTA({
           <span
             aria-hidden="true"
             className={`pointer-events-none absolute inset-0 justify-center overflow-hidden ${contentClassName}`}
-            style={{ clipPath: `circle(${LENS_RADIUS}px at ${lensPos.x}px ${lensPos.y}px)` }}
+            style={{ clipPath: `circle(${lensRadius}px at ${lensPos.x}px ${lensPos.y}px)` }}
           >
             <span
               className={contentClassName}
-              style={{ transform: `scale(${LENS_ZOOM})`, transformOrigin: `${lensPos.x}px ${lensPos.y}px` }}
+              style={{ transform: `scale(${lensZoom})`, transformOrigin: `${lensPos.x}px ${lensPos.y}px` }}
             >
               {children}
             </span>
