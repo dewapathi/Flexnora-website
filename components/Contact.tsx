@@ -1,6 +1,7 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Container, Kicker, GradientText, Badge, Reveal } from './ui';
+import { MagneticCTA } from './MagneticButton';
 
 export default function Contact() {
   return (
@@ -25,11 +26,12 @@ export default function Contact() {
                 usually within 24 hours.
               </p>
               <div className="flex flex-col gap-3.5">
-                <a
+                <MagneticCTA
                   href="https://wa.me/94779400291"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-4 rounded-2xl border border-border bg-surface px-5 py-[18px] transition-all hover:translate-x-1.5 hover:border-indigo/40 hover:bg-indigo/5"
+                  className="group flex items-center gap-4 rounded-2xl border border-border bg-surface px-5 py-[18px] transition-all hover:translate-x-1.5 hover:border-indigo/40 hover:bg-indigo/5 hover:scale-[1.03]"
+                  contentClassName="flex items-center gap-4"
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-indigo/20 bg-indigo/10 text-indigo transition-all group-hover:bg-gradient-to-br group-hover:from-indigo group-hover:to-violet group-hover:text-white">
                     <FaWhatsapp className="h-[1.1rem] w-[1.1rem]" />
@@ -38,10 +40,11 @@ export default function Contact() {
                     <span className="block text-xs font-semibold uppercase tracking-wide text-text-3">WhatsApp (Fastest)</span>
                     <span className="block text-[0.95rem] font-semibold text-text">+94 77 9400 291</span>
                   </span>
-                </a>
-                <a
+                </MagneticCTA>
+                <MagneticCTA
                   href="mailto:pradeepa@flexnora.com"
-                  className="group flex items-center gap-4 rounded-2xl border border-border bg-surface px-5 py-[18px] transition-all hover:translate-x-1.5 hover:border-indigo/40 hover:bg-indigo/5"
+                  className="group flex items-center gap-4 rounded-2xl border border-border bg-surface px-5 py-[18px] transition-all hover:translate-x-1.5 hover:border-indigo/40 hover:bg-indigo/5 hover:scale-[1.03]"
+                  contentClassName="flex items-center gap-4"
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-indigo/20 bg-indigo/10 text-indigo transition-all group-hover:bg-gradient-to-br group-hover:from-indigo group-hover:to-violet group-hover:text-white">
                     <Mail className="h-[1.1rem] w-[1.1rem]" />
@@ -50,10 +53,11 @@ export default function Contact() {
                     <span className="block text-xs font-semibold uppercase tracking-wide text-text-3">Email</span>
                     <span className="block text-[0.95rem] font-semibold text-text">pradeepa@flexnora.com</span>
                   </span>
-                </a>
-                <a
+                </MagneticCTA>
+                <MagneticCTA
                   href="tel:+94779400291"
-                  className="group flex items-center gap-4 rounded-2xl border border-border bg-surface px-5 py-[18px] transition-all hover:translate-x-1.5 hover:border-indigo/40 hover:bg-indigo/5"
+                  className="group flex items-center gap-4 rounded-2xl border border-border bg-surface px-5 py-[18px] transition-all hover:translate-x-1.5 hover:border-indigo/40 hover:bg-indigo/5 hover:scale-[1.03]"
+                  contentClassName="flex items-center gap-4"
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-indigo/20 bg-indigo/10 text-indigo transition-all group-hover:bg-gradient-to-br group-hover:from-indigo group-hover:to-violet group-hover:text-white">
                     <Phone className="h-[1.1rem] w-[1.1rem]" />
@@ -62,7 +66,7 @@ export default function Contact() {
                     <span className="block text-xs font-semibold uppercase tracking-wide text-text-3">Phone</span>
                     <span className="block text-[0.95rem] font-semibold text-text">+94 77 9400 291</span>
                   </span>
-                </a>
+                </MagneticCTA>
                 <div className="flex items-center gap-4 rounded-2xl border border-border bg-surface px-5 py-[18px]">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-indigo/20 bg-indigo/10 text-indigo">
                     <MapPin className="h-[1.1rem] w-[1.1rem]" />
@@ -92,38 +96,41 @@ export default function Contact() {
                     call, understand your vision, and deliver a detailed proposal — no obligation.
                   </p>
                   <div className="flex flex-col gap-3">
-                    <a
+                    <MagneticCTA
                       href="https://wa.me/94779400291?text=Hi%20FLEXNORA!%20I%20want%20to%20discuss%20a%20project."
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3.5 rounded-2xl bg-[#25d366] px-6 py-[18px] font-semibold text-white shadow-[0_12px_30px_rgba(37,211,102,0.25)] transition-all hover:-translate-y-0.5 hover:bg-[#1fb855]"
+                      className="flex items-center gap-3.5 rounded-2xl bg-[#25d366] px-6 py-[18px] font-semibold text-white shadow-[0_12px_30px_rgba(37,211,102,0.25)] transition-all hover:-translate-y-0.5 hover:bg-[#1fb855] hover:scale-[1.03]"
+                      contentClassName="flex items-center gap-3.5"
                     >
                       <FaWhatsapp className="h-5 w-5" />
                       <span>
                         WhatsApp Now
                         <small className="block text-xs font-normal opacity-70">Typical reply in under 1 hour</small>
                       </span>
-                    </a>
-                    <a
+                    </MagneticCTA>
+                    <MagneticCTA
                       href="tel:+94779400291"
-                      className="flex items-center gap-3.5 rounded-2xl border border-border-strong bg-surface-2 px-6 py-[18px] font-semibold text-text transition-all hover:-translate-y-0.5 hover:bg-surface-3"
+                      className="flex items-center gap-3.5 rounded-2xl border border-border-strong bg-surface-2 px-6 py-[18px] font-semibold text-text transition-all hover:-translate-y-0.5 hover:bg-surface-3 hover:scale-[1.03]"
+                      contentClassName="flex items-center gap-3.5"
                     >
                       <Phone className="h-5 w-5" />
                       <span>
                         Call Us
                         <small className="block text-xs font-normal opacity-70">+94 77 9400 291</small>
                       </span>
-                    </a>
-                    <a
+                    </MagneticCTA>
+                    <MagneticCTA
                       href="mailto:pradeepa@flexnora.com?subject=Project%20Inquiry%20-%20FLEXNORA"
-                      className="flex items-center gap-3.5 rounded-2xl border border-indigo/25 bg-indigo/10 px-6 py-[18px] font-semibold text-lilac transition-all hover:-translate-y-0.5 hover:bg-indigo/20"
+                      className="flex items-center gap-3.5 rounded-2xl border border-indigo/25 bg-indigo/10 px-6 py-[18px] font-semibold text-lilac transition-all hover:-translate-y-0.5 hover:bg-indigo/20 hover:scale-[1.03]"
+                      contentClassName="flex items-center gap-3.5"
                     >
                       <Mail className="h-5 w-5" />
                       <span>
                         Send an Email
                         <small className="block text-xs font-normal opacity-70">pradeepa@flexnora.com</small>
                       </span>
-                    </a>
+                    </MagneticCTA>
                   </div>
                 </div>
               </div>

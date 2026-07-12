@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, Sparkles, Clock } from 'lucide-react';
 import { Container, SectionHeader, Reveal } from './ui';
+import { MagneticCTA } from './MagneticButton';
 import { industries } from '@/lib/demo/industries';
 
 export default function SolutionGallery() {
@@ -23,12 +24,14 @@ export default function SolutionGallery() {
           />
 
           <Reveal className="mb-10 flex justify-center">
-            <Link
+            <MagneticCTA
+              as={Link}
               href="/demo"
-              className="inline-flex items-center gap-1.5 rounded-full border border-indigo/25 bg-indigo/10 px-4 py-2 text-sm font-semibold text-indigo transition-colors hover:bg-indigo/15"
+              className="inline-flex items-center gap-1.5 rounded-full border border-indigo/25 bg-indigo/10 px-4 py-2 text-sm font-semibold text-indigo transition-all hover:bg-indigo/15 hover:scale-[1.08]"
+              contentClassName="inline-flex items-center gap-1.5"
             >
               <Sparkles className="h-4 w-4" /> Browse the full Demo Gallery <ArrowRight className="h-4 w-4" />
-            </Link>
+            </MagneticCTA>
           </Reveal>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

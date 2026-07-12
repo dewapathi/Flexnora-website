@@ -3,6 +3,7 @@ import {
   UserX, Layers, ArrowUpDown, PiggyBank,
 } from 'lucide-react';
 import { Container, Kicker, GradientText, Reveal } from './ui';
+import { MagneticCTA } from './MagneticButton';
 
 const categories = [
   { icon: Code2, label: 'Software Development' },
@@ -55,12 +56,12 @@ export default function ItPartnership() {
                   </li>
                 ))}
               </ul>
-              <a
+              <MagneticCTA
                 href="#cta-fin"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-indigo to-cyan px-[30px] py-3.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(29,78,216,0.3)] transition-all hover:-translate-y-0.5 dark:shadow-[0_0_30px_rgba(99,102,241,0.3)]"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-indigo to-cyan px-[30px] py-3.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(29,78,216,0.3)] transition-all hover:-translate-y-0.5 hover:scale-[1.08] dark:shadow-[0_0_30px_rgba(99,102,241,0.3)]"
               >
                 Book Free Consultation <ArrowRight className="h-4 w-4" />
-              </a>
+              </MagneticCTA>
             </Reveal>
 
             <Reveal delay={0.1}>

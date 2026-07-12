@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
-import { MagneticButton } from './MagneticButton';
+import { MagneticCTA } from './MagneticButton';
 
 const links = [
   { href: '#why', label: 'Why Us' },
@@ -61,14 +61,12 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <ThemeToggle />
-          <MagneticButton>
-            <a
-              href="#cta-fin"
-              className="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-electric-blue to-royal-blue px-6 py-2.5 text-sm font-semibold text-white shadow-glow transition-all hover:-translate-y-0.5"
-            >
-              Book Consultation
-            </a>
-          </MagneticButton>
+          <MagneticCTA
+            href="#cta-fin"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-electric-blue to-royal-blue px-6 py-2.5 text-sm font-semibold text-white shadow-glow transition-all hover:-translate-y-0.5 hover:scale-[1.08]"
+          >
+            Book Consultation
+          </MagneticCTA>
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
@@ -103,13 +101,13 @@ export default function Navbar() {
                 {l.label}
               </a>
             ))}
-            <a
+            <MagneticCTA
               href="#cta-fin"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center rounded-full bg-gradient-to-br from-electric-blue to-royal-blue px-6 py-3 text-sm font-semibold text-white"
+              className="mt-2 inline-flex items-center justify-center rounded-full bg-gradient-to-br from-electric-blue to-royal-blue px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.08]"
             >
               Book Consultation
-            </a>
+            </MagneticCTA>
           </motion.div>
         )}
       </AnimatePresence>

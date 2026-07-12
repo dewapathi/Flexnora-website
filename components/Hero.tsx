@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { CalendarCheck, ArrowRight, Star } from 'lucide-react';
-import { MagneticButton } from './MagneticButton';
+import { MagneticCTA } from './MagneticButton';
 import { HeroVisualStack } from './HeroVisualStack';
 import { GlassCard, StatCounter } from './ui';
 
@@ -158,20 +158,18 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mb-[60px] flex flex-wrap gap-3.5"
           >
-            <MagneticButton>
-              <a
-                href="#cta-fin"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-br from-electric-blue to-royal-blue px-[38px] py-[17px] text-[1.02rem] font-semibold text-white shadow-glow transition-all hover:-translate-y-0.5"
-              >
-                <CalendarCheck className="h-5 w-5" /> Book Free Consultation
-              </a>
-            </MagneticButton>
-            <a
+            <MagneticCTA
+              href="#cta-fin"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-br from-electric-blue to-royal-blue px-[38px] py-[17px] text-[1.02rem] font-semibold text-white shadow-glow transition-all hover:-translate-y-0.5 hover:scale-[1.08]"
+            >
+              <CalendarCheck className="h-5 w-5" /> Book Free Consultation
+            </MagneticCTA>
+            <MagneticCTA
               href="#solutions"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface-2 px-[38px] py-[17px] text-[1.02rem] font-semibold text-text backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-border-strong hover:bg-surface-3"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface-2 px-[38px] py-[17px] text-[1.02rem] font-semibold text-text backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-border-strong hover:bg-surface-3 hover:scale-[1.08]"
             >
               Explore Solutions <ArrowRight className="h-5 w-5" />
-            </a>
+            </MagneticCTA>
           </motion.div>
 
           <motion.div
@@ -193,7 +191,7 @@ export default function Hero() {
               ))}
             </div>
             <p className="text-text-2">
-              <strong className="text-text">50+ projects</strong> delivered
+              <strong className="text-text">20+ projects</strong> delivered
             </p>
             <span className="h-1 w-1 rounded-full bg-border-strong" />
             <p className="text-text-2">
