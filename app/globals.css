@@ -172,6 +172,14 @@
   33% { transform: translate(30px, -24px) scale(1.08); }
   66% { transform: translate(-24px, 20px) scale(0.95); }
 }
+@keyframes loading-logo-in {
+  0% { opacity: 0; transform: scale(0.92); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes loading-bar-fill {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
 
 html {
   scroll-behavior: smooth;

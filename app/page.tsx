@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import { CustomCursor } from '@/components/CustomCursor';
 import { ScrollProgressBar } from '@/components/ScrollProgressBar';
 import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
+import { LoadingScreen } from '@/components/LoadingScreen';
 import Hero from '@/components/Hero';
 import Ticker from '@/components/Ticker';
 import WhyFlexnora from '@/components/WhyFlexnora';
@@ -24,6 +25,7 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <SmoothScrollProvider>
+      <LoadingScreen />
       <ScrollProgressBar />
       <CustomCursor />
       <Navbar />

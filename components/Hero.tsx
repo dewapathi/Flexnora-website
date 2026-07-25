@@ -1,8 +1,8 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { motion, useScroll } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { CalendarCheck, ArrowRight, Star } from 'lucide-react';
 import { MagneticCTA } from './MagneticButton';
 import { HeroVisualStack } from './HeroVisualStack';
@@ -19,11 +19,32 @@ export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const scrollRef = useRef(0);
   const mouseRef = useRef({ x: 0, y: 0 });
+  const use3DRef = useRef(false);
   const [use3D, setUse3D] = useState(false);
 
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  // 'end end' (not 'end start') so progress reaches 1 exactly when the tall section's sticky
+  // child unpins (scrollY === sectionHeight - viewportHeight) — using 'end start' would require
+  // scrolling the section's full height, well past the point where it's already unpinned.
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end end'] });
+  // The use3D gate lives inside each transformer function (reading a ref) rather than in
+  // useTransform's own input/output range arguments — varying those ranges across renders via a
+  // ternary left the derived motion value permanently stuck at its first-render mapping for at
+  // least one consuming pathway, even though the value's own change events reported correctly.
+  // Reading a ref inside a stable transformer function sidesteps that entirely.
+  const contentOpacity = useTransform(scrollYProgress, (v) => {
+    if (!use3DRef.current) return 1;
+    return 1 - Math.min(Math.max(v / 0.35, 0), 1);
+  });
+  const contentY = useTransform(scrollYProgress, (v) => {
+    if (!use3DRef.current) return 0;
+    return -40 * Math.min(Math.max(v / 0.35, 0), 1);
+  });
+  const scrollCueOpacity = useTransform(scrollYProgress, (v) => {
+    if (!use3DRef.current) return 1;
+    return 1 - Math.min(Math.max(v / 0.08, 0), 1);
+  });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let webglOK = false;
@@ -33,7 +54,9 @@ export default function Hero() {
     } catch {
       webglOK = false;
     }
-    setUse3D(isDesktop && !reduced && webglOK);
+    const result = isDesktop && !reduced && webglOK;
+    use3DRef.current = result;
+    setUse3D(result);
   }, []);
 
   useEffect(() => {
@@ -41,7 +64,7 @@ export default function Hero() {
       scrollRef.current = v;
     });
     return unsubscribe;
-  }, [scrollYProgress]);
+  }, [scrollYProgress, contentOpacity]);
 
   useEffect(() => {
     const cv = canvasRef.current;
@@ -156,16 +179,20 @@ export default function Hero() {
       ref={heroRef}
       id="top"
       aria-label="Hero"
-      className="relative flex min-h-screen scroll-mt-20 flex-col items-center justify-center overflow-hidden pt-32 pb-16"
+      className={`relative scroll-mt-20 ${use3D ? 'h-[220vh]' : 'min-h-screen'}`}
     >
-      <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none" />
-      {use3D && (
-        <div aria-hidden="true" className="absolute inset-0 z-[1] pointer-events-none">
-          <GlobeScene scrollRef={scrollRef} mouseRef={mouseRef} />
-        </div>
-      )}
+      <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden pt-32 pb-16">
+        <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none" />
+        {use3D && (
+          <div aria-hidden="true" className="absolute inset-0 z-[1] pointer-events-none">
+            <GlobeScene scrollRef={scrollRef} mouseRef={mouseRef} />
+          </div>
+        )}
 
-      <div className="relative z-10 mx-auto grid w-full max-w-[1360px] gap-16 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 xl:gap-20">
+      <motion.div
+        style={{ opacity: contentOpacity, y: contentY }}
+        className="relative z-10 mx-auto grid w-full max-w-[1360px] gap-16 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 xl:gap-20"
+      >
         <div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -304,14 +331,16 @@ export default function Hero() {
             <p className="mt-2 text-xs text-text-3">99.98% uptime</p>
           </GlassCard>
         </div>
-      </div>
+      </motion.div>
 
-      <div
+      <motion.div
         aria-hidden="true"
+        style={{ opacity: scrollCueOpacity }}
         className="relative z-10 mx-auto mt-6 flex w-fit animate-bob flex-col items-center gap-2 text-[0.75rem] font-medium tracking-wider text-text-3"
       >
         SCROLL
         <span className="block h-10 w-px bg-gradient-to-b from-electric-blue to-transparent" />
+      </motion.div>
       </div>
     </section>
   );

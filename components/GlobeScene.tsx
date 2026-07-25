@@ -69,14 +69,20 @@ function Arc({ start, end, delay }: { start: THREE.Vector3; end: THREE.Vector3; 
   );
 }
 
-function Globe() {
+function Globe({ scrollRef }: { scrollRef: React.RefObject<number> }) {
   const groupRef = useRef<THREE.Group>(null!);
+  const idleRotation = useRef(0);
   const pointPositions = useMemo(() => fibonacciSpherePositions(420, GLOBE_RADIUS * 1.07), []);
   const colombo = useMemo(() => latLngToVec3(COLOMBO.lat, COLOMBO.lng, GLOBE_RADIUS), []);
   const cities = useMemo(() => CITIES.map((c) => ({ ...c, pos: latLngToVec3(c.lat, c.lng, GLOBE_RADIUS) })), []);
 
   useFrame((_, delta) => {
-    groupRef.current.rotation.y += delta * 0.08;
+    idleRotation.current += delta * 0.08;
+    // Extra yaw ramps in around the t=0.66 camera keyframe, turning a different arc into frame
+    // on top of the constant idle spin — not accumulated per-frame, so it settles rather than drifts.
+    const s = scrollRef.current ?? 0;
+    const scrollYaw = THREE.MathUtils.smoothstep(s, 0.5, 0.8) * (Math.PI / 2);
+    groupRef.current.rotation.y = idleRotation.current + scrollYaw;
   });
 
   return (
@@ -98,6 +104,35 @@ function Globe() {
   );
 }
 
+type CameraKeyframe = { t: number; z: number; y: number; fov: number };
+
+// t=0 wide establishing shot -> 0.33 push in -> 0.66 second framing (paired with the globe's
+// scrollYaw) -> 1 settled wider "arrival" shot as the section hands off to the next one.
+const CAMERA_KEYFRAMES: CameraKeyframe[] = [
+  { t: 0, z: 6, y: 0, fov: 45 },
+  { t: 0.33, z: 3.4, y: -0.2, fov: 42 },
+  { t: 0.66, z: 3.0, y: 0.3, fov: 40 },
+  { t: 1, z: 4.6, y: 0, fov: 44 },
+];
+
+function lerpKeyframes(t: number, stops: CameraKeyframe[]) {
+  const clamped = THREE.MathUtils.clamp(t, 0, 1);
+  for (let i = 0; i < stops.length - 1; i++) {
+    const a = stops[i];
+    const b = stops[i + 1];
+    if (clamped <= b.t) {
+      const localT = (clamped - a.t) / (b.t - a.t);
+      return {
+        z: THREE.MathUtils.lerp(a.z, b.z, localT),
+        y: THREE.MathUtils.lerp(a.y, b.y, localT),
+        fov: THREE.MathUtils.lerp(a.fov, b.fov, localT),
+      };
+    }
+  }
+  const last = stops[stops.length - 1];
+  return { z: last.z, y: last.y, fov: last.fov };
+}
+
 function CameraRig({
   scrollRef,
   mouseRef,
@@ -108,11 +143,12 @@ function CameraRig({
   useFrame(({ camera }) => {
     const s = scrollRef.current ?? 0;
     const m = mouseRef.current ?? { x: 0, y: 0 };
-    camera.position.z = THREE.MathUtils.lerp(camera.position.z, THREE.MathUtils.lerp(6, 4.1, s), 0.06);
-    camera.position.y = THREE.MathUtils.lerp(camera.position.y, THREE.MathUtils.lerp(0, -0.4, s), 0.06);
+    const target = lerpKeyframes(s, CAMERA_KEYFRAMES);
+    camera.position.z = THREE.MathUtils.lerp(camera.position.z, target.z, 0.06);
+    camera.position.y = THREE.MathUtils.lerp(camera.position.y, target.y, 0.06);
     camera.position.x = THREE.MathUtils.lerp(camera.position.x, m.x * 0.6, 0.05);
     if (camera instanceof THREE.PerspectiveCamera) {
-      camera.fov = THREE.MathUtils.lerp(camera.fov, THREE.MathUtils.lerp(45, 38, s), 0.06);
+      camera.fov = THREE.MathUtils.lerp(camera.fov, target.fov, 0.06);
       camera.updateProjectionMatrix();
     }
     camera.lookAt(0, 0, 0);
@@ -134,7 +170,7 @@ export function GlobeScene({
       camera={{ position: [0, 0, 6], fov: 45, near: 0.1, far: 100 }}
       style={{ pointerEvents: 'none' }}
     >
-      <Globe />
+      <Globe scrollRef={scrollRef} />
       <CameraRig scrollRef={scrollRef} mouseRef={mouseRef} />
     </Canvas>
   );
