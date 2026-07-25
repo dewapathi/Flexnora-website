@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { MessageCircle, ClipboardList, PenTool, Code2, TestTube, Rocket, Headset } from 'lucide-react';
 import { Container, SectionHeader } from './ui';
+import { SectionAtmosphere } from './SectionAtmosphere';
 
 const steps = [
   { num: '01', icon: MessageCircle, title: 'Discovery', desc: 'Deep dive into your goals, audience, and landscape — defining exactly what we\'re building and why it matters.' },
@@ -15,8 +16,9 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" aria-labelledby="proc-h" className="scroll-mt-20">
-      <div className="py-[120px]">
+    <section id="process" aria-labelledby="proc-h" className="relative scroll-mt-20 overflow-hidden">
+      <SectionAtmosphere accent="purple" />
+      <div className="relative z-10 py-[120px]">
         <Container>
           <SectionHeader
             kicker="How we work"

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Star } from 'lucide-react';
 import { Container, SectionHeader, Reveal } from './ui';
+import { SectionAtmosphere } from './SectionAtmosphere';
 
 const testimonials = [
   {
@@ -25,8 +26,9 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" aria-labelledby="ts-h" className="scroll-mt-20 bg-bg-1">
-      <div className="py-[120px]">
+    <section id="testimonials" aria-labelledby="ts-h" className="relative scroll-mt-20 overflow-hidden bg-bg-1">
+      <SectionAtmosphere accent="purple" />
+      <div className="relative z-10 py-[120px]">
         <Container>
           <SectionHeader
             kicker="Client love"

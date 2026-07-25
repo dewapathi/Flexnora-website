@@ -10,6 +10,7 @@ import {
 } from 'react-icons/si';
 import { Monitor, Server, Database, Cloud, Bot, BrainCircuit, Workflow, Zap, Sparkles, type LucideIcon } from 'lucide-react';
 import { Container, SectionHeader, Reveal } from './ui';
+import { SectionAtmosphere } from './SectionAtmosphere';
 import type { IconType } from 'react-icons';
 
 type Tech = { icon: IconType | LucideIcon; label: string; color: string };
@@ -81,8 +82,9 @@ export default function TechStack() {
   const cat = categories.find((c) => c.id === active)!;
 
   return (
-    <section id="tech" aria-labelledby="tech-h" className="scroll-mt-20">
-      <div className="py-[120px]">
+    <section id="tech" aria-labelledby="tech-h" className="relative scroll-mt-20 overflow-hidden">
+      <SectionAtmosphere accent="amber" />
+      <div className="relative z-10 py-[120px]">
         <Container>
           <SectionHeader
             kicker="Tech stack"

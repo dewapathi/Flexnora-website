@@ -4,6 +4,7 @@ import {
 } from 'lucide-react';
 import { Container, Kicker, GradientText, Reveal } from './ui';
 import { MagneticCTA } from './MagneticButton';
+import { SectionAtmosphere } from './SectionAtmosphere';
 
 const categories = [
   { icon: Code2, label: 'Software Development' },
@@ -33,8 +34,9 @@ const cards = [
 
 export default function ItPartnership() {
   return (
-    <section id="itp" aria-labelledby="itp-h" className="scroll-mt-20 bg-bg-1">
-      <div className="py-[120px]">
+    <section id="itp" aria-labelledby="itp-h" className="relative scroll-mt-20 overflow-hidden bg-bg-1">
+      <SectionAtmosphere accent="amber" />
+      <div className="relative z-10 py-[120px]">
         <Container>
           <div className="mb-20 grid gap-16 lg:grid-cols-2 lg:items-center">
             <Reveal>

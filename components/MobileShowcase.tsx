@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { Bike, HeartPulse, Wallet, Plane } from 'lucide-react';
 import { Container, SectionHeader, Reveal } from './ui';
+import { SectionAtmosphere } from './SectionAtmosphere';
 
 const apps = [
   { icon: Bike, title: 'Food Delivery', grad: 'from-indigo to-violet', delay: '0s' },
@@ -12,8 +13,9 @@ const apps = [
 
 export default function MobileShowcase() {
   return (
-    <section id="mobile" aria-labelledby="mob-h" className="scroll-mt-20 bg-bg-1">
-      <div className="py-[120px]">
+    <section id="mobile" aria-labelledby="mob-h" className="relative scroll-mt-20 overflow-hidden bg-bg-1">
+      <SectionAtmosphere accent="amber" />
+      <div className="relative z-10 py-[120px]">
         <Container>
           <SectionHeader
             kicker="Mobile app development"

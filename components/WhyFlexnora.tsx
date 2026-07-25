@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { Lightbulb, ShieldCheck, Gauge, Layers, Award, Eye, Handshake, type LucideIcon } from 'lucide-react';
 import { Container, SectionHeader, Reveal } from './ui';
+import { SectionAtmosphere } from './SectionAtmosphere';
 
 const pillars: { icon: LucideIcon; title: string; headline: string; desc: string; featured?: boolean }[] = [
   {
@@ -94,8 +95,9 @@ export default function WhyFlexnora() {
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start center', 'end center'] });
 
   return (
-    <section id="why" aria-labelledby="why-h" className="scroll-mt-20 bg-bg-1">
-      <div className="py-[120px]">
+    <section id="why" aria-labelledby="why-h" className="relative scroll-mt-20 overflow-hidden bg-bg-1">
+      <SectionAtmosphere accent="blue" />
+      <div className="relative z-10 py-[120px]">
         <Container>
           <SectionHeader
             kicker="Why choose us"

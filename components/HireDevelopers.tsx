@@ -5,6 +5,7 @@ import {
 import { SiFigma } from 'react-icons/si';
 import { Container, Kicker, GradientText, Reveal } from './ui';
 import { MagneticCTA } from './MagneticButton';
+import { SectionAtmosphere } from './SectionAtmosphere';
 
 const roles = [
   { icon: Monitor, label: 'Frontend Developer' },
@@ -28,8 +29,9 @@ const engagements = [
 
 export default function HireDevelopers() {
   return (
-    <section id="hire" aria-labelledby="hire-h" className="scroll-mt-20">
-      <div className="py-[120px]">
+    <section id="hire" aria-labelledby="hire-h" className="relative scroll-mt-20 overflow-hidden">
+      <SectionAtmosphere accent="blue" />
+      <div className="relative z-10 py-[120px]">
         <Container>
           <div className="mb-16 grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:items-center">
             <Reveal>

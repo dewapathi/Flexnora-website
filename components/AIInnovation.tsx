@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { MessageSquare, FileText, Receipt, Mic, TrendingUp, BookOpen } from 'lucide-react';
 import { Container, SectionHeader, Reveal } from './ui';
+import { SectionAtmosphere } from './SectionAtmosphere';
 
 const capabilities = [
   { icon: MessageSquare, title: 'AI Chatbot', desc: 'Conversational agents trained on your product and docs, handling support and lead qualification 24/7.' },
@@ -15,12 +16,13 @@ const capabilities = [
 export default function AIInnovation() {
   return (
     <section id="ai" aria-labelledby="ai-h" className="relative scroll-mt-20 overflow-hidden">
+      <SectionAtmosphere accent="blue" />
       <div
         aria-hidden="true"
         className="absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full blur-[100px]"
         style={{ background: 'radial-gradient(ellipse,rgba(6,182,212,0.14) 0%,rgba(99,102,241,0.08) 50%,transparent 70%)' }}
       />
-      <div className="relative py-[120px]">
+      <div className="relative z-10 py-[120px]">
         <Container>
           <SectionHeader
             kicker="AI innovation"

@@ -13,6 +13,7 @@ import {
 import { SiFigma } from 'react-icons/si';
 import type { IconType } from 'react-icons';
 import { Container, SectionHeader, Reveal } from './ui';
+import { SectionAtmosphere } from './SectionAtmosphere';
 
 type Item = { icon: LucideIcon | IconType; title: string; desc: string };
 type Tab = { id: string; icon: LucideIcon; label: string; blurb: string; items: Item[] };
@@ -107,7 +108,8 @@ export default function Services() {
   const active = tabs.find((t) => t.id === activeTab)!;
 
   return (
-    <section id="services" aria-labelledby="svc-h" className="relative scroll-mt-20">
+    <section id="services" aria-labelledby="svc-h" className="relative scroll-mt-20 overflow-hidden">
+      <SectionAtmosphere accent="purple" />
       <div
         aria-hidden="true"
         className="absolute -left-[200px] -top-[200px] h-[600px] w-[600px] rounded-full blur-[80px]"
@@ -118,7 +120,7 @@ export default function Services() {
         className="absolute -bottom-[150px] -right-[150px] h-[500px] w-[500px] rounded-full blur-[80px]"
         style={{ background: 'rgba(168,85,247,0.05)' }}
       />
-      <div className="relative py-[120px]">
+      <div className="relative z-10 py-[120px]">
         <Container>
           <SectionHeader
             kicker="Full service coverage"

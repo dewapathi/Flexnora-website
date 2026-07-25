@@ -2,16 +2,18 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Container, Kicker, GradientText, Badge, Reveal } from './ui';
 import { MagneticCTA } from './MagneticButton';
+import { SectionAtmosphere } from './SectionAtmosphere';
 
 export default function Contact() {
   return (
     <section id="contact" aria-labelledby="ct-h" className="relative scroll-mt-20 overflow-hidden">
+      <SectionAtmosphere accent="amber" />
       <div
         aria-hidden="true"
         className="absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
         style={{ background: 'rgba(99,102,241,0.1)' }}
       />
-      <div className="relative py-[120px]">
+      <div className="relative z-10 py-[120px]">
         <Container>
           <div className="grid gap-14 lg:grid-cols-[1fr_1.4fr]">
             <Reveal>

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus } from 'lucide-react';
 import { Container, SectionHeader } from './ui';
+import { SectionAtmosphere } from './SectionAtmosphere';
 
 const faqs = [
   {
@@ -35,8 +36,9 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" aria-labelledby="fq-h" className="scroll-mt-20 bg-bg-1">
-      <div className="py-[120px]">
+    <section id="faq" aria-labelledby="fq-h" className="relative scroll-mt-20 overflow-hidden bg-bg-1">
+      <SectionAtmosphere accent="purple" />
+      <div className="relative z-10 py-[120px]">
         <Container>
           <SectionHeader
             kicker="FAQ"

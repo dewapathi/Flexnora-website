@@ -1,5 +1,6 @@
 import { X, Check } from 'lucide-react';
 import { Container, SectionHeader, Reveal } from './ui';
+import { SectionAtmosphere } from './SectionAtmosphere';
 
 const bad = [
   'High developer salaries ($60k–$150k/yr)',
@@ -25,8 +26,9 @@ const good = [
 
 export default function Comparison() {
   return (
-    <section id="compare" aria-labelledby="cmp-h" className="scroll-mt-20">
-      <div className="py-[120px]">
+    <section id="compare" aria-labelledby="cmp-h" className="relative scroll-mt-20 overflow-hidden">
+      <SectionAtmosphere accent="blue" />
+      <div className="relative z-10 py-[120px]">
         <Container>
           <SectionHeader
             kicker="The smarter choice"
