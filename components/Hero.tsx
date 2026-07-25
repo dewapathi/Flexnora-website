@@ -1,14 +1,47 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useScroll } from 'framer-motion';
 import { CalendarCheck, ArrowRight, Star } from 'lucide-react';
 import { MagneticCTA } from './MagneticButton';
 import { HeroVisualStack } from './HeroVisualStack';
+import { HudFrame } from './HudFrame';
 import { GlassCard, StatCounter } from './ui';
 
+const GlobeScene = dynamic(() => import('./GlobeScene').then((m) => m.GlobeScene), {
+  ssr: false,
+  loading: () => null,
+});
+
 export default function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const scrollRef = useRef(0);
+  const mouseRef = useRef({ x: 0, y: 0 });
+  const [use3D, setUse3D] = useState(false);
+
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+
+  useEffect(() => {
+    const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let webglOK = false;
+    try {
+      const t = document.createElement('canvas');
+      webglOK = !!(t.getContext('webgl2') || t.getContext('webgl'));
+    } catch {
+      webglOK = false;
+    }
+    setUse3D(isDesktop && !reduced && webglOK);
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.on('change', (v) => {
+      scrollRef.current = v;
+    });
+    return unsubscribe;
+  }, [scrollYProgress]);
 
   useEffect(() => {
     const cv = canvasRef.current;
@@ -42,8 +75,30 @@ export default function Hero() {
       });
     }
 
+    const flashlightEnabled =
+      window.matchMedia('(pointer: fine) and (hover: hover)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (flashlightEnabled) {
+      const mask = 'radial-gradient(420px 420px at var(--flx,50%) var(--fly,50%), black, transparent 85%)';
+      cv.style.setProperty('mask-image', mask);
+      cv.style.setProperty('-webkit-mask-image', mask);
+    }
+
     let mx = W / 2, my = H / 2;
-    const onMouse = (e: MouseEvent) => { mx = e.clientX; my = e.clientY; };
+    const onMouse = (e: MouseEvent) => {
+      mx = e.clientX;
+      my = e.clientY;
+      if (flashlightEnabled) {
+        const rect = cv!.getBoundingClientRect();
+        cv!.style.setProperty('--flx', `${e.clientX - rect.left}px`);
+        cv!.style.setProperty('--fly', `${e.clientY - rect.top}px`);
+      }
+      // Reused for the 3D globe's mouse-parallax camera offset too — avoids a second listener.
+      mouseRef.current = {
+        x: e.clientX / window.innerWidth - 0.5,
+        y: e.clientY / window.innerHeight - 0.5,
+      };
+    };
     document.addEventListener('mousemove', onMouse, { passive: true });
 
     function draw() {
@@ -98,11 +153,17 @@ export default function Hero() {
 
   return (
     <section
+      ref={heroRef}
       id="top"
       aria-label="Hero"
       className="relative flex min-h-screen scroll-mt-20 flex-col items-center justify-center overflow-hidden pt-32 pb-16"
     >
       <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none" />
+      {use3D && (
+        <div aria-hidden="true" className="absolute inset-0 z-[1] pointer-events-none">
+          <GlobeScene scrollRef={scrollRef} mouseRef={mouseRef} />
+        </div>
+      )}
 
       <div className="relative z-10 mx-auto grid w-full max-w-[1360px] gap-16 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 xl:gap-20">
         <div>
@@ -140,6 +201,23 @@ export default function Hero() {
               </motion.span>
             </span>
           </h1>
+
+          <motion.svg
+            aria-hidden="true"
+            viewBox="0 0 220 16"
+            className="mb-7 h-4 w-[140px] text-electric-blue"
+          >
+            <motion.path
+              d="M2 10 Q 40 2, 80 9 T 160 8 T 218 6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 0.9, delay: 0.45, ease: [0.65, 0, 0.35, 1] }}
+            />
+          </motion.svg>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -204,7 +282,8 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div>
+        <div className="relative">
+          <HudFrame className="-inset-4 hidden lg:block" />
           <HeroVisualStack />
           {/* Simplified single panel below lg — no fan-stack, no parallax */}
           <GlassCard className="p-5 lg:hidden">

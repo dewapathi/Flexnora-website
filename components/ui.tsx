@@ -11,14 +11,22 @@ const revealVariants: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } },
 };
 
+const revealVariantsCinematic: Variants = {
+  hidden: { opacity: 0, y: 32, filter: 'blur(4px)' },
+  show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } },
+};
+
 export function Reveal({
   children,
   className = '',
   delay = 0,
+  cinematic = false,
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
+  /** Opt-in blur-in variant for a more cinematic entrance. Defaults to false so existing sections are unaffected. */
+  cinematic?: boolean;
 }) {
   return (
     <motion.div
@@ -26,7 +34,7 @@ export function Reveal({
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: '-60px' }}
-      variants={revealVariants}
+      variants={cinematic ? revealVariantsCinematic : revealVariants}
       transition={{ delay }}
     >
       {children}
