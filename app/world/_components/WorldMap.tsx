@@ -79,7 +79,21 @@ export function WorldMap() {
         <div className={use3D ? 'sticky top-0 flex h-screen items-center' : ''}>
           <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border shadow-card">
             {use3D ? (
-              <WorldMapScene scrollRef={scrollRef} mouseRef={mouseRef} />
+              <>
+                {/* The scene's Canvas is transparent (`gl={{alpha:true}}`) so its glow blends
+                    with whatever is behind it — without an explicit dark backdrop here, light
+                    theme's white page background shows through instead of the intended
+                    atmospheric night-sky look. */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      'radial-gradient(ellipse at 50% 40%, rgba(46,107,255,0.12), transparent 60%), linear-gradient(180deg, #0a0e1a 0%, #05070f 100%)',
+                  }}
+                />
+                <WorldMapScene scrollRef={scrollRef} mouseRef={mouseRef} />
+              </>
             ) : (
               <>
                 {/* "Ocean" backdrop */}

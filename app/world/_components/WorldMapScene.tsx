@@ -1,5 +1,6 @@
 'use client';
 import { useMemo, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Html, QuadraticBezierLine } from '@react-three/drei';
 import * as THREE from 'three';
@@ -157,6 +158,17 @@ function Waypoint({
 }) {
   const meshRef = useRef<THREE.Mesh>(null!);
   const wrapperRef = useRef<HTMLDivElement>(null!);
+  const router = useRouter();
+
+  // Same drei Html `transform` hit-testing quirk already hit on the Portfolio corridor: the real
+  // clickable area doesn't line up with where the label visually renders (clicking slightly below
+  // it is what actually lands on the link). Rather than re-chase that, the whole node is clickable
+  // — a click that lands on the real <a> still navigates natively; anything else here falls
+  // through to this handler.
+  const handleClick = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('a')) return;
+    router.push(region.route);
+  };
 
   useFrame((_, delta) => {
     meshRef.current.rotation.y += delta * 0.3;
@@ -172,7 +184,6 @@ function Waypoint({
 
     if (wrapperRef.current) {
       wrapperRef.current.style.opacity = String(focus);
-      wrapperRef.current.style.pointerEvents = distance < 0.4 ? 'auto' : 'none';
     }
   });
 
@@ -182,8 +193,28 @@ function Waypoint({
         <icosahedronGeometry args={[0.32, 0]} />
         <meshBasicMaterial color={ELECTRIC_BLUE} wireframe transparent opacity={0.15} />
       </mesh>
+      {/* Invisible, generously-sized hit target using real WebGL raycasting against actual 3D
+          geometry — immune to the CSS-3D Html hit-test/paint mismatch that affects the label
+          below (which gets worse the further a node sits from dead-center view, so a fixed CSS
+          padding tuned for one node isn't enough for the rest). This is the primary click path;
+          the label's own link below still works natively too when it happens to line up. */}
+      <mesh
+        onClick={(e) => {
+          e.stopPropagation();
+          router.push(region.route);
+        }}
+        onPointerOver={() => {
+          document.body.style.cursor = 'pointer';
+        }}
+        onPointerOut={() => {
+          document.body.style.cursor = 'auto';
+        }}
+      >
+        <sphereGeometry args={[0.9, 12, 12]} />
+        <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+      </mesh>
       <Html transform occlude={false} center scale={0.3}>
-        <div ref={wrapperRef}>
+        <div ref={wrapperRef} onClick={handleClick} style={{ padding: 36, cursor: 'pointer' }}>
           <Link
             href={region.route}
             className="group flex flex-col items-center gap-1 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric-blue"

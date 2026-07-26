@@ -1,8 +1,9 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import { MagneticCTA } from './MagneticButton';
 
@@ -65,6 +66,14 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <MagneticCTA
+            as={Link}
+            href="/world"
+            className="inline-flex items-center gap-1.5 rounded-full border border-electric-blue/30 bg-electric-blue/10 px-4 py-2.5 text-sm font-semibold text-lilac transition-all hover:-translate-y-0.5 hover:border-electric-blue/50 hover:scale-[1.08]"
+            contentClassName="inline-flex items-center gap-1.5"
+          >
+            <Globe className="h-4 w-4" /> Explore
+          </MagneticCTA>
           <ThemeToggle />
           <MagneticCTA
             href="#cta-fin"
@@ -111,6 +120,15 @@ export default function Navbar() {
                 {l.label}
               </MagneticCTA>
             ))}
+            <MagneticCTA
+              as={Link}
+              href="/world"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-1.5 rounded-lg px-4 py-3 text-base font-semibold text-lilac transition-all hover:bg-surface-2 hover:scale-[1.03]"
+              contentClassName="inline-flex items-center gap-1.5"
+            >
+              <Globe className="h-4 w-4" /> Explore the World
+            </MagneticCTA>
             <MagneticCTA
               href="#cta-fin"
               onClick={() => setOpen(false)}
